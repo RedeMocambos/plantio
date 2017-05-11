@@ -35,10 +35,11 @@ Padrões para implantação do plantio
 1) Selecione uma área
 2) defina um padro de implantação de plantio
 3) escolha as espécies
-3.1) exibição de caixas de seleção separadas por atributos das plantas
-3.2) ao "arrastar" a planta para a área, pode projetar a copa dela (como área de mancha transparente)
+* exibição de caixas de seleção separadas por atributos das plantas
+* ao "arrastar" a planta para a área, pode projetar a copa dela (como área de mancha transparente)
 
 ## Consultas
 
 * Visualização da projeção do canteiro por timeline / time range
 * visualização por linhas paralelas
+* visualizaço em plano horizontal (projeção timeline)
