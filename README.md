@@ -1,21 +1,36 @@
 # plantio
 
-Software de banco de dados e ferramentas visuais para planejamento de plantios e áreas em Sistemas Agroflorestais - SAFS - e afins
+Software de banco de dados e ferramentas visuais para planejamento de plantios e áreas em Sistemas Agroflorestais - SAFS - e afins.
 
+## conceito: Banco de dados de espécies e variedades
 
-# conceito
+Cada planta cadastrada é uma entidade genêrica, sendo implementada pela variedade. Isto é, uma mesma planta pode possuir múltiplas variedades.
 
-## Banco de dados de espécies e variedades
+Cada variedade extende as propriedades da planta, mas pode alterar alguns atributos - mas não todos: exigência de solo, porte, necessidades hídricas etc; já aleopatias geralmente não são alteradas pelas variedades.
 
-Cadastro de espécies com atributos diversos:
+## Plantas / espécies
+
+Cadastro de espécies com atributos diversos. Os atributos marcados com um * podem ser alterados pelas variedades.
+
 * família
+* porte *
+* necessidades hídricas *
+* exigência de solo *
+* ciclos (crescimento, floração, frutificação, dormência) *
+* densidade da copa -> vetor temporal de desenvolvimento *
+* alelopatias (antagonismos) - seleção manual de outras espécies
+
+## Variedades
+
+Uma variedade é uma extensão da espécie, mas com variações pequenas. Podem ser atribuídas a experiências localizadas e temporais. 
+
+* nome da variedade
+* descrição
+* localização
 * porte
-* necessidades hídricas
-* exigência de solo
-* ciclos (crescimento, floração, frutificação, dormência)
-* densidade da copa
-* antagonismos (seleção manual de outras espécies)
-* etc
+* exigências de solo
+* porte
+* ciclo de crescimento
 
 ## Definição de áreas
 
@@ -24,7 +39,7 @@ Definições sobre a área:
 * solo
 * clima
 * declividade
-* etc
+* área total
 
 ## Definição do desenho da área
 
@@ -37,6 +52,7 @@ Padrões para implantação do plantio
 3) escolha as espécies
 * exibição de caixas de seleção separadas por atributos das plantas
 * ao "arrastar" a planta para a área, pode projetar a copa dela (como área de mancha transparente)
+4) espécies parceiras ou antagônicas são exibidas conforme as espécies adjacentes
 
 ## Consultas
 
