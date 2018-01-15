@@ -117,3 +117,11 @@ Padrões para implantação do plantio
 * Visualização da projeção do canteiro por timeline / time range
 * visualização por linhas paralelas
 * visualizaço em plano horizontal (projeção timeline)
+
+
+## Referências
+
+A elaboração do sistema utiliza conceitos da agroecologia e agrofloresta. Destacamos aqui algumas das referências bibliográficas utilizadas:
+
+
+PRIMAVESI, Ana. Pergunte ao solo e às raízes - uma análise do solo tropical e mais de 70 casos resolvidos pela agroecologia. São Paulo: Nobel, 2014.
