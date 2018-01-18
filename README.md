@@ -16,11 +16,14 @@ Cadastro de espécies com atributos diversos. Os atributos marcados com um * pod
 * nome cientifico (Chave)
 * nomes populares
 * família
+* fotos
 * porte *
 * necessidades hídricas *
 * exigência de solo *
 * tolerância a poda
 * exigência de sol (0-10) sendo 0 sombra, 10 pleno sol
+* temperatura (range)
+* tempo de colheita
 * interação com outras espécies: alelopatias e sinergias - seleção manual de outras espécies
 * estrato: baixo, médio, alto/dossel, emergente
 * sucessão: "perfil" da planta: colonizadoras, pioneiras, secundárias iniciais, secundárias tardias, clímax
