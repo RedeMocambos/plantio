@@ -13,7 +13,8 @@ A interação entre as espécies é mapeada sinalizando aleopatias e sinergias d
 ## Espécies
 
 Cadastro de espécies com atributos diversos. Os atributos marcados com um * podem ser alterados pelas variedades.
-
+* nome cientifico (Chave)
+* nomes populares
 * família
 * porte *
 * necessidades hídricas *
