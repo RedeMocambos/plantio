@@ -39,7 +39,6 @@ Uma variedade é uma extensão da espécie, mas com variações pequenas. Podem 
 * localização
 * porte
 * exigências de solo
-* porte
 * ciclo de crescimento
 
 ## Tipo de porte
