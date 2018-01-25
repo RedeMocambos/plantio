@@ -41,11 +41,11 @@ Uma variedade é uma extensão da espécie, mas com variações pequenas. Podem 
 * exigências de solo
 * ciclo de crescimento
 
-## Tipo de porte
+## Ciclos e Tipo de porte
 
-O porte da espécie é uma descrição temporal simplificada do volume e densidade médios da copa. 
+Cada planta possui um ciclo, composto de várias fases. Cada fase está associada a um porte médio esperado determinada espécie ou variedade, com momentos de crescimento, floração, frutificação, dormência e caducidade.
 
-O tipo de porte descreve o ciclo médio esperado da planta, indicando momentos de crescimento, floração, frutificação, dormência e caducidade.
+O porte é uma descrição temporal simplificada do volume e densidade médios da copa.
 
 A descrição deve contemplar necessariamente:
 
@@ -82,6 +82,19 @@ Exemplos:
     |  4 8 4  |
     |  1 4 1  |
     -----------
+
+### Campos 
+
+* idFase
+* idEspecie not null
+* idVariedade
+* nome      not null
+* ordem     smallint not null
+* descricao
+* matrizPorte   json
+* floracao      bool
+* frutificacao  bool
+* deciduidade   bool ? dúvida: seria necessário um descritor específico ?
 
 ## Interação entre plantas
 
