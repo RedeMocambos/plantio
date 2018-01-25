@@ -114,7 +114,6 @@ Definições sobre a área:
 * declividade predominante / ondulação: plano, baixada, encosta acentuada, encosta suave
 * área total
 
-
 ## Definição do desenho da área
 
 Padrões para implantação do plantio
@@ -128,9 +127,13 @@ Padrões para implantação do plantio
 * ao "arrastar" a planta para a área, pode projetar a copa dela (como área de mancha transparente)
 4) espécies parceiras ou antagônicas são exibidas conforme as espécies adjacentes
 
+## Padrão de plantio
+
+Padrões de plantio são formas de agrupamento de espécies. Podem ser canteiros lineares, mandalas, círculos ou curvas de nível.
+
 ## Consultas
 
-* Visualização da projeção do canteiro por timeline / time range
+* Visualização da projeção do canteiro por data / faixa de tempo
 * visualização por linhas paralelas
 * visualizaço em plano horizontal (projeção timeline)
 
