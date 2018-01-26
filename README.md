@@ -84,6 +84,10 @@ Exemplos:
     |  1 4 1  |
     -----------
 
+### Catálogo de ciclos
+
+Quando um ciclo de uma planta é adicionado, seu desenho vai para uma tabela de padrões de ciclos. Os ciclos de folhação de um abacateiro e de uma mangueira, por exemplo, podem ser relativamente parecidos; os ciclos de coqueiros e palmeiras e sua folhação igualmente podem ser parecidos. Deste modo, quando vou cadastrar o ciclo de uma planta nova, me é oferecido um catálogo de padrões de ciclos (desenhos) já preenchidos para facilitar o preenchimento.
+
 ### Campos 
 
 * idFase
