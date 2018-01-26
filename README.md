@@ -19,14 +19,15 @@ Cadastro de espécies com atributos diversos. Os atributos marcados com um * pod
 * fotos
 * porte *
 * necessidades hídricas *
-* exigência de solo *
-* tolerância a poda
+* exigência de solo * dúvida - criei classes aleatórias, a revisar/repensar
+* tolerância a poda (0-10) sendo 0 nenhuma, 10 rebrota vigorosa indefinidamente
 * exigência de sol (0-10) sendo 0 sombra, 10 pleno sol
 * temperatura (range)
 * tempo de colheita
 * interação com outras espécies: alelopatias e sinergias - seleção manual de outras espécies
 * estrato: baixo, médio, alto/dossel, emergente
 * sucessão: "perfil" da planta: colonizadoras, pioneiras, secundárias iniciais, secundárias tardias, clímax
+* tempo de vida: dias, meses, anos
 
 Tipo de porte: engloba os ciclos e a densidade da copa, descritos numa matriz espacial/temporal
 
