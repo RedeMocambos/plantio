@@ -1,4 +1,8 @@
-plantio.sqlite
+*.sqlite
+*migrations*
+*settings.py
+*env/
+*static*
 *.pyc
 *~
 *#
