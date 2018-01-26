@@ -1,6 +1,6 @@
-*.sqlite
+**.sqlite
 *migrations*
-*settings.py
+**settings.py
 *env/
 *static*
 *.pyc
