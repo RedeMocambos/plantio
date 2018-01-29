@@ -87,3 +87,18 @@ class Especie(models.Model):
         
     def __str__(self):
         return self.nomes_populares + " (" + self.nome_cientifico + ")"
+
+
+class Variedade(models.Model):
+
+    nome             = models.CharField('nome' , max_length=255, blank=True)
+    descricao        = models.TextField('descricao', blank=True)
+    exigencia_solo   = models.CharField('exigencia_solo', max_length=2, choices=Especie.TIPOS_SOLO, blank=True)
+    tolerancia_poda  = models.CharField('tolerancia_poda', max_length=2, choices=Especie.NUMBER_RANGE, blank=True)
+    exigencia_sol    = models.CharField('exigencia_sol', max_length=2, choices=Especie.NUMBER_RANGE, blank=True)
+    inicio_colheita  = models.CharField('inicio_colheita', max_length=5, blank=True)
+    especie          = models.ForeignKey('especie', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return '(' + self.especie.nomes_populares + ') - ' + self.nome
+
