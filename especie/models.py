@@ -1,7 +1,10 @@
  #!-*- coding: utf-8 -*-
 from django.db import models
+
+from django.contrib.postgres.fields import JSONField
+
 from familia.models import Familia
-#from tipoPorte.models import TipoPorte
+
 
 class Configuracoes():
         TIPOS_UMIDADE = (
@@ -65,6 +68,16 @@ class Configuracoes():
             ('CL', 'Clímax'),
         )
 
+        FASES = (
+            (0, 'Emergência'),
+            (1, 'Desenvolvimento juvenil'),
+            (2, 'Desenvolvimento pleno'),
+            (3, 'Semi-caducidade'),
+            (4, 'Caducidade'),
+            (-1, 'Poda juvenil'),
+            (-2, 'Poda severa'),
+        )
+
         
 class Variedade(models.Model):
 
@@ -101,10 +114,27 @@ class Especie(models.Model):
     estrato          = models.CharField('estrato', max_length=2, choices=Configuracoes.TIPOS_ESTRATO, blank=True)
     sucessao         = models.CharField('sucessao', max_length=2, choices=Configuracoes.TIPOS_SUCESSAO, blank=True)
     variedade        = models.ForeignKey('variedade', on_delete=models.CASCADE, related_name='Variedade', null=True, blank=True)
-    
+#   ciclo            = models.ForeignKey
     # fotos
         
     def __str__(self):
         return self.nomes_populares + " (" + self.nome_cientifico + ")"
 
+class Fase(models.Model):
+    nome             = models.CharField('nome' , max_length=255, blank=True)   
+# * idFase
+# * idEspecie not null
+# * idVariedade
+    ordem            = models.SmallIntegerField('ordem', choices=Configuracoes.FASES)
+    descricao        = models.TextField('descricao', blank=True)
+    matriz_porte     = JSONField(null=True, default=[], blank=True)
+    floracao         = models.BooleanField('floracao', default=False)
+    frutificacao     = models.BooleanField('frutificacao', default=False)
+    deciduidade      = models.BooleanField('deciduidade', default=False)
 
+
+class Ciclo(models.Model):
+    #fases           = models.CharField('fase', choices=Configuracoes.FASES, null=True, max_length=10)
+    nome             = models.CharField('nome' , max_length=255, blank=True)
+
+    
