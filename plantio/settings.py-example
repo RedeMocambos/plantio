@@ -10,9 +10,18 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': '/var/www/plantio/plantio/plantio.sqlite',
+#    }
+
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/var/www/plantio/plantio/plantio.sqlite',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'plantio',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': '172.17.0.2',
+        'PORT': '', # 8000 is default
     }
 }
 
@@ -134,8 +143,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
-    'especie',
     'familia',
+    'especie',
 )
 
 # A sample logging configuration. The only tangible logging
