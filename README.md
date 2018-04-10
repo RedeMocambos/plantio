@@ -4,11 +4,14 @@ Software de banco de dados e ferramentas visuais para planejamento de plantios d
 
 ## conceito: Banco de dados de espécies e variedades
 
-Cada espécie cadastrada é uma entidade genêrica, podendo possuir variedades que expandem e sobrescrevem as prorpedades da espécie. Uma mesma planta pode possuir múltiplas variedades.
+Cada espécie cadastrada é uma entidade genérica, podendo possuir variedades que expandem e sobrescrevem as propriedades da espécie. Uma mesma planta pode possuir múltiplas variedades.
 
-As variedades extendem as propriedades da espécie, mas pode alterar alguns atributos - mas não todos: exigência de solo, porte, necessidades hídricas etc.
+As variedades extendem as propriedades da espécie e podem alterar alguns atributos - mas não todos. Exemplos de atributos alteráveis: exigência de solo, porte, necessidades hídricas etc.
 
 A interação entre as espécies é mapeada sinalizando aleopatias e sinergias de modo a sugerir combinações favoráveis ou não.
+
+Um dos usos possíveis do software é como auxiliar no acompanhamento e registro de alelopatias e sinergias entre espécies: toda e qualquer informação adicionada possui uma referência de origem - que pode ser um estudo, um livro ou um dado observacional. Os pesos de cada uma das informações podem ser configurados de acordo com o plantio - por exemplo, seria possível atribuir peso maior a uma informação coletada a partir de dados observacionais num mesmo bioma ou região.
+
 
 ## Espécies
 
