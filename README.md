@@ -1,6 +1,35 @@
 # plantio
 
-Software de banco de dados e ferramentas visuais para planejamento de plantios de policultivos e áreas em Sistemas Agroflorestais - SAFS.
+Software de banco de dados distribuído e ferramentas visuais para planejamento e acompanhamento de plantio de Sistemas Agroflorestais - SAFS e policultivos em geral.
+
+## objetivos
+
+* Criar um banco de dados sobre espécies de plantas com usos variados com alimentação de dados distribuída e colaborativa
+* Criar uma ferramenta de planejamento de cultivos agroflorestais que auxilie na identificação de simpatias, alelopatias, compatibilidade de crescimento / insolação e interação e assim propicie uma análise combinatória
+* Criar relatórios de previsão de colheita e ocupação do solo em escala temporal móvel para auxílio na implantação de sistemas agroflorestais capazes de garantir autosustento do solo (redução ao mínimo do uso de insumos externos - LEISA - Low External Input Sustainable Agriculture) e familiar.
+* Fomentar o compartilhamento de informações agrícolas diretamente entre produtor@s sem mediação de técnicos de extensão agrícola
+* Criar uma arquitetura expansível
+
+## arquitetura
+
+O software é um nó que pode funcionar sozinho (offline), mas pode se integrar a outros nós por meio de um protocolo de comunicação compartilhado.
+
+````   X   nó isolado
+    
+    X---X
+     \  |   nós em rede
+       \|
+        X
+````
+Um nó isolado, entretanto, é um nó da rede em potencial, podendo ser conectado. O software adere ao protocolo de comunicação do Baobáxia / http://github.com/RedeMocambos/baobaxia e a rede assume a característica de online/offline.
+
+Cada informação adicionada a um nó possui referencias do nó em que se originou e do local a que se refere. A localização do dado, em conjunto com outros atributos de similaridade, definirão a relevância da informação.
+
+## definição dos algorítmos de relevância
+
+Uma questão crucial dos softwares de rede hoje em dia é o poder do algorítmo frente à pessoa que utiliza o software. Por isso, preferimos que além de o algorítmo ser disponibilizado como software livre, seja facilmente configurável e alterável para cada nó. Isso permite que variáveis e pesos diferentes sejam definidos em cada nó / comunidade - afinal a experiência obtida numa área de cerrado difere de uma em área de mata atlântica, muito embora guardem semelhanças entre si quando comparadas a uma área de clima temperado.
+
+O programa propõe uma configuração inicial que pode ser livremente alterada.
 
 ## conceito: Banco de dados de espécies e variedades
 
@@ -152,3 +181,6 @@ A elaboração do sistema utiliza conceitos da agroecologia e agrofloresta. Dest
 
 
 PRIMAVESI, Ana. Pergunte ao solo e às raízes - uma análise do solo tropical e mais de 70 casos resolvidos pela agroecologia. São Paulo: Nobel, 2014.
+
+REIJNTJES, C.; HAVERKORT, B.; WATERS-BAYER, A. Agricultura para o futuro: uma introducao a agricultura sustentavel e de baixo uso de insumos externos. Rio de Janeiro: AS-PTA, 1994.
+
