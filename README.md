@@ -174,6 +174,16 @@ Padrões de plantio são formas de agrupamento de espécies. Podem ser canteiros
 * visualização por linhas paralelas
 * visualizaço em plano horizontal (projeção timeline)
 
+### Apresentações gráficas possíveis para saída de dados
+
+Evolução do crescimento das plantas
+https://square.github.io/cubism/
+
+Diagrama de famílias, atributos (solo, umidade etc) ciclos de vida e tempo de colheita
+https://www.jasondavies.com/coffee-wheel/
+
+Calendar view
+https://bl.ocks.org/mbostock/4063318
 
 ## Referências
 
