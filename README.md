@@ -31,6 +31,10 @@ Uma questão crucial dos softwares de rede hoje em dia é o poder do algorítmo 
 
 O programa propõe uma configuração inicial que pode ser livremente alterada.
 
+### Sugestão de espécies na montagem
+
+A sugestão de espécies aparece após a escolha da área e do padrão de plantio. Não há ordem de implantação, mas sugere-se que se inicie a seleção das espécies começando pelos maiores exemplares (arbóreos). A seleção de espécies busca todas as já adicionadas ao sistema e observa quais estratos já estão atendidos, sugerindo espécies a serem adicionadas para preencher os estratos faltantes. As espécies são filtradas de modo a privilegiar outras famílias e excluindo as plantas antagonistas. A configuração do algorítmo de seleção pode ser alterada por plantio/canteiro (ex: permitir mais de uma espécie da mesma família, quantidade de espécies por estrato)
+
 ## conceito: Banco de dados de espécies e variedades
 
 Cada espécie cadastrada é uma entidade genérica, podendo possuir variedades que expandem e sobrescrevem as propriedades da espécie. Uma mesma planta pode possuir múltiplas variedades.
