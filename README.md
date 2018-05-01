@@ -35,6 +35,10 @@ O programa propõe uma configuração inicial que pode ser livremente alterada.
 
 A sugestão de espécies aparece após a escolha da área e do padrão de plantio. Não há ordem de implantação, mas sugere-se que se inicie a seleção das espécies começando pelos maiores exemplares (arbóreos). A seleção de espécies busca todas as já adicionadas ao sistema e observa quais estratos já estão atendidos, sugerindo espécies a serem adicionadas para preencher os estratos faltantes. As espécies são filtradas de modo a privilegiar outras famílias e excluindo as plantas antagonistas. A configuração do algorítmo de seleção pode ser alterada por plantio/canteiro (ex: permitir mais de uma espécie da mesma família, quantidade de espécies por estrato)
 
+### cardapio e planejamento de plantio
+
+Uma forma de selecionar espécies é listar as frutas, verduras e demais plantas utilizadas em parte da alimentação de uma pessoa ou coletividade. A listagem de plantas pode levar a uma análise de viabilidade a fim de selecionar espécies viáveis para determinado local, conforme condições climáticas e de solo. Adicionalmente pode se criar rascunhos de agrupamentos com previsão de colheita para fins de abastecimento daquelas pessoas.
+
 ## conceito: Banco de dados de espécies e variedades
 
 Cada espécie cadastrada é uma entidade genérica, podendo possuir variedades que expandem e sobrescrevem as propriedades da espécie. Uma mesma planta pode possuir múltiplas variedades.
