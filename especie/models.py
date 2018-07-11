@@ -3,6 +3,7 @@ from django.db import models
 
 from django.contrib.postgres.fields import JSONField
 
+#from tipoPorte.models import Fase, Ciclo
 from familia.models import Familia
 
 
@@ -29,14 +30,15 @@ class Configuracoes():
         )
         
         TIPOS_SOLO = (
-            ('AE', 'Arenoso'),
-            ('AE', 'Areno-siltoso'),
-            ('SL', 'Siltoso'),
-            ('AG', 'Argiloso'),
-            ('AS', 'Argilo-siltoso'),        
-            ('AE', 'Areno-argiloso'),
-            ('RC', 'Rochoso'),
-            ('HU', 'Húmico'),
+                ('AE', 'Arenoso'),
+                ('AE', 'Areno-siltoso'),
+                ('SL', 'Siltoso'),
+                ('AG', 'Argiloso'),
+                ('AS', 'Argilo-siltoso'),        
+                ('AE', 'Areno-argiloso'),
+                ('RC', 'Rochoso'),
+                ('HU', 'Húmico'),
+                ('OU', 'Outros')
         )
         
         NUMBER_RANGE = (
@@ -114,27 +116,8 @@ class Especie(models.Model):
     estrato          = models.CharField('estrato', max_length=2, choices=Configuracoes.TIPOS_ESTRATO, blank=True)
     sucessao         = models.CharField('sucessao', max_length=2, choices=Configuracoes.TIPOS_SUCESSAO, blank=True)
     variedade        = models.ForeignKey('variedade', on_delete=models.CASCADE, related_name='Variedade', null=True, blank=True)
-#   ciclo            = models.ForeignKey
+    sucessaoa         = models.CharField('sucessao', max_length=2, choices=Configuracoes.TIPOS_SUCESSAO, blank=True)
     # fotos
         
     def __str__(self):
         return self.nomes_populares + " (" + self.nome_cientifico + ")"
-
-class Fase(models.Model):
-    nome             = models.CharField('nome' , max_length=255, blank=True)   
-# * idFase
-# * idEspecie not null
-# * idVariedade
-    ordem            = models.SmallIntegerField('ordem', choices=Configuracoes.FASES)
-    descricao        = models.TextField('descricao', blank=True)
-    matriz_porte     = JSONField(null=True, default=[], blank=True)
-    floracao         = models.BooleanField('floracao', default=False)
-    frutificacao     = models.BooleanField('frutificacao', default=False)
-    deciduidade      = models.BooleanField('deciduidade', default=False)
-
-
-class Ciclo(models.Model):
-    #fases           = models.CharField('fase', choices=Configuracoes.FASES, null=True, max_length=10)
-    nome             = models.CharField('nome' , max_length=255, blank=True)
-
-    

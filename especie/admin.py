@@ -1,9 +1,7 @@
 from django.contrib import admin
 
-from .models import Especie,Variedade,Fase,Ciclo
+from .models import Especie,Variedade
 
 admin.site.register(Especie)
 admin.site.register(Variedade)
-admin.site.register(Ciclo)
-admin.site.register(Fase)
 
