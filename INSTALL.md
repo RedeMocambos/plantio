@@ -4,10 +4,10 @@
 	
 # Instale as dependências do pip
 
-    $ pip3 install virtualenv
+    $ pip install virtualenv
     $ virtualenv env
     $ source env/bin/activate
-    $ pip3 install -r requirements.txt
+    $ pip install -r requirements.txt
 
 # Instale o postgreSQL
 
@@ -21,7 +21,8 @@
 
 # Rode o servidor
 
-    $ python3 manage.py makemigrations familia especie
-    $ python3 manage.py migrate
-    $ python3 manage.py createsuperuser
+    $ python manage.py makemigrations familia especie
+    $ python manage.py migrate
+    $ python manage.py createsuperuser
     $ python manage.py runserver
+	
