@@ -79,6 +79,13 @@ class Configuracoes():
             (-1, 'Poda juvenil'),
             (-2, 'Poda severa'),
         )
+        
+        UNIDADE_TEMPO_VIDA = (
+            ('D', 'Dias'),
+            ('M', 'Meses'),
+            ('A', 'Anos')
+        )
+        
 
         
 class Variedade(models.Model):
@@ -105,7 +112,8 @@ class Especie(models.Model):
     temperatura_max  = models.IntegerField('temperatura_max', blank=True, null=True)
     inicio_colheita  = models.IntegerField('inicio_colheita', blank=True, null=True)
     porte            = models.CharField('porte', max_length=2, choices=Configuracoes.TIPOS_PORTE, blank=True)
-    #tempo_vida       = models.IntegerField('tempo_vida', blank=True)
+    tempo_vida       = models.IntegerField('tempo_vida', blank=True, null=True)
+    unidade_tempo_vida = models.CharField('unidade_tempo_vida', max_length=1, choices=Configuracoes.UNIDADE_TEMPO_VIDA, default=False)
     #parceiras        = models.ManyToManyField("self", blank=True)
     #antagonistas     = models.ManyToManyField("self", blank=True)
     umidade          = models.CharField('umidade', max_length=2, choices=Configuracoes.TIPOS_UMIDADE, blank=True)
@@ -116,7 +124,7 @@ class Especie(models.Model):
     estrato          = models.CharField('estrato', max_length=2, choices=Configuracoes.TIPOS_ESTRATO, blank=True)
     sucessao         = models.CharField('sucessao', max_length=2, choices=Configuracoes.TIPOS_SUCESSAO, blank=True)
     variedade        = models.ForeignKey('variedade', on_delete=models.CASCADE, related_name='Variedade', null=True, blank=True)
-    sucessaoa         = models.CharField('sucessao', max_length=2, choices=Configuracoes.TIPOS_SUCESSAO, blank=True)
+    
     # fotos
         
     def __str__(self):
