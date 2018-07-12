@@ -6,6 +6,11 @@ from especie.models import Especie
 
 
 class Fase(models.Model):
+
+    POSICOES         = (
+        (0,0), (1,1), (2,2), (3,3), (4,4), (5,5), (6,6), (7,7), (8,8), (9,9), (10,10)
+    )
+    
     nome             = models.CharField('nome' , max_length=255, blank=True)   
     descricao        = models.TextField('descricao', blank=True)
     matriz_porte     = JSONField(null=True, default=[], blank=True)
@@ -14,7 +19,7 @@ class Fase(models.Model):
     deciduidade      = models.BooleanField('deciduidade', default=False)
     inicio           = models.CharField('inicio_fase', max_length=5, blank=True)
     fim              = models.CharField('fim_fase', max_length=5, blank=True)
-    #    ciclo            = models.ForeignKey(Ciclo, on_delete=models.CASCADE, related_name='Ciclo')
+    posicao          = models.PositiveSmallIntegerField('posicao', choices=POSICOES, default=0)
     
     def __str__(self):
         if self.nome != '':
