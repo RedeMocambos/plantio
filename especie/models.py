@@ -63,13 +63,37 @@ class Configuracoes():
         )
         
         TIPOS_SUCESSAO = (
-            ('CO', 'Colonizadora'),
-            ('PI', 'Pioneiras'),
-            ('SI', 'Secundárias iniciais'),
-            ('ST', 'Secundárias tardias'),
-            ('CL', 'Clímax'),
+                ('CO', 'Colonizadora'),
+                ('PI', 'Pioneiras'),
+                ('SI', 'Secundárias iniciais'),
+                ('ST', 'Secundárias tardias'),
+                ('CL', 'Clímax'),
         )
 
+        TIPOS_CLIMA = (
+                ('TRU', 'Tropical úmido'),
+                ('TRS', 'Tropical seco'),
+                ('STS', 'Sub tropical seco'),
+                ('STU', 'Sub tropical úmido'),
+                ('TEU', 'Temperado úmido'),
+                ('TES', 'Temperado seco')
+        )
+
+        TIPOS_BIOMA = (
+                ('CE', 'Cerrado'),
+                ('MA', 'Mata atlântica'),
+                ('PA', 'Pampa'),
+                ('AM', 'Amazônico'),
+                ('PA', 'Pantanal')
+        )
+
+        TIPOS_DECLIVIDADE = (
+                ('PL', 'Plano'),
+                ('BA', 'Baixada'),
+                ('EA', 'Encosta acentuada'),
+                ('ES', 'Encosta suave')
+        )
+        
         FASES = (
             (0, 'Emergência'),
             (1, 'Desenvolvimento juvenil'),
@@ -114,6 +138,7 @@ class Especie(models.Model):
     porte            = models.CharField('porte', max_length=2, choices=Configuracoes.TIPOS_PORTE, blank=True)
     tempo_vida       = models.IntegerField('tempo_vida', blank=True, null=True)
     unidade_tempo_vida = models.CharField('unidade_tempo_vida', max_length=1, choices=Configuracoes.UNIDADE_TEMPO_VIDA, default=False)
+
     #parceiras        = models.ManyToManyField("self", blank=True)
     #antagonistas     = models.ManyToManyField("self", blank=True)
     umidade          = models.CharField('umidade', max_length=2, choices=Configuracoes.TIPOS_UMIDADE, blank=True)
