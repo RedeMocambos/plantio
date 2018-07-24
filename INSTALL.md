@@ -13,9 +13,8 @@
 
     # apt install docker
     $ docker pull postgres
-    $ docker run -it --rm --link some-postgres:postgres postgres psql -h postgres -U postgres
-    
-    $ docker exec -it [postgres] bash
+    $ docker start [imagem]
+    $ docker exec -it [imagem] bash
     $ su postgres
     $ createdb plantio
 
