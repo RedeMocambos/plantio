@@ -3,3 +3,5 @@ Django
 django-multiselectfield
 setuptools
 django-admin-tools
+psycopg2
+environ
