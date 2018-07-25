@@ -40,7 +40,9 @@ Vue.component('grid', {
 	return {
 	    opt: {
 		sizeX: 3,
-		sizeY: 3
+		sizeY: 3,
+		boxSizeW: 10,
+		boxSizeH: 10
 	    },
 	    gridData: [
 		[] = '0'
@@ -80,7 +82,7 @@ Vue.component('grid', {
 	    for (let x = 0; x < this.opt.sizeX; x++) {
 		grid[x] = [];
 		for (let y = 0; y < this.opt.sizeY; y++) {	 
-		    grid[x][y] = '0';
+		    grid[x][y] = 0;
 		}
 	    }
 	    

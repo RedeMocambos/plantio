@@ -4,8 +4,8 @@ Vue.component('grid-itens', {
 <div>
   <h3 class="card-title">Selecione:</h3>  
   <div v-for="(linha, pos_x) of localGridData" class="row" style="margin-bottom:0; margin-left:30px">
-    <div v-for="(valor, pos_y) of linha" class="col" style="width:24px; height:24px; margin:0; padding:0;" >
-      <div v-on:click="trocaValor(pos_x, pos_y)" style="border: 1px solid #ccc; width:24px; height:24px; padding:6px"  :class="pontoSelecionado(valor)">
+    <div v-for="(valor, pos_y) of linha" class="col" style="width:{{opt.boxSizeW}}px; height:{{opt.boxSizeH}}px; margin:0; padding:0;" >
+      <div v-on:click="trocaValor(pos_x, pos_y)" style="border: 1px solid #ccc; width: {{opt.boxSizeW }}px; height:{{opt.boxSizeH}}px; padding:6px"  :class="pontoSelecionado(valor)">
       </div>
     </div>
   </div>
@@ -36,7 +36,7 @@ Vue.component('grid-itens', {
 	    if (valor < 10) {
 		newRow[pos_y] = parseInt(valor) + 1;
 	    } else {
-		newRow[pos_y] = '0'
+		newRow[pos_y] = 0;
 	    }
 	    
 	    this.$set(this.localGridData, pos_x, newRow);
