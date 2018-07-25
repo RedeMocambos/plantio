@@ -15,7 +15,8 @@ Vue.component('grid-itens', {
 </div>
 `,
     props: {
-	gridData: null
+	gridData: null,
+	scale: {}
     },
     data: function() {
 	return {
@@ -32,15 +33,16 @@ Vue.component('grid-itens', {
 	trocaValor: function(pos_x, pos_y) {
 	    let valor = this.localGridData[pos_x][pos_y];
 	    const newRow = this.localGridData[pos_x].slice(0)
-	    newRow[pos_y] = (valor == '1') ? '0' : '1';
+	    if (valor < 10) {
+		newRow[pos_y] = parseInt(valor) + 1;
+	    } else {
+		newRow[pos_y] = '0'
+	    }
+	    
 	    this.$set(this.localGridData, pos_x, newRow);
 	},
 	pontoSelecionado: function(valor) {
-	    if (valor === '1') {
-		return "teal darken";
-	    } else {
-		return "grey lighten-5";
-	    }
+	    return this.scale[valor];
 	}
     },
     computed: {

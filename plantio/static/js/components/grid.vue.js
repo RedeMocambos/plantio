@@ -26,6 +26,7 @@ Vue.component('grid', {
     <div class="card">
       <div id="grid" style="font-family: monospace">
         <grid-itens
+          :scale="scale"
           :grid-data="gridData">
         </grid-itens>
       </div>
@@ -44,6 +45,19 @@ Vue.component('grid', {
 	    gridData: [
 		[] = '0'
 	    ],
+	    scale: {
+		'0': '',
+		'1': 'light-green lighten-4',
+		'2': 'light-green lighten-3',
+		'3': 'green lighten-3',
+		'4': 'green lighten-2',
+		'5': 'green lighten-1',
+		'6': 'green',
+		'7': 'green darken-1',
+		'8': 'green darken-2',
+		'9': 'green darken-3',
+		'10': 'green darken-4'
+	    },
 	    iniciado: false,
 	    output: ''
 	}
