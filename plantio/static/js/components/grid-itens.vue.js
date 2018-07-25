@@ -4,8 +4,8 @@ Vue.component('grid-itens', {
 <div>
   <h3 class="card-title">Selecione:</h3>  
   <div v-for="(linha, pos_x) of localGridData" class="row" style="margin-bottom:0; margin-left:30px">
-    <div v-for="(valor, pos_y) of linha" class="col" style="width:{{opt.boxSizeW}}px; height:{{opt.boxSizeH}}px; margin:0; padding:0;" >
-      <div v-on:click="trocaValor(pos_x, pos_y)" style="border: 1px solid #ccc; width: {{opt.boxSizeW }}px; height:{{opt.boxSizeH}}px; padding:6px"  :class="pontoSelecionado(valor)">
+    <div v-for="(valor, pos_y) of linha" class="col" v-bind:style="{width: opt.boxSizeW + 'px', height:opt.boxSizeH + 'px'}" style="margin:0; padding:0">
+      <div v-on:click="trocaValor(pos_x, pos_y)" v-bind:style="{width: opt.boxSizeW + 'px', height:opt.boxSizeH + 'px'}" style="border: 1px solid #ccc; padding:6px"  :class="pontoSelecionado(valor)">
       </div>
     </div>
   </div>
@@ -16,7 +16,8 @@ Vue.component('grid-itens', {
 `,
     props: {
 	gridData: null,
-	scale: {}
+	scale: null,
+	opt: null
     },
     data: function() {
 	return {

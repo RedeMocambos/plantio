@@ -26,6 +26,7 @@ Vue.component('grid', {
     <div class="card">
       <div id="grid" style="font-family: monospace">
         <grid-itens
+          :opt="opt"
           :scale="scale"
           :grid-data="gridData">
         </grid-itens>
@@ -41,8 +42,8 @@ Vue.component('grid', {
 	    opt: {
 		sizeX: 3,
 		sizeY: 3,
-		boxSizeW: 10,
-		boxSizeH: 10
+		boxSizeW: 25,
+		boxSizeH: 25
 	    },
 	    gridData: [
 		[] = '0'
