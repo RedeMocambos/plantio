@@ -2,8 +2,8 @@
 *migrations*
 **settings.py
 *env/
-*static*
 *.pyc
+static/*
 *~
 *#
 .#*
