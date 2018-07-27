@@ -41,19 +41,7 @@ class Configuracoes():
                 ('OU', 'Outros')
         )
         
-        NUMBER_RANGE = (
-            ('0', '0'), 
-            ('1', '1'),
-            ('2', '2'),
-            ('3', '3'),
-            ('4', '4'),
-            ('5', '5'),
-            ('6', '6'),
-            ('7', '7'),
-            ('8', '8'),
-            ('9', '9'),
-            ('10', '10'),
-        )
+        NUMBER_RANGE = tuple((n, n) for n in range(10))
         
         TIPOS_ESTRATO = (
             ('B', 'Baixo'),
@@ -137,7 +125,7 @@ class Especie(models.Model):
     inicio_colheita  = models.IntegerField('inicio_colheita', blank=True, null=True)
     porte            = models.CharField('porte', max_length=2, choices=Configuracoes.TIPOS_PORTE, blank=True)
     tempo_vida       = models.IntegerField('tempo_vida', blank=True, null=True)
-    unidade_tempo_vida = models.CharField('unidade_tempo_vida', max_length=1, choices=Configuracoes.UNIDADE_TEMPO_VIDA, default=False)
+    unidade_tempo_vida = models.CharField('unidade_tempo_vida', max_length=1, choices=Configuracoes.UNIDADE_TEMPO_VIDA, default="M")
 
     #parceiras        = models.ManyToManyField("self", blank=True)
     #antagonistas     = models.ManyToManyField("self", blank=True)
