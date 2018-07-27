@@ -1,9 +1,11 @@
 from django.urls import path
+from django.conf.urls import include
 
-# Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/especie/', include('especie.urls'))
+   
 ]
