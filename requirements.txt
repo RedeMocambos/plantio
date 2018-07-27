@@ -5,3 +5,4 @@ setuptools
 django-admin-tools
 psycopg2
 environ
+djangorestframework
