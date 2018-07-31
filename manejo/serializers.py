@@ -9,5 +9,15 @@ class ManejoSerializer(serializers.ModelSerializer):
         model  = Manejo
         fields = (
             'descricao',
+            'area',
+            'padrao',
+        )
+
+class PadroesPlantioSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model  = PadroesPlantio
+        fields = (
+            'descricao',
             'padrao',
         )
