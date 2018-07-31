@@ -3,7 +3,7 @@ from django.db import models
 from especie.models import Configuracoes
 
 class Area(models.Model):
-    """ Classe para definição de áreas """
+    u""" Classe para definição de áreas """
     
     nome             = models.CharField('nome' , max_length=255, blank=True)
     dimensao         = models.FloatField('dimensao', blank=True)

@@ -5,7 +5,7 @@ from django.contrib.postgres.fields import JSONField
 from area.models import Area
 
 class PadroesPlantio(models.Model):
-    ''' Classe para tipos de padrões de plantio '''
+    u""" Classe para tipos de padrões de plantio """
     
     descricao        = models.CharField('descricao' , max_length=255, blank=True)
     padrao           = JSONField(null=True, default=[], blank=True)
@@ -14,7 +14,7 @@ class PadroesPlantio(models.Model):
         return self.descricao
 
 class Manejo(models.Model):
-    ''' Classe usada para criar manejos em áreas, a partir de padrões '''
+    u""" Classe usada para criar manejos em áreas, a partir de padrões """
     
     descricao        = models.CharField('descricao' , max_length=255, blank=True)
     padrao           = models.ForeignKey(PadroesPlantio, on_delete=models.CASCADE, null=True, blank=True)

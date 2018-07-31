@@ -5,7 +5,7 @@ from familia.models import Familia
 
 
 class Configuracoes():
-        """ Classe para definição de tipos gerais """
+        u""" Classe para definição de tipos gerais """
         
         TIPOS_UMIDADE = (
             ('UC', 'Ultra seco'),
@@ -100,7 +100,7 @@ class Configuracoes():
 
         
 class Variedade(models.Model):
-    """ Classe para definição de variedades de espécies """
+    u""" Classe para definição de variedades de espécies """
         
     nome             = models.CharField('nome' , max_length=255, blank=True)
     descricao        = models.TextField('descricao', blank=True)
@@ -114,7 +114,7 @@ class Variedade(models.Model):
 
 
 class Especie(models.Model):
-    """ Classe para definição de espécies """
+    u""" Classe para definição de espécies """
     
     nome_cientifico  = models.CharField('nome_cientifico' , max_length=255, blank=True)
     nomes_populares  = models.CharField('nomes_populares', max_length=1000)

@@ -6,7 +6,7 @@ from especie.models import Especie
 
 
 class Fase(models.Model):
-    """ Classe para definição das fases de um ciclo """
+    u""" Classe para definição das fases de um ciclo """
     
     POSICOES         = (
         (0,0), (1,1), (2,2), (3,3), (4,4), (5,5), (6,6), (7,7), (8,8), (9,9), (10,10)
@@ -30,7 +30,7 @@ class Fase(models.Model):
     
 
 class Ciclo(models.Model):
-    """ Classe para definição de um ciclo de uma espécie """
+    u""" Classe para definição de um ciclo de uma espécie """
     
     nome             = models.CharField('nome' , max_length=255, blank=True)
     fases            = models.ManyToManyField(Fase, related_name='Fase', default=False)
