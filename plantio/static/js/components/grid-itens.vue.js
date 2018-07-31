@@ -46,6 +46,11 @@ Vue.component('grid-itens', {
 	    return this.scale[valor];
 	}
     },
+    watch: {
+	gridData: function() {
+	    this.localGridData = this.gridData;
+	}
+    },
     computed: {
 	saidaJson: function() {
 	    return JSON.stringify(this.localGridData);
