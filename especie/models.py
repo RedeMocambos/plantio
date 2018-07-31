@@ -1,13 +1,12 @@
  #!-*- coding: utf-8 -*-
 from django.db import models
 
-from django.contrib.postgres.fields import JSONField
-
-#from tipoPorte.models import Fase, Ciclo
 from familia.models import Familia
 
 
 class Configuracoes():
+        """ Classe para definição de tipos gerais """
+        
         TIPOS_UMIDADE = (
             ('UC', 'Ultra seco'),
             ('S', 'Seco'),
@@ -101,7 +100,8 @@ class Configuracoes():
 
         
 class Variedade(models.Model):
-
+    """ Classe para definição de variedades de espécies """
+        
     nome             = models.CharField('nome' , max_length=255, blank=True)
     descricao        = models.TextField('descricao', blank=True)
     exigencia_solo   = models.CharField('exigencia_solo', max_length=2, choices=Configuracoes.TIPOS_SOLO, blank=True)
@@ -114,7 +114,7 @@ class Variedade(models.Model):
 
 
 class Especie(models.Model):
-    """ """
+    """ Classe para definição de espécies """
     
     nome_cientifico  = models.CharField('nome_cientifico' , max_length=255, blank=True)
     nomes_populares  = models.CharField('nomes_populares', max_length=1000)
