@@ -7,12 +7,12 @@ Vue.component('grid', {
       <div class="card-content">
         <div class="row">
           <div class="input-field col s3">
-            <input placeholder="Largura" id="largura" type="text" class="validate" v-model="opt.sizeX">
-            <label for="largura">Largura</label>
+            <input placeholder="Altura" id="largura" type="text" class="validate" v-model="opt.sizeX">
+            <label for="largura">Altura</label>
           </div>
           <div class="input-field col s3">
-            <input placeholder="Altura" id="altura" type="text" class="validate" v-model="opt.sizeY">
-            <label for="altura">Altura</label>
+            <input placeholder="Largura" id="altura" type="text" class="validate" v-model="opt.sizeY">
+            <label for="altura">Largura</label>
           </div>
           <div class="input-field col s12">
             <a class="waves-effect waves-light btn" v-on:click="gerarGrid()">gerar grid</a>
