@@ -15,7 +15,14 @@ class PadroesPlantio(models.Model):
 
 class Manejo(models.Model):
     u""" Classe usada para criar manejos em áreas, a partir de padrões """
+
+    TIPOS_MANEJO = (
+        ('CA', 'Canteiro'),
+        ('MA', 'Mandala'),
+        ('PD', 'Plantio direto')
+    )
     
+    tipo_cultivo     = models.CharField('tipo_cultivo', max_length=2, choices=TIPOS_MANEJO, blank=True)
     descricao        = models.CharField('descricao' , max_length=255, blank=True)
     padrao           = models.ForeignKey(PadroesPlantio, on_delete=models.CASCADE, null=True, blank=True)
     area             = models.ForeignKey(Area, on_delete=models.CASCADE, null=True, blank=True)
