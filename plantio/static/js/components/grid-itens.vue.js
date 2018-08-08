@@ -32,18 +32,20 @@ Vue.component('grid-itens', {
     },
     methods: {
 	trocaValor: function(pos_x, pos_y) {
-	    let valor = this.localGridData[pos_x][pos_y];
+	    let valor = this.localGridData[pos_x][pos_y].value;
+	    
 	    const newRow = this.localGridData[pos_x].slice(0)
+	    
 	    if (valor < 10) {
-		newRow[pos_y] = parseInt(valor) + 1;
+		newRow[pos_y].value = parseInt(valor) + 1;
 	    } else {
-		newRow[pos_y] = 0;
+		newRow[pos_y].value = 0;
 	    }
 	    
 	    this.$set(this.localGridData, pos_x, newRow);
 	},
 	pontoSelecionado: function(valor) {
-	    return this.scale[valor];
+	    return this.scale[valor.value];
 	}
     },
     watch: {

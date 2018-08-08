@@ -79,14 +79,22 @@ Vue.component('grid', {
 	    let grid = [];
 	    this.opt.sizeX = parseInt(this.opt.sizeX);
 	    this.opt.sizeY = parseInt(this.opt.sizeY);    
-	    	    
+	    
+	    let xIn, xY = 0;
 	    for (let x = 0; x < this.opt.sizeX; x++) {
+		xIn = (Math.round(this.opt.sizeX /2) * -1) + x + 1;
+
 		grid[x] = [];
-		for (let y = 0; y < this.opt.sizeY; y++) {	 
-		    grid[x][y] = 0;
+		for (let y = 0; y < this.opt.sizeY; y++) {
+		    yIn = (Math.round(this.opt.sizeY /2) * -1) + y + 1;
+
+		    grid[x][y] = {
+			'x': xIn,
+			'y': yIn,
+			'value': 0
+		    }
 		}
 	    }
-	    
 	    return grid;
 	}
     }
