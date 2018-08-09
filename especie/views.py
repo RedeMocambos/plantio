@@ -12,6 +12,7 @@ class VariedadeViewSet(ModelViewSet):
     queryset = Variedade.objects.all()
     serializer_class = VariedadeSerializer
 
+
 class InteracaoViewSet(ModelViewSet):
     queryset = Interacao.objects.all()
     serializer_class = InteracaoSerializer

@@ -6,7 +6,7 @@ from .views import EspecieViewSet, VariedadeViewSet, InteracaoViewSet
 router = DefaultRouter()
 router.register(u'especie', EspecieViewSet, base_name='especies')
 router.register(u'variedade', VariedadeViewSet, base_name='variedades')
-router.register(u'interacao', VariedadeViewSet, base_name='interacoes')
+router.register(u'interacao', InteracaoViewSet, base_name='interacoes')
 
 urlpatterns = [
     url(r'^', include(router.urls))

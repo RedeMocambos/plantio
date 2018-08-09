@@ -43,12 +43,20 @@ class VariedadeSerializer(serializers.ModelSerializer):
 		)
 
 class InteracaoSerializer(serializers.ModelSerializer):
-
+	
+	familia_a = serializers.StringRelatedField(many=False)
+	familia_b = serializers.StringRelatedField(many=False)
+	especie_a = serializers.StringRelatedField(many=False)
+	especie_b = serializers.StringRelatedField(many=False)
+	
 	class Meta:
 		model = Interacao
 		fields = (
 			'tipo_interacao',
+			'familia_a',
+			'familia_b',
 			'especie_a',
 			'especie_b',
 			'intensidade',
+			'descricao',
 		)	

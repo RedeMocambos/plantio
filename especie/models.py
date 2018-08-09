@@ -150,13 +150,32 @@ class Interacao(models.Model):
 
 	TIPOS_INTERACAO = (
 		('Sinergia', 'Sinergia'),
-		('Alelopatia', 'Alelopatia'),
+		('Alelopatia mútua', 'Alelopatia mútua'),
+		('Alelopatia própria', 'Alelopatia própria'),
+		('Alelopatia alheia', 'Alelopatia alheia'),
 	)
 
 	tipo_interacao  = models.CharField('tipo_interacao', max_length=10, choices=TIPOS_INTERACAO, blank=True)
-	especie_a       = models.ForeignKey('especie', on_delete=models.CASCADE, related_name='especie_a', null=True, blank=True)
-	especie_b       = models.ForeignKey('especie', on_delete=models.CASCADE, related_name='especie_b', null=True, blank=True)
+	familia_a       = models.ForeignKey(Familia, on_delete=models.CASCADE, related_name='familia_a', null=True, blank=True)
+	familia_b       = models.ForeignKey(Familia, on_delete=models.CASCADE, related_name='familia_b', null=True, blank=True)
+	especie_a       = models.ForeignKey(Especie, on_delete=models.CASCADE, related_name='especie_a', null=True, blank=True)
+	especie_b       = models.ForeignKey(Especie, on_delete=models.CASCADE, related_name='especie_b', null=True, blank=True)
 	intensidade     = models.IntegerField('intensidade', choices=Configuracoes.NUMBER_RANGE, null=True, blank=True)
-
+	descricao       = models.TextField('descricao', null=True, blank=True)
+	
 	def __str__(self):
-		return self.especie_a.nomes_populares + ' => ' + self.especie_b.nomes_populares + ' ( ' + self.tipo_interacao + ')'
+		
+		rotulo = ''
+		
+		if self.familia_a != None:
+		 	rotulo += '(' + self.familia_a.nome + ')'
+		if self.familia_a != None and self.familia_b != None:
+			rotulo += ' => '
+		else:
+			rotulo += '_ '		
+		if self.familia_b != None:
+		 	rotulo += '(' + self.familia_b.nome + ') '
+		
+		rotulo += self.especie_a.nomes_populares + ' => ' + self.especie_b.nomes_populares + ' ( ' + self.tipo_interacao + ')'
+
+		return rotulo
