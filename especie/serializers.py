@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Especie, Variedade, Configuracoes
+from .models import Especie, Variedade, Interacao, Configuracoes
 
 class EspecieSerializer(serializers.ModelSerializer):
     
@@ -25,3 +25,27 @@ class EspecieSerializer(serializers.ModelSerializer):
             'sucessao',
             'variedade',
         )
+
+class VariedadeSerializer(serializers.ModelSerializer):
+	
+	class Meta:
+		model = Variedade
+		fields = (
+			'nome',
+			'descricao',
+			'exigencia_solo',
+			'tolerancia_poda',
+			'exigencia_sol',
+			'inicio_colheita',
+		)
+
+class InteracaoSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = Interacao
+		fields = (
+			'tipo_interacao',
+			'especie_a',
+			'especie_b',
+			'intensidade',
+		)	
