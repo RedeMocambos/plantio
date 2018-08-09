@@ -1,8 +1,11 @@
 from rest_framework import serializers
 from .models import Especie, Variedade, Interacao, Configuracoes
+from familia.models import Familia
 
 class EspecieSerializer(serializers.ModelSerializer):
-    
+
+    familia = serializers.StringRelatedField(many=False)
+	
     class Meta:
         model  = Especie
         fields = (
@@ -23,7 +26,7 @@ class EspecieSerializer(serializers.ModelSerializer):
             'inicio_colheita',
             'estrato',
             'sucessao',
-            'variedade',
+			'imagem',
         )
 
 class VariedadeSerializer(serializers.ModelSerializer):

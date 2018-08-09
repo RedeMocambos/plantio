@@ -1,4 +1,5 @@
 #!-*- coding: utf-8 -*-
+import os
 from django.db import models
 
 from familia.models import Familia
@@ -113,6 +114,10 @@ class Variedade(models.Model):
         return self.nome
 
 
+def get_image_path(instance, filename):
+	return os.path.join('images', str(instance.id), filename)
+
+	
 class Especie(models.Model):
     u""" Classe para definição de espécies """
 
@@ -126,9 +131,6 @@ class Especie(models.Model):
     porte            = models.CharField('porte', max_length=2, choices=Configuracoes.TIPOS_PORTE, blank=True)
     tempo_vida       = models.IntegerField('tempo_vida', blank=True, null=True)
     unidade_tempo_vida = models.CharField('unidade_tempo_vida', max_length=1, choices=Configuracoes.UNIDADE_TEMPO_VIDA, default="M")
-
-    #parceiras        = models.ManyToManyField("self", blank=True)
-    #antagonistas     = models.ManyToManyField("self", blank=True)
     umidade          = models.CharField('umidade', max_length=2, choices=Configuracoes.TIPOS_UMIDADE, blank=True)
     exigencia_solo   = models.CharField('exigencia_solo', max_length=2, choices=Configuracoes.TIPOS_SOLO, blank=True)
     tolerancia_poda  = models.CharField('tolerancia_poda', max_length=2, choices=Configuracoes.NUMBER_RANGE, blank=True)
@@ -136,10 +138,8 @@ class Especie(models.Model):
     inicio_colheita  = models.CharField('inicio_colheita', max_length=5, blank=True)
     estrato          = models.CharField('estrato', max_length=2, choices=Configuracoes.TIPOS_ESTRATO, blank=True)
     sucessao         = models.CharField('sucessao', max_length=2, choices=Configuracoes.TIPOS_SUCESSAO, blank=True)
-    variedade        = models.ForeignKey('variedade', on_delete=models.CASCADE, related_name='Variedade', null=True, blank=True)
-
-    # fotos
-
+    imagem           = models.ImageField(upload_to=get_image_path, blank=True, null=True)
+	
     def __str__(self):
         return self.nomes_populares + " (" + self.nome_cientifico + ")"
 
