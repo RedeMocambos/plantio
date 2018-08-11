@@ -18,6 +18,11 @@ Vue.component('grid', {
             <input placeholder="Raio" id="raio" type="text" class="validate" v-model="opt.raio">
             <label for="raio">Raio</label>
           </div>
+          <div class="input-field col s1">
+            <input placeholder="Densidade" id="densidade" type="text" class="validate" v-model="opt.densidade">
+            <label for="densidade">Densidade</label>
+            <em>(0 - 10)</em>
+          </div>
         </div>
         <div class="row">
           <div class="input-field col s2">
@@ -54,6 +59,7 @@ Vue.component('grid', {
                 boxSizeW: 20,
                 boxSizeH: 20,
                 raio: 9,
+                densidade: 2,
             },
             gridData: [
                 [] = '0'
@@ -105,7 +111,7 @@ Vue.component('grid', {
                     
                     if ((Math.abs(yIn) ** 2) + Math.abs(xIn ** 2) < (this.opt.raio ** 2)) {
                         let hypo = parseInt(Math.sqrt(Math.abs(yIn ** 2) + Math.abs(xIn ** 2)));
-                        cor = this.opt.raio - hypo;
+                        cor = parseInt((this.opt.raio - hypo) * (this.opt.densidade / 3));
                     }
                     
                     if (cor > scaleLength) {
