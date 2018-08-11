@@ -6,25 +6,25 @@ Vue.component('grid', {
       <div class="card-title">Selecione o tamanho:</div>
       <div class="card-content">
         <div class="row">
-          <div class="input-field col s3">
+          <div class="input-field col s1">
             <input placeholder="Altura" id="largura" type="text" class="validate" v-model="opt.sizeX">
             <label for="largura">Altura</label>
           </div>
-          <div class="input-field col s3">
+          <div class="input-field col s1">
             <input placeholder="Largura" id="altura" type="text" class="validate" v-model="opt.sizeY">
             <label for="altura">Largura</label>
           </div>
-          <div class="input-field col s12">
-            <a class="waves-effect waves-light btn" v-on:click="gerarGrid()">gerar grid</a>
-          </div>
-
-
-          <div class="input-field col s3">
+          <div class="input-field col s1">
             <input placeholder="Raio" id="raio" type="text" class="validate" v-model="opt.raio">
             <label for="raio">Raio</label>
           </div>
-          <div class="input-field col s12">
-            <a class="waves-effect waves-light btn" v-on:click="drawCircle()">gerar circulo</a>
+        </div>
+        <div class="row">
+          <div class="input-field col s2">
+            <a class="waves-effect waves-light btn-small" v-on:click="gerarGrid()">gerar grid</a>
+          </div>
+          <div class="input-field col s2">
+            <a class="waves-effect waves-light btn-small" v-on:click="drawCircle()">gerar circulo</a>
           </div>
         </div>
       </div>
@@ -51,14 +51,15 @@ Vue.component('grid', {
             opt: {
                 sizeX: 20,
                 sizeY: 20,
-                boxSizeW: 15,
-                boxSizeH: 15,
+                boxSizeW: 20,
+                boxSizeH: 20,
                 raio: 9,
             },
             gridData: [
                 [] = '0'
             ],
             scale: {
+                '-1': 'grey lighten-3',
                 '0': '',
                 '1': 'light-green lighten-4',
                 '2': 'light-green lighten-3',
@@ -69,13 +70,7 @@ Vue.component('grid', {
                 '7': 'green darken-1',
                 '8': 'green darken-2',
                 '9': 'green darken-3',
-                '10': 'lime darken-1',
-                '11': 'lime darken-2',
-                '12': 'lime darken-3',
-                '13': 'lime darken-4',
-                '14': 'lime darken-5',
-
-                
+                '10': 'green darken-4',
             },
             iniciado: false,
             output: ''
@@ -95,8 +90,10 @@ Vue.component('grid', {
             let grid = [];
             this.opt.sizeX = parseInt(this.opt.sizeX);
             this.opt.sizeY = parseInt(this.opt.sizeY); 
-
+            
             let xIn, xY = 0;
+            let scaleLength = Object.keys(this.scale).length - 2;
+            
             for (let x = 0; x < this.opt.sizeX; x++) {
                 xIn = (Math.round(this.opt.sizeX /2) * -1) + x + 1;
 
@@ -106,6 +103,14 @@ Vue.component('grid', {
 
                     let cor = 0;
                     
+                    if ((Math.abs(yIn) ** 2) + Math.abs(xIn ** 2) < (this.opt.raio ** 2)) {
+                        let hypo = parseInt(Math.sqrt(Math.abs(yIn ** 2) + Math.abs(xIn ** 2)));
+                        cor = this.opt.raio - hypo;
+                    }
+                    
+                    if (cor > scaleLength) {
+                        cor = 10;
+                    }
                     grid[x][y] = {
                         'x': xIn,
                         'y': yIn,
@@ -123,7 +128,7 @@ Vue.component('grid', {
             
             let raio = this.opt.raio;
             
-             (raio >= (this.opt.sizeX / 2)) {
+            if (raio >= (this.opt.sizeX / 2)) {
                 raio = parseInt((this.opt.sizeX / 2)) - 1;
                 this.opt.raio = raio;
              }
