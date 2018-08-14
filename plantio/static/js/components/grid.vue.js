@@ -14,14 +14,31 @@ Vue.component('grid', {
             <input placeholder="Largura" id="altura" type="text" class="validate" v-model="opt.sizeY">
             <label for="altura">Largura</label>
           </div>
-          <div class="input-field col s1">
-            <input placeholder="Raio" id="raio" type="text" class="validate" v-model="opt.raio">
-            <label for="raio">Raio</label>
+          <div class="input-field col s2">
+            <p>
+              <label for="range">Raio</label>
+              <input
+                type="range"
+                id="range"
+                min="1"
+                name="range"
+                :max="circleMaxSize"
+                v-model="opt.range"
+                />
+            </p>
           </div>
-          <div class="input-field col s1">
-            <input placeholder="Densidade" id="densidade" type="text" class="validate" v-model="opt.densidade">
-            <label for="densidade">Densidade</label>
-            <em>(0 - 10)</em>
+          <div class="input-field col s2">
+            <p>
+              <label for="density">Densidade da copa</label>
+              <input
+                type="range"
+                id="density"
+                min="1"
+                name="density"
+                :max="opt.densityMax"
+                v-model="opt.density"               
+                />
+            </p>
           </div>
         </div>
         <div class="row">
@@ -58,8 +75,9 @@ Vue.component('grid', {
                 sizeY: 20,
                 boxSizeW: 20,
                 boxSizeH: 20,
-                raio: 9,
-                densidade: 2,
+                range: 9,
+                density: 2,
+                densityMax: 15,
             },
             gridData: [
                 [] = '0'
@@ -99,6 +117,7 @@ Vue.component('grid', {
             
             let xIn, xY = 0;
             let scaleLength = Object.keys(this.scale).length - 2;
+            let maxColorByDensity = Math.round((scaleLength * this.opt.density) / this.opt.densityMax);
             
             for (let x = 0; x < this.opt.sizeX; x++) {
                 xIn = (Math.round(this.opt.sizeX /2) * -1) + x + 1;
@@ -107,20 +126,20 @@ Vue.component('grid', {
                 for (let y = 0; y < this.opt.sizeY; y++) {
                     yIn = (Math.round(this.opt.sizeY /2) * -1) + y + 1;
 
-                    let cor = 0;
+                    let color = 0;
                     
-                    if ((Math.abs(yIn) ** 2) + Math.abs(xIn ** 2) < (this.opt.raio ** 2)) {
-                        let hypo = parseInt(Math.sqrt(Math.abs(yIn ** 2) + Math.abs(xIn ** 2)));
-                        cor = parseInt((this.opt.raio - hypo) * (this.opt.densidade / 3));
+                    if ((Math.abs(yIn) ** 2) + Math.abs(xIn ** 2) < (this.opt.range ** 2)) {
+                        let hypo = (Math.sqrt(Math.abs(yIn ** 2) + Math.abs(xIn ** 2)));
+                        color = Math.floor((this.opt.range - hypo) * (this.opt.density / (4)));
                     }
                     
-                    if (cor > scaleLength) {
-                        cor = 10;
+                    if (color > maxColorByDensity) {
+                        color = maxColorByDensity;
                     }
                     grid[x][y] = {
                         'x': xIn,
                         'y': yIn,
-                        'value': cor
+                        'value': color
                     }
                 }
             }
@@ -129,19 +148,19 @@ Vue.component('grid', {
 
         drawCircle: function() {
 
-            this.opt.raio = parseInt(this.opt.raio);
+            this.opt.range = parseInt(this.opt.range);
             this.opt.sizeX = parseInt(this.opt.sizeX);
             
-            let raio = this.opt.raio;
+            let range = this.opt.range;
             
-            if (raio >= (this.opt.sizeX / 2)) {
-                raio = parseInt((this.opt.sizeX / 2)) - 1;
-                this.opt.raio = raio;
+            if (range >= (this.opt.sizeX / 2)) {
+                range = parseInt((this.opt.sizeX / 2)) - 1;
+                this.opt.range = range;
              }
             
-            // Para fazer elipses, modular raioX e raioY. Para circulo perfeito, = raio
-            let raioX = raio;
-            let raioY = raio;
+            // Para fazer elipses, modular rangeX e rangeY. Para circulo perfeito, = range
+            let rangeX = range;
+            let rangeY = range;
             
             let gridCircle = this.gridData;
             
@@ -149,17 +168,17 @@ Vue.component('grid', {
             // Midpoint circle algorithm
             // https://rosettacode.org/wiki/Bitmap/Midpoint_circle_algorithm
             
-            let f = 1 - raio;
+            let f = 1 - range;
             let ddf_x = 1
-            let ddf_y = -2 * raio;
+            let ddf_y = -2 * range;
             let x = 0;
-            let y = raio;
-            let cor = 4;
+            let y = range;
+            let color = 4;
             
-            gridCircle[raioX][raioY + raio].value = cor;
-            gridCircle[raioX][raioY - raio].value = cor;
-            gridCircle[raioX + raio][raioY].value = cor;
-            gridCircle[raioX - raio][raioY].value = cor;
+            gridCircle[rangeX][rangeY + range].value = color;
+            gridCircle[rangeX][rangeY - range].value = color;
+            gridCircle[rangeX + range][rangeY].value = color;
+            gridCircle[rangeX - range][rangeY].value = color;
 
             while (x < y) {
                 if (f >= 0) {
@@ -171,17 +190,22 @@ Vue.component('grid', {
                 ddf_x += 2;
                 f += ddf_x;
                 
-                gridCircle[raioX + x][raioY + y].value = cor;
-                gridCircle[raioX - x][raioY + y].value = cor;
-                gridCircle[raioX + x][raioY - y].value = cor;
-                gridCircle[raioX - x][raioY - y].value = cor;
-                gridCircle[raioX + y][raioY + x].value = cor;
-                gridCircle[raioX - y][raioY + x].value = cor;
-                gridCircle[raioX + y][raioY - x].value = cor;
-                gridCircle[raioX - y][raioY - x].value = cor;
+                gridCircle[rangeX + x][rangeY + y].value = color;
+                gridCircle[rangeX - x][rangeY + y].value = color;
+                gridCircle[rangeX + x][rangeY - y].value = color;
+                gridCircle[rangeX - x][rangeY - y].value = color;
+                gridCircle[rangeX + y][rangeY + x].value = color;
+                gridCircle[rangeX - y][rangeY + x].value = color;
+                gridCircle[rangeX + y][rangeY - x].value = color;
+                gridCircle[rangeX - y][rangeY - x].value = color;
             }
             
             this.gridData  = gridCircle;            
+        }
+    },
+    computed: {
+        circleMaxSize: function() {
+            return this.opt.sizeX / 2;
         }
     }
 })
