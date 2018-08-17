@@ -30,11 +30,13 @@ class EspecieSerializer(serializers.ModelSerializer):
         )
 
 class VariedadeSerializer(serializers.ModelSerializer):
+	especie = serializers.StringRelatedField(many=False)
 	
 	class Meta:
 		model = Variedade
 		fields = (
 			'nome',
+			'especie',
 			'descricao',
 			'exigencia_solo',
 			'tolerancia_poda',

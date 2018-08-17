@@ -99,21 +99,6 @@ class Configuracoes():
     )
 
 
-
-class Variedade(models.Model):
-    u""" Classe para definição de variedades de espécies """
-
-    nome             = models.CharField('nome' , max_length=255, blank=True)
-    descricao        = models.TextField('descricao', blank=True)
-    exigencia_solo   = models.CharField('exigencia_solo', max_length=2, choices=Configuracoes.TIPOS_SOLO, blank=True)
-    tolerancia_poda  = models.CharField('tolerancia_poda', max_length=2, choices=Configuracoes.NUMBER_RANGE, blank=True)
-    exigencia_sol    = models.CharField('exigencia_sol', max_length=2, choices=Configuracoes.NUMBER_RANGE, blank=True)
-    inicio_colheita  = models.CharField('inicio_colheita', max_length=5, blank=True)
-
-    def __str__(self):
-        return self.nome
-
-
 def get_image_path(instance, filename):
 	return os.path.join('images', str(instance.id), filename)
 
@@ -143,6 +128,22 @@ class Especie(models.Model):
     def __str__(self):
         return self.nomes_populares + " (" + self.nome_cientifico + ")"
 
+
+class Variedade(models.Model):
+    u""" Classe para definição de variedades de espécies """
+	
+    nome             = models.CharField('nome' , max_length=255, blank=True)
+    descricao        = models.TextField('descricao', blank=True)
+    exigencia_solo   = models.CharField('exigencia_solo', max_length=2, choices=Configuracoes.TIPOS_SOLO, blank=True)
+    tolerancia_poda  = models.CharField('tolerancia_poda', max_length=2, choices=Configuracoes.NUMBER_RANGE, blank=True)
+    exigencia_sol    = models.CharField('exigencia_sol', max_length=2, choices=Configuracoes.NUMBER_RANGE, blank=True)
+    inicio_colheita  = models.CharField('inicio_colheita', max_length=5, blank=True)
+    especie = models.ForeignKey(Especie, on_delete=models.CASCADE, null=True, blank=False)
+	
+    def __str__(self):
+        return self.nome
+
+	
 class Interacao(models.Model):
 	u"""
 	Interação entre especies
