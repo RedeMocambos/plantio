@@ -6,10 +6,18 @@ from area.models import Area
 
 class PadroesPlantio(models.Model):
     u""" Classe para tipos de padrões de plantio """
+
+    TIPOS_PADRAO = (
+        ('RE', 'Repetição'),
+        ('PE', 'Personalidado'),
+    )
     
     descricao        = models.CharField('descricao' , max_length=255, blank=True)
     padrao           = JSONField(null=True, default=[], blank=True)
-
+    escala = models.IntegerField('escala', blank=True, default=10)
+    tipo = models.CharField('tipo_cultivo', max_length=2, choices=TIPOS_PADRAO, default='RE')
+    
+	
     def __str__(self):
         return self.descricao
 

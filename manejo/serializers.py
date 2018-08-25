@@ -20,4 +20,5 @@ class PadroesPlantioSerializer(serializers.ModelSerializer):
         fields = (
             'descricao',
             'padrao',
+            'tipo',
         )
