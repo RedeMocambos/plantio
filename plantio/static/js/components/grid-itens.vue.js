@@ -11,7 +11,7 @@ Vue.component('grid-itens', {
   </div>
   
   <h3 class="card-title">Saida json:</h3>
-  <span>{{saidaJson}}</span>
+  <textarea rows="3">{{saidaJson}}</textarea>
 </div>
 `,
     props: {
