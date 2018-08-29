@@ -131,6 +131,7 @@ TEMPLATES = [
     ]
 
 MIDDLEWARE = (
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -164,6 +165,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
+    'corsheaders',
     'familia',
     'especie',
     'ciclo',
@@ -199,3 +201,7 @@ LOGGING = {
         },
     }
 }
+
+CORS_ORIGIN_WHITELIST = (
+    'localhost:8080',
+)
