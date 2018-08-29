@@ -11,4 +11,5 @@ urlpatterns = [
     path('api/v1/familia/', include('familia.urls')),
     path('api/v1/ciclo/', include('ciclo.urls')),
     path('api/v1/manejo/', include('manejo.urls')),
+    path('api/v1/auth/', include('rest_auth.urls'))
 ]
