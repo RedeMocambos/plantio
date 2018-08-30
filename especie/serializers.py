@@ -5,7 +5,7 @@ from familia.models import Familia
 class EspecieSerializer(serializers.ModelSerializer):
 
     familia = serializers.StringRelatedField(many=False)
-	
+    
     class Meta:
         model  = Especie
         fields = (
@@ -27,41 +27,41 @@ class EspecieSerializer(serializers.ModelSerializer):
             'inicio_colheita',
             'estrato',
             'sucessao',
-			'imagem',
+            'imagem',
         )
 
 class VariedadeSerializer(serializers.ModelSerializer):
-	especie = serializers.StringRelatedField(many=False)
-	
-	class Meta:
-		model = Variedade
-		fields = (
+    especie = serializers.StringRelatedField(many=False)
+    
+    class Meta:
+        model = Variedade
+        fields = (
             'id',
-			'nome',
-			'especie',
-			'descricao',
-			'exigencia_solo',
-			'tolerancia_poda',
-			'exigencia_sol',
-			'inicio_colheita',
-		)
+            'nome',
+            'especie',
+            'descricao',
+            'exigencia_solo',
+            'tolerancia_poda',
+            'exigencia_sol',
+            'inicio_colheita',
+        )
 
 class InteracaoSerializer(serializers.ModelSerializer):
-	
-	familia_a = serializers.StringRelatedField(many=False)
-	familia_b = serializers.StringRelatedField(many=False)
-	especie_a = serializers.StringRelatedField(many=False)
-	especie_b = serializers.StringRelatedField(many=False)
-	
-	class Meta:
-		model = Interacao
-		fields = (
+    
+    familia_a = serializers.StringRelatedField(many=False)
+    familia_b = serializers.StringRelatedField(many=False)
+    especie_a = serializers.StringRelatedField(many=False)
+    especie_b = serializers.StringRelatedField(many=False)
+    
+    class Meta:
+        model = Interacao
+        fields = (
             'id',
-			'tipo_interacao',
-			'familia_a',
-			'familia_b',
-			'especie_a',
-			'especie_b',
-			'intensidade',
-			'descricao',
-		)	
+            'tipo_interacao',
+            'familia_a',
+            'familia_b',
+            'especie_a',
+            'especie_b',
+            'intensidade',
+            'descricao',
+        )
