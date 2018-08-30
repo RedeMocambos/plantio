@@ -6,6 +6,7 @@ class FaseSerializer(serializers.ModelSerializer):
     class Meta:
         model  = Fase
         fields = (
+            'id',
             'nome',
             'descricao',
             'matriz_porte',
@@ -23,6 +24,7 @@ class CicloSerializer(serializers.ModelSerializer):
     class Meta:
         model  = Ciclo
         fields = (
+            'id',
             'nome',
             'fases',
         )

@@ -9,6 +9,7 @@ class EspecieSerializer(serializers.ModelSerializer):
     class Meta:
         model  = Especie
         fields = (
+            'id',
             'nome_cientifico',
             'nomes_populares',
             'familia',
@@ -35,6 +36,7 @@ class VariedadeSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Variedade
 		fields = (
+            'id',
 			'nome',
 			'especie',
 			'descricao',
@@ -54,6 +56,7 @@ class InteracaoSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Interacao
 		fields = (
+            'id',
 			'tipo_interacao',
 			'familia_a',
 			'familia_b',

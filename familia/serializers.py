@@ -6,5 +6,6 @@ class FamiliaSerializer(serializers.ModelSerializer):
     class Meta:
         model  = Familia
         fields = (
+            'id',
             'nome',
         )
