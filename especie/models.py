@@ -70,6 +70,7 @@ class Configuracoes():
     TIPOS_BIOMA = (
         ('Cerrado', 'Cerrado'),
         ('Mata atlântica', 'Mata atlântica'),
+        ('Floresta estacional semi decidual', 'Floresta estacional semi decidual'),
         ('Pampa', 'Pampa'),
         ('Amazônico', 'Amazônico'),
         ('Pantanal', 'Pantanal')
