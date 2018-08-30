@@ -9,77 +9,77 @@ class Configuracoes():
     u""" Classe para definição de tipos gerais """
 	
     TIPOS_UMIDADE = (
-        ('UC', 'Ultra seco'),
-        ('S', 'Seco'),
-        ('M', 'Moderado'),
-        ('U', 'Úmido'),
-        ('UM', 'Ultra úmido'),
+        ('Ultra seco', 'Ultra seco'),
+        ('Seco', 'Seco'),
+        ('Moderado', 'Moderado'),
+        ('Úmido', 'Úmido'),
+        ('Ultra úmido', 'Ultra úmido'),
     )
 	
     TIPOS_PORTE = (
-        ('AQ', 'Aquática'),
-		('EP', 'Erva pequena'),
-        ('EM', 'Erva média'),
-        ('EG', 'Erva grande'),
-        ('TP', 'Trepadeira'),
-        ('AB', 'Arbusto'),
-        ('AP', 'Árvore pequena'),
-        ('AM', 'Árvore média'),
-        ('AG', 'Árvore grande'),
-        ('NA', 'Outro / não especificado'),
+        ('Aquática', 'Aquática'),
+		('Erva pequena', 'Erva pequena'),
+        ('Erva média', 'Erva média'),
+        ('Erva grande', 'Erva grande'),
+        ('Trepadeira', 'Trepadeira'),
+        ('Arbusto', 'Arbusto'),
+        ('rvore pequena', 'Árvore pequena'),
+        ('Árvore média', 'Árvore média'),
+        ('Árvore grande', 'Árvore grande'),
+        ('Outro / não especificado', 'Outro / não especificado'),
     )
 
     TIPOS_SOLO = (
-        ('AE', 'Arenoso'),
-        ('AE', 'Areno-siltoso'),
-        ('SL', 'Siltoso'),
-        ('AG', 'Argiloso'),
-        ('AS', 'Argilo-siltoso'),
+        ('Arenoso', 'Arenoso'),
+        ('Areno-siltoso', 'Areno-siltoso'),
+        ('Siltoso', 'Siltoso'),
+        ('Argiloso', 'Argiloso'),
+        ('Argilo-siltoso', 'Argilo-siltoso'),
         ('AE', 'Areno-argiloso'),
-        ('RC', 'Rochoso'),
-        ('HU', 'Húmico'),
-        ('OU', 'Outros')
+        ('Rochoso', 'Rochoso'),
+        ('Húmico', 'Húmico'),
+        ('Outros', 'Outros')
     )
 
     NUMBER_RANGE = tuple((n, n) for n in range(10))
 	
     TIPOS_ESTRATO = (
-        ('B', 'Baixo'),
-        ('M', 'Médio'),
-        ('A', 'Alto/dossel'),
-        ('E', 'Emergente'),
+        ('Baixo', 'Baixo'),
+        ('Médio', 'Médio'),
+        ('Alto/dossel', 'Alto/dossel'),
+        ('Emergente', 'Emergente'),
 	)
 	
     TIPOS_SUCESSAO = (
-        ('CO', 'Colonizadora'),
-        ('PI', 'Pioneiras'),
-        ('SI', 'Secundárias iniciais'),
-		('ST', 'Secundárias tardias'),
-        ('CL', 'Clímax'),
+        ('Colonizadora', 'Colonizadora'),
+        ('Pioneiras', 'Pioneiras'),
+        ('Secundárias iniciais', 'Secundárias iniciais'),
+		('Secundárias tardias', 'Secundárias tardias'),
+        ('Clímax', 'Clímax'),
 	)
 	
     TIPOS_CLIMA = (
-        ('TRU', 'Tropical úmido'),
-        ('TRS', 'Tropical seco'),
-        ('STS', 'Sub tropical seco'),
-		('STU', 'Sub tropical úmido'),
-        ('TEU', 'Temperado úmido'),
-        ('TES', 'Temperado seco')
+        ('Tropical úmido', 'Tropical úmido'),
+        ('Tropical seco', 'Tropical seco'),
+        ('Sub tropical seco', 'Sub tropical seco'),
+		('Sub tropical úmido', 'Sub tropical úmido'),
+        ('Temperado úmido', 'Temperado úmido'),
+        ('Temperado seco', 'Temperado seco')
     )
 
     TIPOS_BIOMA = (
-        ('CE', 'Cerrado'),
-        ('MA', 'Mata atlântica'),
-        ('PA', 'Pampa'),
-        ('AM', 'Amazônico'),
-        ('PA', 'Pantanal')
+        ('Cerrado', 'Cerrado'),
+        ('Mata atlântica', 'Mata atlântica'),
+        ('Pampa', 'Pampa'),
+        ('Amazônico', 'Amazônico'),
+        ('Pantanal', 'Pantanal')
     )
 
     TIPOS_DECLIVIDADE = (
-        ('PL', 'Plano'),
-        ('BA', 'Baixada'),
-        ('EA', 'Encosta acentuada'),
-        ('ES', 'Encosta suave')
+        ('Plano', 'Plano'),
+        ('Baixada', 'Baixada'),
+        ('Encosta acentuada', 'Encosta acentuada'),
+        ('Encosta suave', 'Encosta suave')
     )
 
     FASES = (
@@ -116,13 +116,13 @@ class Especie(models.Model):
     porte            = models.CharField('porte', max_length=2, choices=Configuracoes.TIPOS_PORTE, blank=True)
     tempo_vida       = models.IntegerField('tempo_vida', blank=True, null=True)
     unidade_tempo_vida = models.CharField('unidade_tempo_vida', max_length=1, choices=Configuracoes.UNIDADE_TEMPO_VIDA, default="M")
-    umidade          = models.CharField('umidade', max_length=2, choices=Configuracoes.TIPOS_UMIDADE, blank=True)
-    exigencia_solo   = models.CharField('exigencia_solo', max_length=2, choices=Configuracoes.TIPOS_SOLO, blank=True)
+    umidade          = models.CharField('umidade', max_length=30, choices=Configuracoes.TIPOS_UMIDADE, blank=True)
+    exigencia_solo   = models.CharField('exigencia_solo', max_length=30, choices=Configuracoes.TIPOS_SOLO, blank=True)
     tolerancia_poda  = models.CharField('tolerancia_poda', max_length=2, choices=Configuracoes.NUMBER_RANGE, blank=True)
     exigencia_sol    = models.CharField('exigencia_sol', max_length=2, choices=Configuracoes.NUMBER_RANGE, blank=True)
     inicio_colheita  = models.CharField('inicio_colheita', max_length=5, blank=True)
-    estrato          = models.CharField('estrato', max_length=2, choices=Configuracoes.TIPOS_ESTRATO, blank=True)
-    sucessao         = models.CharField('sucessao', max_length=2, choices=Configuracoes.TIPOS_SUCESSAO, blank=True)
+    estrato          = models.CharField('estrato', max_length=30, choices=Configuracoes.TIPOS_ESTRATO, blank=True)
+    sucessao         = models.CharField('sucessao', max_length=30, choices=Configuracoes.TIPOS_SUCESSAO, blank=True)
     imagem           = models.ImageField(upload_to=get_image_path, blank=True, null=True)
 	
     def __str__(self):
@@ -134,8 +134,8 @@ class Variedade(models.Model):
 	
     nome             = models.CharField('nome' , max_length=255, blank=True)
     descricao        = models.TextField('descricao', blank=True)
-    exigencia_solo   = models.CharField('exigencia_solo', max_length=2, choices=Configuracoes.TIPOS_SOLO, blank=True)
-    tolerancia_poda  = models.CharField('tolerancia_poda', max_length=2, choices=Configuracoes.NUMBER_RANGE, blank=True)
+    exigencia_solo   = models.CharField('exigencia_solo', max_length=30, choices=Configuracoes.TIPOS_SOLO, blank=True)
+    tolerancia_poda  = models.CharField('tolerancia_poda', max_length=30, choices=Configuracoes.NUMBER_RANGE, blank=True)
     exigencia_sol    = models.CharField('exigencia_sol', max_length=2, choices=Configuracoes.NUMBER_RANGE, blank=True)
     inicio_colheita  = models.CharField('inicio_colheita', max_length=5, blank=True)
     especie = models.ForeignKey(Especie, on_delete=models.CASCADE, null=True, blank=False)
