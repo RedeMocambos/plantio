@@ -8,3 +8,11 @@ export const buscaEspecies = ({ commit }) => {
       commit(types.SET_ESPECIES, especies);
     });
 };
+
+export const buscaEspecie = ({ commit }, id) => {
+  especieHelperAPI.buscaEspecie(id)
+    .then((response) => {
+      const especie = response.data;
+      commit(types.SET_ESPECIE, especie);
+    });
+};

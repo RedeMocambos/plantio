@@ -16,10 +16,12 @@ export default new Router({
         {
             path: '/plantas',
             name: 'plantas',
-            // route level code-splitting
-            // this generates a separate chunk (about.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
             component: () => import(/* webpackChunkName: "plantas" */ './views/Plantas.vue'),
+        },
+        {
+            path: '/especie/:id',
+            name: 'especie',
+            component: () => import(/* webpackChunkName: "especie" */ './views/Especie.vue'),
         },
         {
             path: '/localidades',

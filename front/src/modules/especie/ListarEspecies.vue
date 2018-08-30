@@ -5,7 +5,8 @@
       <li v-for="especie in listaEspecies"
           :key="especie.nome_cientifico"
           >
-        {{especie.nomes_populares}} - <em>{{especie.nome_cientifico}}</em> - <strong> {{especie.familia}}</strong>
+        <a :href="getEspecieUrl(especie.id)">{{especie.nomes_populares}}</a> | - <em>{{especie.nome_cientifico}}</em> - <strong> {{especie.familia}}</strong>
+        
       </li>
     </ul>
   </div>
@@ -14,19 +15,22 @@
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
-  name: 'Especies',
-  created() {
-    this.buscaEspecies();
-  },
-  methods: {
-    ...mapActions({
-      buscaEspecies: 'especie/buscaEspecies',
-    }),
-  },
-  computed: {
-    ...mapGetters({
-      listaEspecies: 'especie/especies',
-    }),
-  },
+    name: 'Especies',
+    created() {
+        this.buscaEspecies();
+    },
+    methods: {
+        ...mapActions({
+            buscaEspecies: 'especie/buscaEspecies',
+        }),
+        getEspecieUrl(id) {
+            return `especie/` + id;
+        },
+    },
+    computed: {
+        ...mapGetters({
+            listaEspecies: 'especie/especies',
+        }),
+    },
 };
 </script>
