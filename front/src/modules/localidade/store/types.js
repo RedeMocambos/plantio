@@ -1,0 +1,2 @@
+export const SET_LOCALIDADES = 'SET_LOCALIDADES';
+export const SET_LOCALIDADE = 'SET_LOCALIDADE';
