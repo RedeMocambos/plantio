@@ -19,7 +19,7 @@ class AreaSerializer(serializers.ModelSerializer):
 class LocalidadeSerializer(serializers.ModelSerializer):
     
     class Meta:
-        model  = Area
+        model  = Localidade
         fields = (
             'nome',
             'bioma',
