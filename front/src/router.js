@@ -26,5 +26,10 @@ export default new Router({
             name: 'localidades',
             component: () => import(/* webpackChunkName: "localidades" */ './views/Localidades.vue'),
         },
+        {
+            path: '/localidade/:id',
+            name: 'localidade',
+            component: () => import(/* webpackChunkName: "localidade" */ './views/Localidade.vue'),
+        },
     ],
 });
