@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - /data/postgresql_data/:/var/lib/postgresql/data/
+  front:
+    build: ./front
+    volumes:
+      - ./front:/app
+    ports:
+      - "0.0.0.0:8080:8080"
+  django:
+    build: ./app
+    volumes:
+      - ./app/:/app/
+    ports:
+      - "0.0.0.0:8000:8000"
+    depends_on:
+      - db
+    links:
+      - db
+      - front

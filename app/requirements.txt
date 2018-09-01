@@ -8,3 +8,5 @@ environ
 djangorestframework
 Pillow
 django-cors-headers
+django-rest-auth
+gunicorn>=19.0
