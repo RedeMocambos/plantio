@@ -15,7 +15,7 @@ export default [
             },
             {
                 path: '/localidade/:id',
-                name: 'visualizarÇocalidade',
+                name: 'visualizarLocalidade',
                 component: () => import(/* webpackChunkName: "visualizar-localidade" */ './VisualizarLocalidade.vue'),
             },
         ],

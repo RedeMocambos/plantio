@@ -1,6 +1,6 @@
 <template>
 <div>
-  <h3>Localidades</h3>
+  <h3>Localidade</h3>
   <router-view></router-view>
 </div>
 </template>

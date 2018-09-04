@@ -16,3 +16,11 @@ export const buscaLocalidade = ({ commit }, id) => {
       commit(types.SET_LOCALIDADE, localidade);
     });
 };
+
+export const buscaAreasPorLocalidade = ({ commit }, id) => {
+    localidadeHelperAPI.buscaAreasPorLocalidade(id)
+        .then((response) => {
+            const areasLocalidade = response.data;
+            commit(types.SET_AREASLOCALIDADE, areasLocalidade);
+        });
+};
