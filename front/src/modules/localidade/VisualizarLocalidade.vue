@@ -11,7 +11,9 @@
     <ul>
       <li v-for="area in dadosAreasLocalidade"
           :key="area.id"
-          >{{area.nome}} | {{area.dimensao}}m2 | {{area.microclima}}
+          >
+        <a :href="getAreaUrl(area.id)">{{area.nome}}</a>
+        | {{area.dimensao}}m2 | {{area.microclima}}
       </li>
     </ul>
   </div>
@@ -34,6 +36,9 @@ export default {
             buscaLocalidade: 'localidade/buscaLocalidade',
             buscaAreasPorLocalidade: 'localidade/buscaAreasPorLocalidade',
         }),
+        getAreaUrl(id) {
+            return `area/` + id;
+        },
     },
     computed: {
         ...mapGetters({

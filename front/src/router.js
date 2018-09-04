@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Inicial from './views/Inicial.vue';
 import EspecieRoutes from '@/modules/especie/router.js'
 import LocalidadeRoutes from '@/modules/localidade/router.js'
+import AreaRoutes from '@/modules/area/router.js'
 
 Vue.use(Router);
 
@@ -17,6 +18,7 @@ const baseRoutes = [
 const routes = baseRoutes.concat(
     EspecieRoutes,
     LocalidadeRoutes,
+    AreaRoutes,
 );
 
 export default new Router({

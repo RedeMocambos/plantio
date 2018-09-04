@@ -3,7 +3,8 @@
     <div id="nav">
       <router-link to="/">Inicial</router-link> |
       <router-link to="/especies">Espécies</router-link> |
-      <router-link to="/localidades">Localidades</router-link>
+      <router-link to="/localidades">Localidades</router-link> |
+      <router-link to="/areas">Áreas</router-link>
     </div>
     <router-view/>
   </div>
