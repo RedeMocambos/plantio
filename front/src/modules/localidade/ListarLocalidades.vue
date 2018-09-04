@@ -14,7 +14,7 @@
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
-    name: 'Localidades',
+    name: 'ListarLocalidades',
     created() {
         this.buscaLocalidades();
     },

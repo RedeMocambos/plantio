@@ -17,8 +17,8 @@ window.onload = () => {
         router,
         store,
         components: {
-            ListarLocalidades,
+            Localidade,
         },
-        template: '<ListarLocalidades/>',
+        template: '<Localidade/>',
     });
 };

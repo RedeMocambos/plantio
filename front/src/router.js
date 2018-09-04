@@ -1,37 +1,26 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Inicial from './views/Inicial.vue';
+import EspecieRoutes from '@/modules/especie/router.js'
+import LocalidadeRoutes from '@/modules/localidade/router.js'
 
 Vue.use(Router);
+
+const baseRoutes = [
+    {
+        path: '/',
+        name: 'Inicial',
+        component: Inicial,
+    },
+];
+
+const routes = baseRoutes.concat(
+    EspecieRoutes,
+    LocalidadeRoutes,
+);
 
 export default new Router({
     mode: 'history',
     base: process.env.BASE_URL,
-    routes: [
-        {
-            path: '/',
-            name: 'Inicial',
-            component: Inicial,
-        },
-        {
-            path: '/plantas',
-            name: 'plantas',
-            component: () => import(/* webpackChunkName: "plantas" */ './views/Plantas.vue'),
-        },
-        {
-            path: '/especie/:id',
-            name: 'especie',
-            component: () => import(/* webpackChunkName: "especie" */ './views/Especie.vue'),
-        },
-        {
-            path: '/localidades',
-            name: 'localidades',
-            component: () => import(/* webpackChunkName: "localidades" */ './views/Localidades.vue'),
-        },
-        {
-            path: '/localidade/:id',
-            name: 'localidade',
-            component: () => import(/* webpackChunkName: "localidade" */ './views/Localidade.vue'),
-        },
-    ],
+    routes
 });

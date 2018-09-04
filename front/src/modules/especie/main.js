@@ -17,8 +17,8 @@ window.onload = () => {
         router,
         store,
         components: {
-            ListarEspecies,
+            Especie,
         },
-        template: '<ListarEspecies/>',
+        template: '<Especie/>',
     });
 };
