@@ -166,6 +166,7 @@ INSTALLED_APPS = (
     'rest_framework.authtoken',
     'rest_auth',
     'corsheaders',
+    'django_nose',
     'familia',
     'especie',
     'ciclo',
@@ -205,3 +206,12 @@ LOGGING = {
 CORS_ORIGIN_WHITELIST = (
     'localhost:8080',
 )
+
+# Use nose to run all tests
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+# Tell nose to measure coverage on the 'foo' and 'bar' apps
+NOSE_ARGS = [
+    '--with-coverage',
+    '--cover-package=foo,bar',
+]
