@@ -11,7 +11,7 @@ export default [
             {
                 path: '/areas',
                 name: 'listarAreas',
-                component: () => import(/* webpackChunkName: "listar-areas" */ './ListarAreas.vue'),                
+                component: () => import(/* webpackChunkName: "listar-areas" */ './ListarAreas.vue'),
             },
             {
                 path: '/area/:id',

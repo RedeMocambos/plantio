@@ -37,7 +37,7 @@ export default {
             buscaAreasPorLocalidade: 'localidade/buscaAreasPorLocalidade',
         }),
         getAreaUrl(id) {
-            return `area/` + id;
+            return `/area/` + id;
         },
     },
     computed: {
