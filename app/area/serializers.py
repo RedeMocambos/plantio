@@ -3,6 +3,7 @@ from .models import Area, Localidade
 
 class AreaSerializer(serializers.ModelSerializer):
     localidade = serializers.StringRelatedField(many=False)
+    localidade_id = serializers.PrimaryKeyRelatedField(many=False, read_only=True)
     
     class Meta:
         model  = Area
@@ -10,10 +11,13 @@ class AreaSerializer(serializers.ModelSerializer):
             'id',
             'nome',
             'localidade',
+            'localidade_id',
             'dimensao',
             'solo_predominante',
             'microclima',
             'declividade_predominante',
+            'largura',
+            'comprimento',
         )
 
 
