@@ -52,12 +52,12 @@ export default {
     watch: {
         gridData: function() {
             this.localGridData = this.gridData;
-        }
+        },
     },
     computed: {
         saidaJson: function() {
             return JSON.stringify(this.localGridData);
-        }
+        },
     },
-}
+};
 </script>
