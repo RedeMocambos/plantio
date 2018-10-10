@@ -1,22 +1,39 @@
 <template>
-<div class="area">
-  <p><strong>Visualizar área:</strong></p>
-  {{dadosArea.nome}} | {{dadosArea.dimensao}}m2 | {{dadosArea.microclima}} | <br/>
-  Localidade: <a :href="getLocalidadeUrl(dadosArea.localidade_id)">{{dadosArea.localidade}}</a>
-  <br/>
-  {{dadosArea.comprimento}}m x {{dadosArea.largura}}m
-
-  <Grid>
-  </Grid>
+<div class="row">
+  <div class="col s9">
+    <div class="card">
+      <h3 class="card-title">
+        Desenho de área
+      </h3>
+      <div class="card-content">
+        <Grid>
+        </Grid>
+      </div>
+    </div>
+  </div>
+  <div class="col s3">
+    <div class="card">
+      <h3 class="card-title">
+        Dados da área
+      </h3>
+      <div class="card-content">
+        <p>{{dadosArea.nome}}</p>
+        <p>Localidade: <a :href="getLocalidadeUrl(dadosArea.localidade_id)">{{dadosArea.localidade}}</a></p>
+        <p>Microclima: {{dadosArea.microclima}}</p>
+        
+        <br/>
+        <p>Dimensões:</p>
+        <p>{{dadosArea.comprimento}}m x {{dadosArea.largura}}m</p>
+        <p>{{dadosArea.dimensao}}m2</p>
+      </div>
+    </div>
+  </div> 
 </div>
 </template>
-<style>
-  
-</style>
 <script>
-import '@/assets/css/materialize.min.css';
+
 import { mapActions, mapGetters } from 'vuex';
-import Grid from '@/components/Grid';
+import Grid from '@/modules/desenho/Grid';
 
 export default {
     name: 'VisualizarArea',

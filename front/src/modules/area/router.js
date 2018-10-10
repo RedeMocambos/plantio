@@ -15,7 +15,7 @@ export default [
             },
             {
                 path: '/area/:id',
-                name: 'visualizarÇocalidade',
+                name: 'visualizarLocalidade',
                 component: () => import(/* webpackChunkName: "visualizar-area" */ './VisualizarArea.vue'),
             },
         ],

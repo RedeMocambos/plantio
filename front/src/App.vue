@@ -31,3 +31,9 @@
   color: #42b983;
 }
 </style>
+<script>
+import '@/assets/css/materialize.min.css'
+export default {
+    name: 'App',
+}
+</script>
