@@ -1,7 +1,9 @@
 <template>
 <div class="row">
   <div class="input-field col s2">
-    <a class="waves-effect waves-light btn-small" v-on:click="parseGrid()">gerar desenho</a>
+    <a class="waves-effect waves-light btn-small"
+       v-on:click="parseGrid()"
+       >gerar desenho</a>
   </div>
   
   <div class="input-field col s12">
