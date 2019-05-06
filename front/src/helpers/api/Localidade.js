@@ -1,16 +1,16 @@
 import * as api from './base';
 
-export const buscaLocalidades = () => {
+export const buscarLocalidades = () => {
     const path = `/api/v1/area/localidade`;
     return api.getRequest(api.basePath, path);
 };
 
-export const buscaLocalidade = (id) => {
+export const buscarLocalidade = (id) => {
     const path = `/api/v1/area/localidade/${id}`;
     return api.getRequest(api.basePath, path);
 };
 
-export const buscaAreasPorLocalidade = (id) => {
+export const buscarAreasPorLocalidade = (id) => {
     const path = `/api/v1/area/localidade/${id}/areas`;
     return api.getRequest(api.basePath, path);
 };

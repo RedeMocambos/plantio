@@ -1,4 +1,5 @@
 import 'vuetify/dist/vuetify.min.css';
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import pt from 'vuetify/lib/locale/pt';
 import Vuetify from 'vuetify';
 import Vue from 'vue';
