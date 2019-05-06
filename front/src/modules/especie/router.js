@@ -1,23 +1,21 @@
-import Especie from './Especie.vue';
+const VisualizarEspecieView = () => import(/* webpackChunkName: "visualizar-especie" */ './views/VisualizarEspecie.vue');
+const ListarEspeciesView = () => import(/* webpackChunkName: "listar-especies" */ './views/ListarEspecies.vue');
 
 export default [
     {
-        path: '/especie',
-        name: 'especie',
-        component: Especie,
-        title: 'Especie',
-        redirects: { name: 'listarEspecies' },
-        children: [
-            {
-                path: '/especies',
-                name: 'listarEspecies',
-                component: () => import(/* webpackChunkName: "listar-especies" */ './ListarEspecies.vue'),                
-            },
-            {
-                path: '/especie/:id',
-                name: 'visualizarEspecie',
-                component: () => import(/* webpackChunkName: "visualizar-especie" */ './VisualizarEspecie.vue'),
-            },
-        ],
+        path: '/especies',
+        name: 'listarEspecies',
+        component: ListarEspeciesView,
+        meta: {
+            title: 'Listar especies',
+        },
+    },
+    {
+        path: '/especie/:id',
+        name: 'visualizarEspecie',
+        component: VisualizarEspecieView,
+        meta: {
+            title: 'Visualizar especies',
+        },
     },
 ];

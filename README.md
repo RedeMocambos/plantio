@@ -193,6 +193,24 @@ https://www.jasondavies.com/coffee-wheel/
 Calendar view
 https://bl.ocks.org/mbostock/4063318
 
+
+### Arquitetura da interface
+
+* Login / auth
+  * Gerenciamento de localidades
+    * gerenciamento de áreas
+      * gerenciamento de cultivos
+
+  * Gerenciamento de espécies
+    * gerenciamento de variedades
+      * definição de ciclos
+        * definição de fases
+
+
+
+
+
+
 ## Referências
 
 A elaboração do sistema utiliza conceitos da agroecologia e agrofloresta. Destacamos aqui algumas das referências bibliográficas utilizadas:

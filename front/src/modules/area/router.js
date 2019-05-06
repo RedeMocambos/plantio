@@ -1,23 +1,21 @@
-import Area from './Area.vue';
+const ListarAreasView = () => import(/* webpackChunkName: "listar-areas" */ './views/ListarAreas.vue');
+const VisualizarAreaView = () => import(/* webpackChunkName: "visualizar-area" */ './views/VisualizarArea.vue');
 
 export default [
     {
-        path: '/area',
-        name: 'area',
-        component: Area,
-        title: 'Area',
-        redirects: { name: 'listarAreas' },
-        children: [
-            {
-                path: '/areas',
-                name: 'listarAreas',
-                component: () => import(/* webpackChunkName: "listar-areas" */ './ListarAreas.vue'),
-            },
-            {
-                path: '/area/:id',
-                name: 'visualizarLocalidade',
-                component: () => import(/* webpackChunkName: "visualizar-area" */ './VisualizarArea.vue'),
-            },
-        ],
+        path: '/areas',
+        name: 'listarAreas',
+        component: ListarAreasView,
+        meta: {
+            title: 'Listar áreas',
+        },
+    },
+    {
+        path: '/area/:id',
+        name: 'visualizarArea',
+        component: VisualizarAreaView,
+        meta: {
+            title: 'Visualizar área',
+        },
     },
 ];

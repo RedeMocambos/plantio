@@ -6,7 +6,7 @@
   <p>Porte: {{dadosEspecie.porte}}</p>
   <p>Sucessão: {{dadosEspecie.sucessao}}</p>
   <p>Temperatura: <span style="color: #33c">{{dadosEspecie.temperatura_min}}C</span> a <span style="color: #c33">{{dadosEspecie.temperatura_max}}C</span></p>
-  
+  <a href="">editar</a>
 </div>
 </template>
 <script>
