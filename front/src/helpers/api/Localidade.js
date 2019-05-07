@@ -1,7 +1,7 @@
 import * as api from './base';
 
 export const buscarLocalidades = () => {
-    const path = `/api/v1/area/localidade`;
+    const path = '/api/v1/area/localidade';
     return api.getRequest(api.basePath, path);
 };
 

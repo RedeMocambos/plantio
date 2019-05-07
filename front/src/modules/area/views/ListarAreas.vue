@@ -44,10 +44,15 @@ export default {
             areas: [],
         };
     },
+    computed: {
+        ...mapGetters({
+            listaAreas: 'area/areas',
+        }),
+    },
     watch: {
-         listaAreas() {
-             this.areas = this.listaAreas;
-         },
+        listaAreas() {
+            this.areas = this.listaAreas;
+        },
     },
     created() {
         this.buscarAreas();
@@ -57,13 +62,8 @@ export default {
             buscarAreas: 'area/buscarAreas',
         }),
         getAreaUrl(id) {
-            return `area/` + id;
+            return `area/${id}`;
         },
-    },
-    computed: {
-        ...mapGetters({
-            listaAreas: 'area/areas',
-        }),
     },
 };
 </script>

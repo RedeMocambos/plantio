@@ -1,7 +1,7 @@
 import * as api from './base';
 
 export const buscarEspecies = () => {
-    const path = `/api/v1/especie/especie/`;
+    const path = '/api/v1/especie/especie/';
     return api.getRequest(api.basePath, path);
 };
 

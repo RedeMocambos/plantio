@@ -54,10 +54,15 @@ export default {
             localidades: [],
         };
     },
+    computed: {
+        ...mapGetters({
+            listaLocalidades: 'localidade/localidades',
+        }),
+    },
     watch: {
-         listaLocalidades() {
-             this.localidades = this.listaLocalidades;
-         },
+        listaLocalidades() {
+            this.localidades = this.listaLocalidades;
+        },
     },
     created() {
         this.buscarLocalidades();
@@ -67,13 +72,8 @@ export default {
             buscarLocalidades: 'localidade/buscarLocalidades',
         }),
         getLocalidadeUrl(id) {
-            return `localidade/` + id;
+            return `localidade/${id}`;
         },
-    },
-    computed: {
-        ...mapGetters({
-            listaLocalidades: 'localidade/localidades',
-        }),
     },
 };
 </script>

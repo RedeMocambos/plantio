@@ -25,55 +25,55 @@
     </v-container>
 </template>
 <script>
- import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
- export default {
-     name: 'Especies',
-     data() {
-         return {
-             header: [
-                 {
-                     text: '#',
-                     align: 'left',
-                     sortable: false,
-                     value: 'numero',
-                 },
-                 {
-                     text: 'nome científico',
-                     value: 'nome_cientifico',
-                 },
-                 {
-                     text: 'família',
-                     value: 'familia',
-                 },
-                 {
-                     text: 'nomes populares',
-                     value: 'nomes_populares',
-                 },
-             ],
-             especies: [],
-         };
-     },
-     watch: {
-         listaEspecies() {
-             this.especies = this.listaEspecies;
-         },
-     },
-     created() {
-         this.buscarEspecies();
-     },
-     methods: {
-         ...mapActions({
-             buscarEspecies: 'especie/buscarEspecies',
-         }),
-         getEspecieUrl(id) {
-             return `especie/` + id;
-         },
-     },
-     computed: {
-         ...mapGetters({
-             listaEspecies: 'especie/especies',
-         }),
-     },
- };
+export default {
+    name: 'Especies',
+    data() {
+        return {
+            header: [
+                {
+                    text: '#',
+                    align: 'left',
+                    sortable: false,
+                    value: 'numero',
+                },
+                {
+                    text: 'nome científico',
+                    value: 'nome_cientifico',
+                },
+                {
+                    text: 'família',
+                    value: 'familia',
+                },
+                {
+                    text: 'nomes populares',
+                    value: 'nomes_populares',
+                },
+            ],
+            especies: [],
+        };
+    },
+    computed: {
+        ...mapGetters({
+            listaEspecies: 'especie/especies',
+        }),
+    },
+    watch: {
+        listaEspecies() {
+            this.especies = this.listaEspecies;
+        },
+    },
+    created() {
+        this.buscarEspecies();
+    },
+    methods: {
+        ...mapActions({
+            buscarEspecies: 'especie/buscarEspecies',
+        }),
+        getEspecieUrl(id) {
+            return `especie/${id}`;
+        },
+    },
+};
 </script>

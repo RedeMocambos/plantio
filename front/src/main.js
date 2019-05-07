@@ -1,9 +1,9 @@
 import 'vuetify/dist/vuetify.min.css';
-import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import 'material-design-icons-iconfont/dist/material-design-icons.css';
 import pt from 'vuetify/lib/locale/pt';
 import Vuetify from 'vuetify';
 import Vue from 'vue';
-import App from './App.vue';
+import App from './App';
 import {
     router,
     store,
@@ -27,7 +27,7 @@ Vue.use(Vuetify, {
 
 Vue.config.productionTip = false;
 
-const main = new Vue({
+new Vue({
     el: '#app',
     router,
     store,
