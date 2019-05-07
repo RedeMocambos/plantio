@@ -42,7 +42,7 @@ export default {
     },
     created() {
         if (typeof this.$route.params.id !== 'undefined') {
-            this.buscaArea(this.$route.params.id);
+            this.buscarArea(this.$route.params.id);
         }
     },
     mounted() {
@@ -52,7 +52,7 @@ export default {
     },
     methods: {
         ...mapActions({
-            buscaArea: 'area/buscaArea',
+            buscarArea: 'area/buscarArea',
         }),
         getLocalidadeUrl(id) {
             return `/localidade/` + id;
