@@ -15,14 +15,19 @@
                     </v-card-title>
                     <v-list>
                         <v-list-tile v-if="dadosEspecie.inicio_colheita !== ''">
-                            <v-icon class="pa-2">
-                                access_alarm
+                            <v-icon
+                                class="pa-2"
+                            >
+                                local_florist
                             </v-icon>
                             Início da colheita: {{ dadosEspecie.inicio_colheita }} dias
                         </v-list-tile>
                         <v-list-tile v-if="dadosEspecie.porte !== ''">
-                            <v-icon class="pa-2">
-                                toys
+                            <v-icon
+                                class="pa-2"
+                                color="green darken-3"
+                            >
+                                nature
                             </v-icon>
                             Porte:
                             <span
@@ -31,8 +36,11 @@
                             />
                         </v-list-tile>
                         <v-list-tile v-if="dadosEspecie.sucessao !== ''">
-                            <v-icon class="pa-2">
-                                trending_up
+                            <v-icon
+                                class="pa-2"
+                                color="green darken-3"
+                            >
+                                nature
                             </v-icon>
                             Sucessão:
                             <span
@@ -41,7 +49,10 @@
                             />
                         </v-list-tile>
                         <v-list-tile v-if="dadosEspecie.temperatura_min !== ''">
-                            <v-icon class="pa-2">
+                            <v-icon
+                                class="pa-2"
+                                color="green darken-3"
+                            >
                                 brightness_low
                             </v-icon>
                             Temperatura:
@@ -49,6 +60,85 @@
                                 class="pl-2"
                                 v-html="dadosEspecie.temperatura_min"
                             />ºC - <span v-html="dadosEspecie.temperatura_max"/>ºC
+                        </v-list-tile>
+                        <v-list-tile v-if="dadosEspecie.tempo_vida !== ''">
+                            <v-icon
+                                class="pa-2"
+                                color="green darken-3"
+                            >
+                                query_builder
+                            </v-icon>
+                            Tempo de vida:
+                            <span
+                                class="pl-2"
+                                v-html="dadosEspecie.tempo_vida"
+                            />
+                        </v-list-tile>
+                        <v-list-tile v-if="dadosEspecie.umidade !== ''">
+                            <v-icon
+                                class="pa-2"
+                                color="green darken-3"
+                            >
+                                format_color_fill
+                            </v-icon>
+                            Umidade:
+                            <span
+                                class="pl-2"
+                                v-html="dadosEspecie.umidade"
+                            />
+                        </v-list-tile>
+                        <v-list-tile v-if="dadosEspecie.exigencia_solo !== ''">
+                            <v-icon
+                                class="pa-2"
+                                color="green darken-3"
+                            >
+
+                                open_with
+                            </v-icon>
+                            Exigência de solo:
+                            <span
+                                class="pl-2"
+                                v-html="dadosEspecie.exigencia_solo"
+                            />
+                        </v-list-tile>
+                        <v-list-tile v-if="dadosEspecie.tolerancia_poda !== ''">
+                            <v-icon
+                                class="pa-2"
+                                color="green darken-3"
+                            >
+                                build
+                            </v-icon>
+                            Tolerância a poda:
+                            <span
+                                class="pl-2"
+                                v-html="dadosEspecie.tolerancia_poda"
+                            />
+                        </v-list-tile>
+                        <v-list-tile v-if="dadosEspecie.estrato !== ''">
+                            <v-icon
+                                class="pa-2"
+                                color="green darken-3"
+                            >
+                                nature
+                            </v-icon>
+                            Estrato:
+                            <span
+                                class="pl-2"
+                                v-html="dadosEspecie.estrato"
+                            />
+                        </v-list-tile>
+                        <v-list-tile v-if="dadosEspecie.sucessao !== ''">
+                            <v-icon
+                                class="pa-2"
+                                color="green darken-3"
+                            >
+                                nature
+                            </v-icon>
+                            Sucessão:
+                            <span
+                                class="pl-2"
+                                v-html="dadosEspecie.sucessao"
+                            />
                         </v-list-tile>
                     </v-list>
                     <v-card-actions>
