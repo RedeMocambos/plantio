@@ -17,6 +17,7 @@
                         <v-list-tile v-if="dadosEspecie.inicio_colheita !== ''">
                             <v-icon
                                 class="pa-2"
+                                color="green darken-3"
                             >
                                 local_florist
                             </v-icon>
@@ -127,23 +128,11 @@
                                 v-html="dadosEspecie.estrato"
                             />
                         </v-list-tile>
-                        <v-list-tile v-if="dadosEspecie.sucessao !== ''">
-                            <v-icon
-                                class="pa-2"
-                                color="green darken-3"
-                            >
-                                nature
-                            </v-icon>
-                            Sucessão:
-                            <span
-                                class="pl-2"
-                                v-html="dadosEspecie.sucessao"
-                            />
-                        </v-list-tile>
                     </v-list>
                     <v-card-actions>
                         <v-btn
                             class="green lighten-1"
+                            @click="abrirEdicao()"
                         >
                             <v-icon
                                 white
@@ -166,6 +155,9 @@ export default {
         ...mapGetters({
             dadosEspecie: 'especie/especie',
         }),
+        id() {
+            return this.$route.params.id;
+        },
     },
     created() {
         if (typeof this.$route.params.id !== 'undefined') {
@@ -176,6 +168,10 @@ export default {
         ...mapActions({
             buscarEspecie: 'especie/buscarEspecie',
         }),
+        abrirEdicao() {
+            const path = `/especie/${this.id}/editar`;
+            this.$router.push({ path });
+        },
     },
 };
 </script>

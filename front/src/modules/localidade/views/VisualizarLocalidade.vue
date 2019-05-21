@@ -23,18 +23,18 @@
                             </v-icon>
                             Clima:
                             <span
-                                v-html="dadosLocalidade.clima"
                                 class="pl-2"
+                                v-html="dadosLocalidade.clima"
                             />
                         </v-list-tile>
                         <v-list-tile v-if="dadosLocalidade.area !== ''">
                             <v-icon class="pa-2">
-                                trending_up
+                                grid_on
                             </v-icon>
                             Área:
                             <span
-                                v-html="dadosLocalidade.area"
                                 class="pl-2"
+                                v-html="dadosLocalidade.area"
                             />
                         </v-list-tile>
                         <h3>Áreas: </h3>
@@ -75,60 +75,60 @@
 </div>
 </template>
 <script>
- import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
- export default {
-     name: 'VisualizarLocalidade',
-     data() {
-         return {
-             headerAreas: [
-                 {
-                     text: '#',
-                     align: 'left',
-                     sortable: false,
-                     value: 'numero',
-                 },
-                 {
-                     text: 'nome',
-                     value: 'nome',
-                 },
-                 {
-                     text: 'área',
-                     value: 'area',
-                 },
-                 {
-                     text: 'microclima',
-                     value: 'microclima',
-                 },
-             ],
-             areasLocalidade: [],
-         };
-     },
-     watch: {
-         dadosAreasLocalidade() {
-             this.areasLocalidade = this.dadosAreasLocalidade;
-         },
-     },
-     created() {
-         if (typeof this.$route.params.id !== 'undefined') {
-             this.buscarLocalidade(this.$route.params.id);
-             this.buscarAreasPorLocalidade(this.$route.params.id);
-         }
-     },
-     methods: {
-         ...mapActions({
-             buscarLocalidade: 'localidade/buscarLocalidade',
-             buscarAreasPorLocalidade: 'localidade/buscarAreasPorLocalidade',
-         }),
-         getAreaUrl(id) {
-             return `/area/` + id;
-         },
-     },
-     computed: {
-         ...mapGetters({
-             dadosLocalidade: 'localidade/localidade',
-             dadosAreasLocalidade: 'localidade/areasLocalidade',
-         }),
-     },
- };
+export default {
+    name: 'VisualizarLocalidade',
+    data() {
+        return {
+            headerAreas: [
+                {
+                    text: '#',
+                    align: 'left',
+                    sortable: false,
+                    value: 'numero',
+                },
+                {
+                    text: 'nome',
+                    value: 'nome',
+                },
+                {
+                    text: 'área',
+                    value: 'area',
+                },
+                {
+                    text: 'microclima',
+                    value: 'microclima',
+                },
+            ],
+            areasLocalidade: [],
+        };
+    },
+    watch: {
+        dadosAreasLocalidade() {
+            this.areasLocalidade = this.dadosAreasLocalidade;
+        },
+    },
+    created() {
+        if (typeof this.$route.params.id !== 'undefined') {
+            this.buscarLocalidade(this.$route.params.id);
+            this.buscarAreasPorLocalidade(this.$route.params.id);
+        }
+    },
+    methods: {
+        ...mapActions({
+            buscarLocalidade: 'localidade/buscarLocalidade',
+            buscarAreasPorLocalidade: 'localidade/buscarAreasPorLocalidade',
+        }),
+        getAreaUrl(id) {
+            return `/area/${id}`;
+        },
+    },
+    computed: {
+        ...mapGetters({
+            dadosLocalidade: 'localidade/localidade',
+            dadosAreasLocalidade: 'localidade/areasLocalidade',
+        }),
+    },
+};
 </script>
