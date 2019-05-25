@@ -1,36 +1,47 @@
 <template>
-<div class="row">
-  <div class="col s12">
-    
-    <div class="card">
-      <div class="card-title"></div>
-      <div class="card-content">
-        <div class="row">
-          <div class="input-field col s1">
-            <input placeholder="Altura" id="largura" type="text" class="validate" v-model="opt.sizeX">
-            <label for="largura">Altura</label>
-          </div>
-          <div class="input-field col s1">
-            <input placeholder="Largura" id="altura" type="text" class="validate" v-model="opt.sizeY">
-            <label for="altura">Largura</label>
-          </div>
+    <div class="row">
+        <div class="col s12">
+
+            <div class="card">
+                <div class="card-title"/>
+                <div class="card-content">
+                    <div class="row">
+                        <div class="input-field col s1">
+                            <input
+                                id="largura"
+                                v-model="opt.sizeX"
+                                placeholder="Altura"
+                                type="text"
+                                class="validate">
+                            <label for="largura">Altura</label>
+                        </div>
+                        <div class="input-field col s1">
+                            <input
+                                id="altura"
+                                v-model="opt.sizeY"
+                                placeholder="Largura"
+                                type="text"
+                                class="validate">
+                            <label for="altura">Largura</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+
+        <div class="col s12">
+            <div class="card">
+                <div
+                    id="grid"
+                    style="font-family: monospace">
+                    <GenerateGrid
+                        :opt="opt"
+                        :scale="scale"/>
+                </div>
+            </div>
+        </div>
+
     </div>
-  </div>
-  
-  <div class="col s12">
-    <div class="card">
-      <div id="grid" style="font-family: monospace">
-        <GenerateGrid
-          :opt="opt"
-          :scale="scale">
-        </GenerateGrid>
-      </div>
-    </div>
-  </div>
-  
-</div>
 </template>
 <script>
 import { mapActions, mapGetters } from 'vuex';
@@ -41,7 +52,7 @@ export default {
     components: {
         GenerateGrid,
     },
-    data: function() {
+    data() {
         return {
             opt: {
                 sizeX: null,
@@ -54,28 +65,27 @@ export default {
             },
             scale: {
                 '-1': 'grey lighten-3',
-                '0': '',
-                '1': 'light-green lighten-4',
-                '2': 'light-green lighten-3',
-                '3': 'green lighten-3',
-                '4': 'green lighten-2',
-                '5': 'green lighten-1',
-                '6': 'green',
-                '7': 'green darken-1',
-                '8': 'green darken-2',
-                '9': 'green darken-3',
-                '10': 'green darken-4',
+                0: '',
+                1: 'light-green lighten-4',
+                2: 'light-green lighten-3',
+                3: 'green lighten-3',
+                4: 'green lighten-2',
+                5: 'green lighten-1',
+                6: 'green',
+                7: 'green darken-1',
+                8: 'green darken-2',
+                9: 'green darken-3',
+                10: 'green darken-4',
             },
-            output: ''
-        }
-
-    },    
-    created: function() {
+            output: '',
+        };
+    },
+    created() {
     },
     methods: {
     },
     computed: {
-        circleMaxSize: function() {
+        circleMaxSize() {
             return this.opt.sizeX / 2;
         },
         ...mapGetters({
@@ -92,5 +102,5 @@ export default {
             }
         },
     },
-}
+};
 </script>
