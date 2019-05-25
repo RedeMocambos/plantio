@@ -203,8 +203,11 @@ LOGGING = {
     }
 }
 
+# Dev configuration
+CORS_ORIGIN_ALLOW_ALL = True
+
 CORS_ORIGIN_WHITELIST = (
-    'localhost:8080',
+    'http://localhost:8080',
 )
 
 # Use nose to run all tests
