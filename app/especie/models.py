@@ -5,7 +5,7 @@ from django.db import models
 from familia.models import Familia
 
 
-class Configuracoes():
+class Configuracoes(object):
     u""" Classe para definição de tipos gerais """
 	
     TIPOS_UMIDADE = (
@@ -23,7 +23,7 @@ class Configuracoes():
         ('Erva grande', 'Erva grande'),
         ('Trepadeira', 'Trepadeira'),
         ('Arbusto', 'Arbusto'),
-        ('rvore pequena', 'Árvore pequena'),
+        ('Árvore pequena', 'Árvore pequena'),
         ('Árvore média', 'Árvore média'),
         ('Árvore grande', 'Árvore grande'),
         ('Outro / não especificado', 'Outro / não especificado'),
@@ -98,6 +98,51 @@ class Configuracoes():
         ('M', 'Meses'),
         ('A', 'Anos')
     )
+
+    fields = (
+        'porte',
+        'solo',
+        'estrato',
+        'sucessao',
+        'clima',        
+        'bioma',
+        'declividade',
+        'fases',
+        'unidade_tempo_vida',
+        'umidade',
+    )
+
+    def __init__(self, **kwargs):
+        self.porte = self.TIPOS_PORTE
+        self.solo = self.TIPOS_SOLO
+        self.estrato = self.TIPOS_ESTRATO
+        self.sucessao = self.TIPOS_SUCESSAO
+        self.clima = self.TIPOS_CLIMA
+        self.bioma = self.TIPOS_BIOMA
+        self.declividade = self.TIPOS_DECLIVIDADE
+        self.fases = self.FASES
+        self.unidade_tempo_vida = self.UNIDADE_TEMPO_VIDA
+        self.umidade = self.TIPOS_UMIDADE
+
+
+    def get_tipos(self):
+        result = {
+            'porte': self.TIPOS_PORTE,
+            'porte': self.TIPOS_PORTE,
+            'solo': self.TIPOS_SOLO,
+	        'estrato': self.TIPOS_ESTRATO,
+            'sucessao': self.TIPOS_SUCESSAO,
+            'clima': self.TIPOS_CLIMA,
+            'bioma': self.TIPOS_BIOMA,
+            'declividade': self.TIPOS_DECLIVIDADE,
+            'fases': self.FASES,
+            'unidade_tempo_vida': self.UNIDADE_TEMPO_VIDA,
+            'umidade': self.TIPOS_UMIDADE
+        }
+        return result
+
+    class Meta:
+        abstract = True
 
 
 def get_image_path(instance, filename):

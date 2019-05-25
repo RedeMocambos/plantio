@@ -65,3 +65,25 @@ class InteracaoSerializer(serializers.ModelSerializer):
             'intensidade',
             'descricao',
         )
+
+class TiposSerializer(serializers.ModelSerializer):
+    porte = serializers.SerializerMethodField()
+    
+    def get_porte(self, obj):
+        configuracoes = Configuracoes()
+        return configuracoes.get_tipos()['porte']
+
+    class Meta:
+        model = None
+        fields = (
+            'porte',
+            'solo',
+            'estrato',
+            'sucessao',
+            'clima',
+            'bioma',
+            'declividade',
+            'fases',
+            'unidade_tempo_vida',
+            'umidade',
+        )
