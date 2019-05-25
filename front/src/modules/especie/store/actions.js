@@ -16,3 +16,17 @@ export const buscarEspecie = ({ commit }, id) => {
             commit(types.SET_ESPECIE, especie);
         });
 };
+
+export const buscarEspecieMetadata = ({ commit }) => {
+    especieHelperAPI.buscarEspecieMetadata()
+        .then((response) => {
+            commit(types.SET_ESPECIE_METADATA, response.data.choices);
+        });
+};
+
+export const updateEspecie = ({ commit }, params) => {
+    especieHelperAPI.updateEspecie(params)
+        .then((response) => {
+            commit(types.UPDATE_ESPECIE, response.data);
+        });
+};

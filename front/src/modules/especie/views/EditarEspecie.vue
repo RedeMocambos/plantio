@@ -32,27 +32,27 @@
                 />
                 <v-select
                     v-model="dadosEspecie.porte"
-                    :items="porte_items"
+                    :items="getEspecieMetadata.porte"
                     label="Porte"
                 />
                 <v-select
                     v-model="dadosEspecie.estrato"
-                    :items="estrato_items"
+                    :items="getEspecieMetadata.estrato"
                     label="Estrato"
                 />
                 <v-select
                     v-model="dadosEspecie.sucessao"
-                    :items="sucessao_items"
+                    :items="getEspecieMetadata.sucessao"
                     label="Sucessão"
                 />
                 <v-select
                     v-model="dadosEspecie.umidade"
-                    :items="umidade_items"
+                    :items="getEspecieMetadata.umidade"
                     label="Umidade"
                 />
                 <v-select
                     v-model="dadosEspecie.tolerancia_poda"
-                    :items="tolerancia_poda_items"
+                    :items="getEspecieMetadata.tolerancia_poda"
                     label="Tolerância a poda"
                 />
             </v-card>
@@ -60,18 +60,19 @@
                 class="pa-3"
             >
                 <v-text-field
-                    xs4
                     v-model="dadosEspecie.temperatura_min"
+                    xs4
                     label="Temperatura mínima"
                 />
                 <v-text-field
-                    xs4
                     v-model="dadosEspecie.temperatura_max"
+                    xs4
                     label="Temperatura máxima"
                 />
             </v-card>
             <v-btn
                 color="info"
+                @click="salvar()"
             >
                 <v-icon
                     class="pr-3"
@@ -93,7 +94,7 @@
 <script>
 import Tools from '@/mixins/tools';
 import { mapActions, mapGetters } from 'vuex';
- 
+
 export default {
     name: 'EditarEspecie',
     mixins: [
@@ -102,16 +103,12 @@ export default {
     data() {
         return {
             valid: true,
-            porte_items: [],
-            estrato_items: [],
-            sucessao_items: [],
-            umidade_items: [],
-            tolerancia_poda_items: [],
         };
     },
     computed: {
         ...mapGetters({
             dadosEspecie: 'especie/especie',
+            getEspecieMetadata: 'especie/getEspecieMetadata',
         }),
         id() {
             return this.$route.params.id;
@@ -120,12 +117,23 @@ export default {
     created() {
         if (typeof this.$route.params.id !== 'undefined') {
             this.buscarEspecie(this.$route.params.id);
+            this.buscarEspecieMetadata();
         }
     },
     methods: {
         ...mapActions({
             buscarEspecie: 'especie/buscarEspecie',
+            buscarEspecieMetadata: 'especie/buscarEspecieMetadata',
+            updateEspecie: 'especie/updateEspecie',
         }),
+        salvar() {
+            this.updateEspecie(
+                {
+                    id: this.dadosEspecie.id,
+                    nomes_populares: this.dadosEspecie.nomes_populares,
+                },
+            );
+        },
     },
 };
 </script>
