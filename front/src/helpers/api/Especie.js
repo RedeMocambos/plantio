@@ -27,5 +27,5 @@ export const buscarEspecieMetadata = () => {
 
 export const updateEspecie = (params) => {
     const path = '/api/v1/especie/especie/';
-    return api.putRequest(path, params, params.id);
+    return api.putRequest(api.basePath + path, params, params.id);
 };
