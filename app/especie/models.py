@@ -111,33 +111,39 @@ class Configuracoes(object):
         'unidade_tempo_vida',
         'umidade',
     )
-
+    
     def __init__(self, **kwargs):
-        self.porte = self.TIPOS_PORTE
-        self.solo = self.TIPOS_SOLO
-        self.estrato = self.TIPOS_ESTRATO
-        self.sucessao = self.TIPOS_SUCESSAO
-        self.clima = self.TIPOS_CLIMA
-        self.bioma = self.TIPOS_BIOMA
-        self.declividade = self.TIPOS_DECLIVIDADE
-        self.fases = self.FASES
-        self.unidade_tempo_vida = self.UNIDADE_TEMPO_VIDA
-        self.umidade = self.TIPOS_UMIDADE
+        self.porte = self.prepare_tipo(self.TIPOS_PORTE)
+        self.solo = self.prepare_tipo(self.TIPOS_SOLO)
+        self.estrato = self.prepare_tipo(self.TIPOS_ESTRATO)
+        self.sucessao = self.prepare_tipo(self.TIPOS_SUCESSAO)
+        self.clima = self.prepare_tipo(self.TIPOS_CLIMA)
+        self.bioma = self.prepare_tipo(self.TIPOS_BIOMA)
+        self.declividade = self.prepare_tipo(self.TIPOS_DECLIVIDADE)
+        self.fases = self.prepare_tipo(self.FASES)
+        self.unidade_tempo_vida = self.prepare_tipo(self.UNIDADE_TEMPO_VIDA)
+        self.umidade = self.prepare_tipo(self.TIPOS_UMIDADE)
 
-
+        
+    def prepare_tipo(self, values):
+        fields = ('valor', 'descricao')
+        data = []
+        for item in values:
+            data.append(dict(zip(fields, item)))
+        return data
+    
     def get_tipos(self):
         result = {
-            'porte': self.TIPOS_PORTE,
-            'porte': self.TIPOS_PORTE,
-            'solo': self.TIPOS_SOLO,
-	        'estrato': self.TIPOS_ESTRATO,
-            'sucessao': self.TIPOS_SUCESSAO,
-            'clima': self.TIPOS_CLIMA,
-            'bioma': self.TIPOS_BIOMA,
-            'declividade': self.TIPOS_DECLIVIDADE,
-            'fases': self.FASES,
-            'unidade_tempo_vida': self.UNIDADE_TEMPO_VIDA,
-            'umidade': self.TIPOS_UMIDADE
+            'porte': self.porte,
+            'solo': self.solo,
+            'estrato': self.estrato,
+            'sucessao': self.sucessao,
+            'clima': self.clima,
+            'bioma': self.bioma,
+            'declividade': self.declividade,
+            'fases': self.fases,
+            'unidade_tempo_vida': self.unidade_tempo_vida,
+            'umidade': self.umidade
         }
         return result
 
@@ -146,9 +152,9 @@ class Configuracoes(object):
 
 
 def get_image_path(instance, filename):
-	return os.path.join('images', str(instance.id), filename)
+    return os.path.join('images', str(instance.id), filename)
 
-	
+    
 class Especie(models.Model):
     u""" Classe para definição de espécies """
 
@@ -170,14 +176,14 @@ class Especie(models.Model):
     estrato          = models.CharField('estrato', max_length=30, choices=Configuracoes.TIPOS_ESTRATO, blank=True)
     sucessao         = models.CharField('sucessao', max_length=30, choices=Configuracoes.TIPOS_SUCESSAO, blank=True)
     imagem           = models.ImageField(upload_to=get_image_path, blank=True, null=True)
-	
+    
     def __str__(self):
         return self.nomes_populares + " (" + self.nome_cientifico + ")"
 
 
 class Variedade(models.Model):
     u""" Classe para definição de variedades de espécies """
-	
+    
     nome             = models.CharField('nome' , max_length=255, blank=True)
     descricao        = models.TextField('descricao', blank=True)
     exigencia_solo   = models.CharField('exigencia_solo', max_length=30, choices=Configuracoes.TIPOS_SOLO, blank=True)
@@ -185,44 +191,44 @@ class Variedade(models.Model):
     exigencia_sol    = models.PositiveSmallIntegerField('exigencia_sol', choices=Configuracoes.NUMBER_RANGE, blank=True)
     inicio_colheita  = models.CharField('inicio_colheita', max_length=5, blank=True)
     especie = models.ForeignKey(Especie, on_delete=models.CASCADE, null=True, blank=False)
-	
+    
     def __str__(self):
         return self.nome
 
-	
+    
 class Interacao(models.Model):
-	u"""
-	Interação entre especies
-	"""
+    u"""
+    Interação entre especies
+    """
 
-	TIPOS_INTERACAO = (
-		('Sinergia', 'Sinergia'),
-		('Alelopatia mútua', 'Alelopatia mútua'),
-		('Alelopatia própria', 'Alelopatia própria'),
-		('Alelopatia alheia', 'Alelopatia alheia'),
-	)
+    TIPOS_INTERACAO = (
+        ('Sinergia', 'Sinergia'),
+        ('Alelopatia mútua', 'Alelopatia mútua'),
+        ('Alelopatia própria', 'Alelopatia própria'),
+        ('Alelopatia alheia', 'Alelopatia alheia'),
+    )
 
-	tipo_interacao  = models.CharField('tipo_interacao', max_length=10, choices=TIPOS_INTERACAO, blank=True)
-	familia_a       = models.ForeignKey(Familia, on_delete=models.CASCADE, related_name='familia_a', null=True, blank=True)
-	familia_b       = models.ForeignKey(Familia, on_delete=models.CASCADE, related_name='familia_b', null=True, blank=True)
-	especie_a       = models.ForeignKey(Especie, on_delete=models.CASCADE, related_name='especie_a', null=True, blank=True)
-	especie_b       = models.ForeignKey(Especie, on_delete=models.CASCADE, related_name='especie_b', null=True, blank=True)
-	intensidade     = models.PositiveSmallIntegerField('intensidade', choices=Configuracoes.NUMBER_RANGE, blank=True)
-	descricao       = models.TextField('descricao', null=True, blank=True)
-	
-	def __str__(self):
-		
-		rotulo = ''
-		
-		if self.familia_a != None:
-		 	rotulo += '(' + self.familia_a.nome + ')'
-		if self.familia_a != None and self.familia_b != None:
-			rotulo += ' => '
-		else:
-			rotulo += '_ '		
-		if self.familia_b != None:
-		 	rotulo += '(' + self.familia_b.nome + ') '
-		
-		rotulo += self.especie_a.nomes_populares + ' => ' + self.especie_b.nomes_populares + ' ( ' + self.tipo_interacao + ')'
+    tipo_interacao  = models.CharField('tipo_interacao', max_length=10, choices=TIPOS_INTERACAO, blank=True)
+    familia_a       = models.ForeignKey(Familia, on_delete=models.CASCADE, related_name='familia_a', null=True, blank=True)
+    familia_b       = models.ForeignKey(Familia, on_delete=models.CASCADE, related_name='familia_b', null=True, blank=True)
+    especie_a       = models.ForeignKey(Especie, on_delete=models.CASCADE, related_name='especie_a', null=True, blank=True)
+    especie_b       = models.ForeignKey(Especie, on_delete=models.CASCADE, related_name='especie_b', null=True, blank=True)
+    intensidade     = models.PositiveSmallIntegerField('intensidade', choices=Configuracoes.NUMBER_RANGE, blank=True)
+    descricao       = models.TextField('descricao', null=True, blank=True)
+    
+    def __str__(self):
+        
+        rotulo = ''
+        
+        if self.familia_a != None:
+             rotulo += '(' + self.familia_a.nome + ')'
+        if self.familia_a != None and self.familia_b != None:
+            rotulo += ' => '
+        else:
+            rotulo += '_ '
+        if self.familia_b != None:
+             rotulo += '(' + self.familia_b.nome + ') '
+        
+        rotulo += self.especie_a.nomes_populares + ' => ' + self.especie_b.nomes_populares + ' ( ' + self.tipo_interacao + ')'
 
-		return rotulo
+        return rotulo
