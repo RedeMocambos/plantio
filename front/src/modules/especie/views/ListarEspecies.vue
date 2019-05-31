@@ -1,7 +1,10 @@
 <template>
     <v-container fluid>
         <v-layout>
-            <v-flex xs10>
+            <v-flex
+                xs10
+                offset-xs1
+            >
                 <v-data-table
                     :headers="header"
                     :items="especies"
@@ -11,13 +14,41 @@
                     >
                         <td>{{ props.index + 1 }}</td>
                         <td>
-                            <a
-                                :href="getEspecieUrl(props.item.id)">
+                            <v-btn
+                                flat
+                                small
+                                @click="visualizar(props.item.id)"
+                            >
+                                <v-icon class="pr-2">
+                                    local_florist
+                                </v-icon>
                                 {{ props.item.nome_cientifico }}
-                            </a>
+                            </v-btn>
                         </td>
                         <td>{{ props.item.familia }}</td>
                         <td>{{ props.item.nomes_populares }}</td>
+                        <td>
+                            <v-btn
+                                flat
+                                small
+                                @click="editar(props.item.id)"
+                            >
+                                <v-icon class="pr-2">
+                                    edit
+                                </v-icon>
+                                editar
+                            </v-btn>
+                            <v-btn
+                                flat
+                                small
+                                @click="excluir(props.item.id)"
+                            >
+                                <v-icon class="pr-2">
+                                    clear
+                                </v-icon>
+                                excluir
+                            </v-btn>
+                        </td>
                     </template>
                 </v-data-table>
             </v-flex>
@@ -50,6 +81,10 @@ export default {
                     text: 'nomes populares',
                     value: 'nomes_populares',
                 },
+                {
+                    text: 'ações',
+                    value: 'acoes',
+                },
             ],
             especies: [],
         };
@@ -71,8 +106,15 @@ export default {
         ...mapActions({
             buscarEspecies: 'especie/buscarEspecies',
         }),
-        getEspecieUrl(id) {
-            return `especie/${id}`;
+        visualizar(id) {
+            const path = `/especie/${id}`;
+            this.$router.push({ path });
+        },
+        editar(id) {
+            const path = `/especie/${id}/editar`;
+            this.$router.push({ path });
+        },
+        excluir(id) {
         },
     },
 };

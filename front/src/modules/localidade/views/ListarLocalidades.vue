@@ -1,7 +1,10 @@
 <template>
     <v-container fluid>
         <v-layout>
-            <v-flex xs10>
+            <v-flex
+                xs10
+                offset-xs1
+            >
                 <v-data-table
                     :headers="header"
                     :items="localidades"
@@ -11,13 +14,41 @@
                     >
                         <td>{{ props.index + 1 }}</td>
                         <td>
-                            <a
-                                :href="getLocalidadeUrl(props.item.id)">
+                            <v-btn
+                                flat
+                                small
+                                @click="visualizar(props.item.id)"
+                            >
+                                <v-icon class="pr-2">
+                                    terrain
+                                </v-icon>
                                 {{ props.item.nome }}
-                            </a>
+                            </v-btn>
                         </td>
                         <td>{{ props.item.bioma }}</td>
                         <td>{{ props.item.clima }}</td>
+                        <td>
+                            <v-btn
+                                flat
+                                small
+                                @click="editar(props.item.id)"
+                            >
+                                <v-icon class="pr-2">
+                                    edit
+                                </v-icon>
+                                editar
+                            </v-btn>
+                            <v-btn
+                                flat
+                                small
+                                @click="excluir(props.item.id)"
+                            >
+                                <v-icon class="pr-2">
+                                    clear
+                                </v-icon>
+                                excluir
+                            </v-btn>
+                        </td>
                     </template>
                 </v-data-table>
             </v-flex>
@@ -50,6 +81,10 @@ export default {
                     text: 'clima',
                     value: 'clima',
                 },
+                {
+                    text: 'ações',
+                    value: 'acoes',
+                },
             ],
             localidades: [],
         };
@@ -71,8 +106,15 @@ export default {
         ...mapActions({
             buscarLocalidades: 'localidade/buscarLocalidades',
         }),
-        getLocalidadeUrl(id) {
-            return `localidade/${id}`;
+        visualizar(id) {
+            const path = `/localidade/${id}`;
+            this.$router.push({ path });
+        },
+        editar(id) {
+            const path = `/localidade/${id}/edit`;
+            this.$router.push({ path });
+        },
+        excluir(id) {
         },
     },
 };

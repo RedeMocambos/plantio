@@ -3,6 +3,4 @@ import store from '../../store';
 
 sync(store);
 
-export {
-    store,
-};
+export { store };

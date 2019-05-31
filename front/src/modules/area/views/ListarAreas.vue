@@ -1,7 +1,10 @@
 <template>
     <v-container fluid>
         <v-layout>
-            <v-flex xs10>
+            <v-flex
+                xs10
+                offset-xs1
+            >
                 <v-data-table
                     :headers="header"
                     :items="areas"
@@ -11,10 +14,38 @@
                     >
                         <td>{{ props.index + 1 }}</td>
                         <td>
-                            <a
-                                :href="getAreaUrl(props.item.id)">
+                          <v-btn
+                                flat
+                                small
+                                @click="visualizar(props.item.id)"
+                            >
+                                <v-icon class="pr-2">
+                                    grid_on
+                                </v-icon>
                                 {{ props.item.nome }}
-                            </a>
+                            </v-btn>
+                        </td>
+                                                <td>
+                            <v-btn
+                                flat
+                                small
+                                @click="editar(props.item.id)"
+                            >
+                                <v-icon class="pr-2">
+                                    edit
+                                </v-icon>
+                                editar
+                            </v-btn>
+                            <v-btn
+                                flat
+                                small
+                                @click="excluir(props.item.id)"
+                            >
+                                <v-icon class="pr-2">
+                                    clear
+                                </v-icon>
+                                excluir
+                            </v-btn>
                         </td>
                     </template>
                 </v-data-table>
@@ -40,6 +71,10 @@ export default {
                     text: 'nome',
                     value: 'nome',
                 },
+                {
+                    text: 'ações',
+                    value: 'acoes',
+                },
             ],
             areas: [],
         };
@@ -61,8 +96,15 @@ export default {
         ...mapActions({
             buscarAreas: 'area/buscarAreas',
         }),
-        getAreaUrl(id) {
-            return `area/${id}`;
+        visualizar(id) {
+            const path = `/area/${id}`;
+            this.$router.push({ path });
+        },
+        editar(id) {
+            const path = `/area/${id}/edit`;
+            this.$router.push({ path });
+        },
+        excluir(id) {
         },
     },
 };

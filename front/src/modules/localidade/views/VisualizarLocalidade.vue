@@ -1,7 +1,10 @@
 <template>
     <v-container fluid>
         <v-layout>
-            <v-flex xs10>
+            <v-flex
+                xs10
+                offset-xs1
+            >
                 <v-card>
                     <v-card-title>
                         <div>
@@ -47,10 +50,16 @@
                             >
                                 <td>{{ props.index + 1 }}</td>
                                 <td>
-                                    <a
-                                        :href="getAreaUrl(props.item.id)">
+                                    <v-btn
+                                        flat
+                                        small
+                                        @click="getAreaUrl(props.item.id)"
+                                    >
+                                        <v-icon class="pr-2">
+                                            grid_on
+                                        </v-icon>
                                         {{ props.item.nome }}
-                                    </a>
+                                    </v-btn>
                                 </td>
                                 <td>{{ props.item.dimensao }}</td>
                                 <td>{{ props.item.microclima }}</td>
@@ -121,7 +130,8 @@ export default {
             buscarAreasPorLocalidade: 'localidade/buscarAreasPorLocalidade',
         }),
         getAreaUrl(id) {
-            return `/area/${id}`;
+            const path = `/area/${id}`;
+            this.$router.push({ path });
         },
     },
     computed: {

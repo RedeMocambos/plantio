@@ -1,7 +1,10 @@
 <template>
     <v-container fluid>
         <v-layout>
-            <v-flex xs10>
+            <v-flex
+                xs10
+                offset-xs1
+            >
                 <v-card>
                     <v-card-title>
                         <div>
