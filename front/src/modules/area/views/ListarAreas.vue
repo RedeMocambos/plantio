@@ -49,6 +49,18 @@
                         </td>
                     </template>
                 </v-data-table>
+                <v-btn
+                    dark
+                    class="green darken-1"
+                    @click="adicionar()"
+                >
+                    <v-icon
+                        white
+                        class="pr-2">
+                        add
+                    </v-icon>
+                    adicionar área
+                </v-btn>
             </v-flex>
         </v-layout>
     </v-container>
@@ -103,6 +115,8 @@ export default {
         editar(id) {
             const path = `/area/${id}/edit`;
             this.$router.push({ path });
+        },
+        adicionar() {
         },
         excluir(id) {
         },
