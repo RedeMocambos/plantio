@@ -14,6 +14,15 @@
                     >
                         <td>{{ props.index + 1 }}</td>
                         <td>
+                            {{ props.item.localidade }}
+                        </td>
+                        <td>
+                            {{ props.item.dimensao }}
+                        </td>
+                        <td>
+                            {{ props.item.largura }} x {{ props.item.comprimento }}
+                        </td>
+                        <td>
                           <v-btn
                                 flat
                                 small
@@ -75,15 +84,32 @@ export default {
             header: [
                 {
                     text: '#',
-                    align: 'left',
+                    align: 'center',
                     sortable: false,
                     value: 'numero',
                 },
                 {
+                    align: 'center',
+                    text: 'localidade',
+                    value:' localidade',
+                },
+                {
+                    align: 'center',
+                    text: 'dimensao',
+                    value:' dimensao',
+                },
+                {
+                    align: 'center',
+                    text: 'largura x comprimento',
+                    value:' comprimento',
+                },
+                {
+                    align: 'center',
                     text: 'nome',
                     value: 'nome',
                 },
                 {
+                    align: 'center',
                     text: 'ações',
                     value: 'acoes',
                 },

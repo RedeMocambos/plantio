@@ -82,18 +82,22 @@ export default {
                     value: 'numero',
                 },
                 {
+                    align: 'center',
                     text: 'nome',
                     value: 'nome',
                 },
                 {
+                    align: 'center',
                     text: 'bioma',
                     value: 'bioma',
                 },
                 {
+                    align: 'center',
                     text: 'clima',
                     value: 'clima',
                 },
                 {
+                    align: 'center',
                     text: 'ações',
                     value: 'acoes',
                 },

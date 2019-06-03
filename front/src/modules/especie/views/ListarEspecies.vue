@@ -82,18 +82,22 @@ export default {
                     value: 'numero',
                 },
                 {
+                    align: 'center',
                     text: 'nome científico',
                     value: 'nome_cientifico',
                 },
                 {
+                    align: 'center',
                     text: 'família',
                     value: 'familia',
                 },
                 {
+                    align: 'center',
                     text: 'nomes populares',
                     value: 'nomes_populares',
                 },
                 {
+                    align: 'center',
                     text: 'ações',
                     value: 'acoes',
                 },
