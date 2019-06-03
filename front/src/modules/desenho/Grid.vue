@@ -1,50 +1,49 @@
 <template>
-    <div class="row">
-        <div class="col s12">
-
-            <div class="card">
-                <div class="card-title"/>
-                <div class="card-content">
-                    <div class="row">
-                        <div class="input-field col s1">
-                            <input
-                                id="largura"
-                                v-model="opt.sizeX"
-                                placeholder="Altura"
-                                type="text"
-                                class="validate">
-                            <label for="largura">Altura</label>
-                        </div>
-                        <div class="input-field col s1">
-                            <input
-                                id="altura"
-                                v-model="opt.sizeY"
-                                placeholder="Largura"
-                                type="text"
-                                class="validate">
-                            <label for="altura">Largura</label>
-                        </div>
+    <v-container
+        fluid
+        grid-list-xl
+    >
+        <v-layout
+            row
+            wrap
+        >
+            <v-flex
+                xs12
+            >
+                <v-card>
+                    <div>
+                        <v-text-field
+                            v-model="dimensions.sizeX"
+                            label="Altura"
+                        />
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col s12">
-            <div class="card">
-                <div
-                    id="grid"
-                    style="font-family: monospace">
-                    <GenerateGrid
-                        :opt="opt"
-                        :scale="scale"/>
-                </div>
-            </div>
-        </div>
-
-    </div>
+                    <div>
+                        <v-text-field
+                            v-model="dimensions.sizeY"
+                            label="Largura"
+                        />
+                    </div>
+                </v-card>
+            </v-flex>
+            <v-flex
+                xs12
+            >
+                <v-card>
+                    <div
+                        id="grid"
+                        style="font-family: monospace">
+                        <GenerateGrid
+                            :opt="opt"
+                            :dimensions="dimensions"
+                            :color-scale="colorScale"/>
+                    </div>
+                </v-card>
+            </v-flex>
+        </v-layout>
+    </v-container>
 </template>
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 import GenerateGrid from './GenerateGrid';
 
 export default {
@@ -52,18 +51,22 @@ export default {
     components: {
         GenerateGrid,
     },
+    props: {
+        dimensions: {
+            type: Object,
+            default: () => {},
+        },
+    },
     data() {
         return {
             opt: {
-                sizeX: null,
-                sizeY: null,
                 boxSizeW: 20,
                 boxSizeH: 20,
                 range: 9,
                 density: 2,
                 densityMax: 15,
             },
-            scale: {
+            colorScale: {
                 '-1': 'grey lighten-3',
                 0: '',
                 1: 'light-green lighten-4',
@@ -80,13 +83,9 @@ export default {
             output: '',
         };
     },
-    created() {
-    },
-    methods: {
-    },
     computed: {
         circleMaxSize() {
-            return this.opt.sizeX / 2;
+            return this.dimensions.sizeX / 2;
         },
         ...mapGetters({
             dadosArea: 'area/area',
@@ -95,10 +94,10 @@ export default {
     watch: {
         dadosArea() {
             if (this.dadosArea.largura > 0) {
-                this.opt.sizeY = this.dadosArea.largura;
+                this.dimensions.sizeY = this.dadosArea.largura;
             }
             if (this.dadosArea.comprimento > 0) {
-                this.opt.sizeX = this.dadosArea.comprimento;
+                this.dimensions.sizeX = this.dadosArea.comprimento;
             }
         },
     },

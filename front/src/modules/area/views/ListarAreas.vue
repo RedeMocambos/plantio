@@ -23,7 +23,7 @@
                             {{ props.item.largura }} x {{ props.item.comprimento }}
                         </td>
                         <td>
-                          <v-btn
+                            <v-btn
                                 flat
                                 small
                                 @click="visualizar(props.item.id)"
@@ -34,7 +34,7 @@
                                 {{ props.item.nome }}
                             </v-btn>
                         </td>
-                                                <td>
+                        <td>
                             <v-btn
                                 flat
                                 small
@@ -91,17 +91,17 @@ export default {
                 {
                     align: 'center',
                     text: 'localidade',
-                    value:' localidade',
+                    value: ' localidade',
                 },
                 {
                     align: 'center',
                     text: 'dimensao',
-                    value:' dimensao',
+                    value: ' dimensao',
                 },
                 {
                     align: 'center',
                     text: 'largura x comprimento',
-                    value:' comprimento',
+                    value: ' comprimento',
                 },
                 {
                     align: 'center',

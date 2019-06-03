@@ -1,33 +1,86 @@
 <template>
-    <div class="row">
-        <div class="col s9">
-            <div class="card">
-                <h3 class="card-title">
-                    Desenho de área
-                </h3>
-                <div class="card-content">
-                    <Grid/>
-                </div>
-            </div>
-        </div>
-        <div class="col s3">
-            <div class="card">
-                <h3 class="card-title">
-                    Dados da área
-                </h3>
-                <div class="card-content">
-                    <p>{{ dadosArea.nome }}</p>
-                    <p>Localidade: <a :href="getLocalidadeUrl(dadosArea.localidade_id)">{{ dadosArea.localidade }}</a></p>
-                    <p>Microclima: {{ dadosArea.microclima }}</p>
-
-                    <br>
-                    <p>Dimensões:</p>
-                    <p>{{ dadosArea.comprimento }}m x {{ dadosArea.largura }}m</p>
-                    <p>{{ dadosArea.dimensao }}m2</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    <v-container
+        fluid
+        grid-list-xs
+    >
+        <v-layout
+        >
+            <v-flex
+                xs12
+            >
+                <v-tabs>
+                    <v-tabs-slider color=""></v-tabs-slider>
+                    <v-tab
+                        href="#dados"
+                    >
+                        <v-icon
+                            class="pa-2"
+                        >
+                            notes
+                        </v-icon>
+                        dados da área
+                    </v-tab>
+                    <v-tab
+                        href="#desenho"
+                    >
+                        <v-icon
+                            class="pa-2"
+                        >
+                            grid_on
+                        </v-icon>
+                        desenho
+                    </v-tab>
+                    <v-tab-item
+                        :value="'dados'"
+                    >
+                        <v-flex
+                            xs12
+                        >
+                            <v-card>
+                                <v-card-title class="subheading">
+                                    Dados da área
+                                </v-card-title>
+                                <p>
+                                    {{ dadosArea.nome }}
+                                </p>
+                                <p>
+                                    Localidade: <a :href="getLocalidadeUrl(dadosArea.localidade_id)">{{ dadosArea.localidade }}</a>
+                                </p>
+                                <p>
+                                    Microclima: {{ dadosArea.microclima }}
+                                </p>
+                                <p>
+                                    Dimensões:
+                                </p>
+                                <p>
+                                    {{ dadosArea.comprimento }}m x {{ dadosArea.largura }}m
+                                </p>
+                                <p>
+                                    {{ dadosArea.dimensao }}m2
+                                </p>
+                            </v-card>
+                        </v-flex>
+                    </v-tab-item>
+                    <v-tab-item
+                        :value="'desenho'"
+                    >
+                        <v-flex
+                            xs12
+                        >
+                            <v-card>
+                                <v-card-title class="subheading">
+                                    Desenho de área
+                                </v-card-title>
+                                <Grid
+                                    :dimensions="dimensions"
+                                />
+                            </v-card>
+                        </v-flex>
+                    </v-tab-item>
+                </v-tabs>
+            </v-flex>
+        </v-layout>
+    </v-container>
 </template>
 <script>
 
@@ -38,6 +91,25 @@ export default {
     name: 'VisualizarArea',
     components: {
         Grid,
+    },
+    data() {
+        return {
+            dimensions: {
+                sizeX: 0,
+                sizeY: 0,
+            },
+        };
+    },
+    computed: {
+        ...mapGetters({
+            dadosArea: 'area/area',
+        }),
+    },
+    watch: {
+        dadosArea() {
+            this.dimensions.sizeX = this.dadosArea.largura;
+            this.dimensions.sizeY = this.dadosArea.comprimento;
+        },
     },
     created() {
         if (typeof this.$route.params.id !== 'undefined') {
@@ -51,11 +123,6 @@ export default {
         getLocalidadeUrl(id) {
             return `/localidade/${id}`;
         },
-    },
-    computed: {
-        ...mapGetters({
-            dadosArea: 'area/area',
-        }),
     },
 };
 </script>

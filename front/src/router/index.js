@@ -1,13 +1,13 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Inicial from '@/views/Inicial.vue';
-import EspecieRoutes from '@/modules/especie/router.js';
-import LocalidadeRoutes from '@/modules/localidade/router.js';
-import AreaRoutes from '@/modules/area/router.js';
+import Inicial from '@/views/Inicial';
+import EspecieRoutes from '@/modules/especie/router';
+import LocalidadeRoutes from '@/modules/localidade/router';
+import AreaRoutes from '@/modules/area/router';
 
 Vue.use(Router);
 
-const baseRoutes = [
+const BaseRoutes = [
     {
         path: '/',
         name: 'Inicial',
@@ -16,6 +16,7 @@ const baseRoutes = [
 ];
 
 let routes = [];
+routes = routes.concat(BaseRoutes);
 routes = routes.concat(EspecieRoutes);
 routes = routes.concat(LocalidadeRoutes);
 routes = routes.concat(AreaRoutes);

@@ -81,7 +81,6 @@
             </v-flex>
         </v-layout>
     </v-container>
-</div>
 </template>
 <script>
 import { mapActions, mapGetters } from 'vuex';
@@ -113,6 +112,12 @@ export default {
             areasLocalidade: [],
         };
     },
+    computed: {
+        ...mapGetters({
+            dadosLocalidade: 'localidade/localidade',
+            dadosAreasLocalidade: 'localidade/areasLocalidade',
+        }),
+    },
     watch: {
         dadosAreasLocalidade() {
             this.areasLocalidade = this.dadosAreasLocalidade;
@@ -133,12 +138,6 @@ export default {
             const path = `/area/${id}`;
             this.$router.push({ path });
         },
-    },
-    computed: {
-        ...mapGetters({
-            dadosLocalidade: 'localidade/localidade',
-            dadosAreasLocalidade: 'localidade/areasLocalidade',
-        }),
     },
 };
 </script>
