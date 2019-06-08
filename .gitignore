@@ -29,3 +29,5 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
+app/manejar/settings.py
+app/manejar/logfile
