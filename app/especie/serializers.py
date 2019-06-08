@@ -28,6 +28,7 @@ class EspecieSerializer(serializers.ModelSerializer):
             'estrato',
             'sucessao',
             'imagem',
+            'formas_plantio',
         )
 
 class VariedadeSerializer(serializers.ModelSerializer):

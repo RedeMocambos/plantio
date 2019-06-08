@@ -38,4 +38,4 @@ class Area(models.Model):
     microclima = models.TextField('microclima', choices=MICROCLIMAS, null=True, blank=True)
     
     def __str__(self):
-        return self.nome
+        return self.nome + ' (' + self.localidade.nome + ')'

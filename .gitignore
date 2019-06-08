@@ -1,7 +1,7 @@
 **.sqlite
 *env/
 *.pyc
-app/static/*
+app/staticfiles/*
 files
 *~
 *#

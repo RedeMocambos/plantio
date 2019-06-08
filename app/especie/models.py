@@ -1,6 +1,7 @@
 #!-*- coding: utf-8 -*-
 import os
 from django.db import models
+from multiselectfield import MultiSelectField
 
 from familia.models import Familia
 
@@ -99,6 +100,14 @@ class Configuracoes(object):
         ('A', 'Anos')
     )
 
+    FORMAS_PLANTIO = (
+        ('semente', 'semente'),
+        ('muda', 'muda'),
+        ('estaca', 'estaca'),
+        ('rama', 'rama'),
+        ('tubérculo', 'tubérculo'),
+    )
+
     fields = (
         'porte',
         'solo',
@@ -110,6 +119,7 @@ class Configuracoes(object):
         'fases',
         'unidade_tempo_vida',
         'umidade',
+        'formas_plantio',
     )
     
     def __init__(self, **kwargs):
@@ -123,6 +133,7 @@ class Configuracoes(object):
         self.fases = self.prepare_tipo(self.FASES)
         self.unidade_tempo_vida = self.prepare_tipo(self.UNIDADE_TEMPO_VIDA)
         self.umidade = self.prepare_tipo(self.TIPOS_UMIDADE)
+        self.formas_plantio = self.prepare_tipo(self.FORMAS_PLANTIO)
 
         
     def prepare_tipo(self, values):
@@ -143,7 +154,8 @@ class Configuracoes(object):
             'declividade': self.declividade,
             'fases': self.fases,
             'unidade_tempo_vida': self.unidade_tempo_vida,
-            'umidade': self.umidade
+            'umidade': self.umidade,
+            'formas_plantio': self.formas_plantio
         }
         return result
 
@@ -176,6 +188,7 @@ class Especie(models.Model):
     estrato          = models.CharField('estrato', max_length=30, choices=Configuracoes.TIPOS_ESTRATO, blank=True)
     sucessao         = models.CharField('sucessao', max_length=30, choices=Configuracoes.TIPOS_SUCESSAO, blank=True)
     imagem           = models.ImageField(upload_to=get_image_path, blank=True, null=True)
+    formas_plantio   = MultiSelectField('formas_plantio', max_length=30, choices=Configuracoes.FORMAS_PLANTIO, blank=True, max_choices=4)
     
     def __str__(self):
         return self.nomes_populares + " (" + self.nome_cientifico + ")"
