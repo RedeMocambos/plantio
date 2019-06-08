@@ -30,6 +30,16 @@
                         </v-icon>
                         desenho
                     </v-tab>
+                    <v-tab
+                        href="#plantios"
+                    >
+                        <v-icon
+                            class="pa-2"
+                        >
+                            local_florist
+                        </v-icon>
+                        plantios
+                    </v-tab>
                     <v-tab-item
                         :value="'dados'"
                     >
@@ -77,6 +87,12 @@
                             </v-card>
                         </v-flex>
                     </v-tab-item>
+                    <v-tab-item
+                        :value="'plantios'"
+                    >
+                        Plantios
+                        <listar-plantios/>
+                    </v-tab-item>
                 </v-tabs>
             </v-flex>
         </v-layout>
@@ -86,11 +102,13 @@
 
 import { mapActions, mapGetters } from 'vuex';
 import Grid from '@/modules/desenho/Grid';
+import ListarPlantios from '@/modules/plantio/views/ListarPlantios';
 
 export default {
     name: 'VisualizarArea',
     components: {
         Grid,
+        ListarPlantios,
     },
     data() {
         return {

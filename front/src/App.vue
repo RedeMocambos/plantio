@@ -5,7 +5,8 @@
                 <router-link to="/">Inicial</router-link> |
                 <router-link to="/especies">Espécies</router-link> |
                 <router-link to="/localidades">Localidades</router-link> |
-                <router-link to="/areas">Áreas</router-link>
+                <router-link to="/areas">Áreas</router-link> |
+                <router-link to="/plantios">Plantios</router-link>
             </div>
             <router-view/>
         </v-app>
