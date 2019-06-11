@@ -182,13 +182,13 @@ class Especie(models.Model):
     unidade_tempo_vida = models.CharField('unidade_tempo_vida', max_length=1, choices=Configuracoes.UNIDADE_TEMPO_VIDA, default="M")
     umidade          = models.CharField('umidade', max_length=30, choices=Configuracoes.TIPOS_UMIDADE, blank=True)
     exigencia_solo   = models.CharField('exigencia_solo', max_length=30, choices=Configuracoes.TIPOS_SOLO, blank=True)
-    tolerancia_poda  = models.PositiveSmallIntegerField('tolerancia_poda', choices=Configuracoes.NUMBER_RANGE, blank=True)
-    exigencia_sol    = models.PositiveSmallIntegerField('exigencia_sol', choices=Configuracoes.NUMBER_RANGE, blank=True)
-    inicio_colheita  = models.CharField('inicio_colheita', max_length=5, blank=True)
-    estrato          = models.CharField('estrato', max_length=30, choices=Configuracoes.TIPOS_ESTRATO, blank=True)
-    sucessao         = models.CharField('sucessao', max_length=30, choices=Configuracoes.TIPOS_SUCESSAO, blank=True)
+    tolerancia_poda  = models.PositiveSmallIntegerField('tolerancia_poda', choices=Configuracoes.NUMBER_RANGE, blank=True, null=True)
+    exigencia_sol    = models.PositiveSmallIntegerField('exigencia_sol', choices=Configuracoes.NUMBER_RANGE, blank=True, null=True)
+    inicio_colheita  = models.CharField('inicio_colheita', max_length=5, blank=True, null=True)
+    estrato          = models.CharField('estrato', max_length=30, choices=Configuracoes.TIPOS_ESTRATO, blank=True, null=True)
+    sucessao         = models.CharField('sucessao', max_length=30, choices=Configuracoes.TIPOS_SUCESSAO, blank=True, null=True)
     imagem           = models.ImageField(upload_to=get_image_path, blank=True, null=True)
-    formas_plantio   = MultiSelectField('formas_plantio', max_length=30, choices=Configuracoes.FORMAS_PLANTIO, blank=True, max_choices=4)
+    formas_plantio   = MultiSelectField('formas_plantio', max_length=30, choices=Configuracoes.FORMAS_PLANTIO, blank=True, max_choices=4, null=True)
     
     def __str__(self):
         return self.nomes_populares + " (" + self.nome_cientifico + ")"
