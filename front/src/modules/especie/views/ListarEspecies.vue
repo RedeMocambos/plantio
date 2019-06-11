@@ -121,6 +121,7 @@ export default {
     methods: {
         ...mapActions({
             buscarEspecies: 'especie/buscarEspecies',
+            adicionarEspecie: 'especie/adicionarEspecie',
         }),
         visualizar(id) {
             const path = `/especie/${id}`;
@@ -131,6 +132,11 @@ export default {
             this.$router.push({ path });
         },
         adicionar() {
+            this.adicionarEspecie({
+                nomes_populares: '__',
+            }).then((response) => {
+                this.editar(response.id);
+            });
         },
         excluir(id) {
         },

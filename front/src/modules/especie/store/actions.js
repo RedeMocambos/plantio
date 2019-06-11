@@ -30,3 +30,12 @@ export const updateEspecie = ({ commit }, params) => {
             commit(types.UPDATE_ESPECIE, response.data);
         });
 };
+
+export const adicionarEspecie = async ({ commit }, params) => {
+    const resultado = await especieHelperAPI.adicionarEspecie(params)
+        .then((response) => {
+            commit(types.SET_ESPECIE, response.data);
+            return response.data;
+        });
+    return resultado;
+};

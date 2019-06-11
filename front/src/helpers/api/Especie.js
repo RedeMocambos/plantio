@@ -29,3 +29,8 @@ export const updateEspecie = (params) => {
     const path = '/api/v1/especie/especie/';
     return api.putRequest(api.basePath + path, params, params.id);
 };
+
+export const adicionarEspecie = (params) => {
+    const path = '/api/v1/especie/especie/';
+    return api.postRequest(api.basePath + path, params);
+};
