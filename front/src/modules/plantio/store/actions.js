@@ -16,3 +16,12 @@ export const buscarPlantio = ({ commit }, id) => {
             commit(types.SET_PLANTIO, plantio);
         });
 };
+
+export const adicionarPlantio = async ({ commit }, params) => {
+    const resultado = await plantioHelperAPI.adicionarPlantio(params)
+        .then((response) => {
+            commit(types.SET_PLANTIO, response.data);
+            return response.data;
+        });
+    return resultado;
+};

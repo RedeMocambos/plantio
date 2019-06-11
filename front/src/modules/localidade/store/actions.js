@@ -24,3 +24,12 @@ export const buscarAreasPorLocalidade = ({ commit }, id) => {
             commit(types.SET_AREASLOCALIDADE, areasLocalidade);
         });
 };
+
+export const adicionarLocalidade = async ({ commit }, params) => {
+    const resultado = await localidadeHelperAPI.adicionarLocalidade(params)
+        .then((response) => {
+            commit(types.SET_LOCALIDADE, response.data);
+            return response.data;
+        });
+    return resultado;
+};

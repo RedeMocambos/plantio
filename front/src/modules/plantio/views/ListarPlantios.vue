@@ -158,6 +158,7 @@ export default {
     methods: {
         ...mapActions({
             buscarPlantios: 'plantio/buscarPlantios',
+            adicionarPlantio: 'plantio/adicionarPlantio',
         }),
         visualizar(id) {
             const path = `/plantio/${id}`;
@@ -168,6 +169,19 @@ export default {
             this.$router.push({ path });
         },
         adicionar() {
+            this.adicionarPlantio({
+                especie: '',
+                area: '',
+                data_plantio: '',
+                dimensao: '',
+                unidade_medida: '',
+                espacamento: '',
+                densidade: '',
+                estado: '',
+            }).then((response) => {
+                this.editar(response.id);
+            });
+
         },
         excluir(id) {
         },

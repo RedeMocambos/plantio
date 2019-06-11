@@ -121,6 +121,7 @@ export default {
     methods: {
         ...mapActions({
             buscarLocalidades: 'localidade/buscarLocalidades',
+            adicionarLocalidade: 'localidade/adicionarLocalidade',
         }),
         visualizar(id) {
             const path = `/localidade/${id}`;
@@ -131,6 +132,14 @@ export default {
             this.$router.push({ path });
         },
         adicionar() {
+            this.adicionarLocalidade({
+                nome: '',
+                bioma: '',
+                clima: '',
+                cidade: '',
+            }).then((response) => {
+                this.editar(response.id);
+            });
         },
         excluir(id) {
         },

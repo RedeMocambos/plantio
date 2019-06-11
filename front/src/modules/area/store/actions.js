@@ -16,3 +16,12 @@ export const buscarArea = ({ commit }, id) => {
             commit(types.SET_AREA, area);
         });
 };
+
+export const adicionarArea = async ({ commit }, params) => {
+    const resultado = await areaHelperAPI.adicionarArea(params)
+        .then((response) => {
+            commit(types.SET_AREA, response.data);
+            return response.data;
+        });
+    return resultado;
+};

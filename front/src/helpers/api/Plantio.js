@@ -9,3 +9,8 @@ export const buscarPlantio = (id) => {
     const path = `/api/v1/plantio/plantio/${id}`;
     return api.getRequest(api.basePath, path);
 };
+
+export const adicionarPlantio = (params) => {
+    const path = '/api/v1/plantio/plantio/';
+    return api.postRequest(api.basePath + path, params);
+};

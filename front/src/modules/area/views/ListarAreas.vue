@@ -133,6 +133,7 @@ export default {
     methods: {
         ...mapActions({
             buscarAreas: 'area/buscarAreas',
+            adicionarArea: 'area/adicionarArea',
         }),
         visualizar(id) {
             const path = `/area/${id}`;
@@ -143,6 +144,17 @@ export default {
             this.$router.push({ path });
         },
         adicionar() {
+            this.adicionarArea({
+                nome: '',
+                dimensao: '',
+                largura: '',
+                comprimento: '',
+                declividade_predominante: '',
+                localidade: '',
+                microclima: '',
+            }).then((response) => {
+                this.editar(response.id);
+            });
         },
         excluir(id) {
         },

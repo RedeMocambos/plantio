@@ -9,3 +9,8 @@ export const buscarArea = (id) => {
     const path = `/api/v1/area/areas/${id}`;
     return api.getRequest(api.basePath, path);
 };
+
+export const adicionarArea = (params) => {
+    const path = '/api/v1/area/area/';
+    return api.postRequest(api.basePath + path, params);
+};
