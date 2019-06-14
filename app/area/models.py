@@ -17,17 +17,6 @@ class Localidade(models.Model):
 class Area(models.Model):
     u""" Classe para definição de áreas """
 
-    MICROCLIMAS =  (
-        ('Campo aberto', 'Campo aberto'),
-        ('Capoeira rala', 'Capoeira rala'),
-        ('Capoeira densa', 'Capoeira densa'),
-        ('Mata fechada', 'Mata fechada'),
-        ('Chapada', 'Chapada'),
-        ('Grota', 'Grota'),
-        ('Baixada', 'Baixada'),
-        ('Topo de morro', 'Topo de morro'),
-    )
-    
     nome = models.CharField('nome' , max_length=255, blank=True)
     dimensao = models.FloatField('dimensao', blank=True)
     largura = models.FloatField('largura', blank=True, default=0)
@@ -35,7 +24,7 @@ class Area(models.Model):
     solo_predominante = models.TextField('solo predominante', choices=Configuracoes.TIPOS_SOLO, blank=True)
     declividade_predominante = models.TextField('declividade predominante', choices=Configuracoes.TIPOS_DECLIVIDADE, blank=True)
     localidade = models.ForeignKey(Localidade, on_delete=models.CASCADE, null=True, blank=False)
-    microclima = models.TextField('microclima', choices=MICROCLIMAS, null=True, blank=True)
+    microclima = models.TextField('microclima', choices=Configuracoes.MICROCLIMAS, null=True, blank=True)
     
     def __str__(self):
         return self.nome + ' (' + self.localidade.nome + ')'

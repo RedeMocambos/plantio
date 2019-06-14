@@ -140,15 +140,15 @@ export default {
             this.$router.push({ path });
         },
         editar(id) {
-            const path = `/area/${id}/edit`;
+            const path = `/area/${id}/editar`;
             this.$router.push({ path });
         },
         adicionar() {
             this.adicionarArea({
                 nome: '',
-                dimensao: '',
-                largura: '',
-                comprimento: '',
+                dimensao: 0,
+                largura: 0,
+                comprimento: 0,
                 declividade_predominante: '',
                 localidade: '',
                 microclima: '',

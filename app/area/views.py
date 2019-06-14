@@ -4,11 +4,13 @@ from rest_framework.response import Response
 
 from .models import Area, Localidade
 from .serializers import AreaSerializer, LocalidadeSerializer
+from .metadata import AreaMetadata
 
 class AreaViewSet(ModelViewSet):
     
     queryset = Area.objects.all()
     serializer_class = AreaSerializer
+    metadata_class = AreaMetadata
 
 class LocalidadeViewSet(ModelViewSet):
     

@@ -17,6 +17,20 @@ export const buscarArea = ({ commit }, id) => {
         });
 };
 
+export const buscarAreaMetadata = ({ commit }) => {
+    areaHelperAPI.buscarAreaMetadata()
+        .then((response) => {
+            commit(types.SET_AREA_METADATA, response.data.choices);
+        });
+};
+
+export const updateArea = ({ commit }, params) => {
+    areaHelperAPI.updateArea(params)
+        .then((response) => {
+            commit(types.UPDATE_AREA, response.data);
+        });
+};
+
 export const adicionarArea = async ({ commit }, params) => {
     const resultado = await areaHelperAPI.adicionarArea(params)
         .then((response) => {

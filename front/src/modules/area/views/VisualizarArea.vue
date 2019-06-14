@@ -9,7 +9,7 @@
                 xs12
             >
                 <v-tabs>
-                    <v-tabs-slider color=""></v-tabs-slider>
+                    <v-tabs-slider color=""/>
                     <v-tab
                         href="#dados"
                     >

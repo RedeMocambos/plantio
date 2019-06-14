@@ -10,7 +10,17 @@ export const buscarArea = (id) => {
     return api.getRequest(api.basePath, path);
 };
 
+export const buscarAreaMetadata = () => {
+    const path = '/api/v1/area/areas/';
+    return api.optionsRequest(api.basePath + path);
+};
+
+export const updateArea = (params) => {
+    const path = '/api/v1/area/areas/';
+    return api.putRequest(api.basePath + path, params, params.id);
+};
+
 export const adicionarArea = (params) => {
-    const path = '/api/v1/area/area/';
+    const path = '/api/v1/area/areas/';
     return api.postRequest(api.basePath + path, params);
 };
