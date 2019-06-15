@@ -128,7 +128,7 @@ export default {
             this.$router.push({ path });
         },
         editar(id) {
-            const path = `/localidade/${id}/edit`;
+            const path = `/localidade/${id}/editar`;
             this.$router.push({ path });
         },
         adicionar() {

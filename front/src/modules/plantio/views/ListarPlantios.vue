@@ -165,7 +165,7 @@ export default {
             this.$router.push({ path });
         },
         editar(id) {
-            const path = `/plantio/${id}/edit`;
+            const path = `/plantio/${id}/editar`;
             this.$router.push({ path });
         },
         adicionar() {
@@ -181,7 +181,6 @@ export default {
             }).then((response) => {
                 this.editar(response.id);
             });
-
         },
         excluir(id) {
         },

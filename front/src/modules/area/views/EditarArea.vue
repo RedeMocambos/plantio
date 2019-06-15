@@ -30,12 +30,12 @@
                             @change="atualizarCampo('nome', $event)"
                         />
                         <v-select
-                            v-model="dadosArea.localidade"
-                            :items="getAreaMetadata.localidade"
-                            item-text="descricao"
-                            item-value="valor"
+                            v-model="dadosArea.localidade_id"
+                            :items="listaLocalidades"
+                            item-text="nome"
+                            item-value="id"
                             label="Localidade"
-                            @change="atualizarCampo('localidade', $event)"
+                            @change="atualizarCampo('localidade_id', $event)"
                         />
                         <v-text-field
                             v-model="dadosArea.dimensao"
@@ -129,12 +129,14 @@ export default {
                 comprimento: '',
                 solo_predominante: '',
                 declividade_predominante: '',
+                localidade_id: 0,
                 localidade: '',
                 microclima: '',
             },
             loaded: {
                 dados: false,
                 metadados: false,
+                localidades: false,
             },
             loading: true,
         };
@@ -142,6 +144,7 @@ export default {
     computed: {
         ...mapGetters({
             dadosArea: 'area/area',
+            listaLocalidades: 'localidade/localidades',
             getAreaMetadata: 'area/getAreaMetadata',
         }),
         id() {
@@ -154,6 +157,9 @@ export default {
                 this.loaded.dados = true;
                 this.inicializarDadosArea();
             }
+        },
+        listaLocalidades() {
+            this.loaded.localidades = true;
         },
         getAreaMetadata() {
             if (this.getAreaMetadata.id !== 'undefined') {
@@ -174,6 +180,7 @@ export default {
         if (typeof this.$route.params.id !== 'undefined') {
             this.buscarArea(this.$route.params.id);
             this.buscarAreaMetadata();
+            this.buscarLocalidades();
         }
     },
     methods: {
@@ -181,6 +188,7 @@ export default {
             buscarArea: 'area/buscarArea',
             buscarAreaMetadata: 'area/buscarAreaMetadata',
             updateArea: 'area/updateArea',
+            buscarLocalidades: 'localidade/buscarLocalidades',
         }),
         inicializarDadosArea() {
             this.dadosEditados = {
@@ -192,6 +200,7 @@ export default {
                 solo_predominante: this.dadosArea.solo_predominante,
                 declividade_predominante: this.dadosArea.declividade_predominante,
                 localidade: this.dadosArea.localidade,
+                localidade_id: this.dadosArea.localidade_id,
                 microclima: this.dadosArea.microclima,
             };
         },
