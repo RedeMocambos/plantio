@@ -1,5 +1,6 @@
 const ListarLocalidadesView = () => import(/* webpackChunkName: "listar-localidades" */ './views/ListarLocalidades.vue');
 const VisualizarLocalidadeView = () => import(/* webpackChunkName: "visualizar-localidade" */ './views/VisualizarLocalidade.vue');
+const EditarLocalidadeView = () => import(/* webpackChunkName: "editar-localidade" */ './views/EditarLocalidade.vue');
 
 export default [
     {
@@ -18,4 +19,13 @@ export default [
             title: 'Visualizar localidade',
         },
     },
+    {
+        path: '/localidade/:id/editar',
+        name: 'editarLocalidade',
+        component: EditarLocalidadeView,
+        meta: {
+            title: 'Editar localidade',
+        },
+    },
+
 ];

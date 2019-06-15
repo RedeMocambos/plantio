@@ -108,6 +108,17 @@ class Configuracoes(object):
         ('tubérculo', 'tubérculo'),
     )
 
+    MICROCLIMAS =  (
+        ('Campo aberto', 'Campo aberto'),
+        ('Capoeira rala', 'Capoeira rala'),
+        ('Capoeira densa', 'Capoeira densa'),
+        ('Mata fechada', 'Mata fechada'),
+        ('Chapada', 'Chapada'),
+        ('Grota', 'Grota'),
+        ('Baixada', 'Baixada'),
+        ('Topo de morro', 'Topo de morro'),
+    )
+    
     fields = (
         'porte',
         'solo',
@@ -120,6 +131,7 @@ class Configuracoes(object):
         'unidade_tempo_vida',
         'umidade',
         'formas_plantio',
+        'microclimas',
     )
     
     def __init__(self, **kwargs):
@@ -134,6 +146,7 @@ class Configuracoes(object):
         self.unidade_tempo_vida = self.prepare_tipo(self.UNIDADE_TEMPO_VIDA)
         self.umidade = self.prepare_tipo(self.TIPOS_UMIDADE)
         self.formas_plantio = self.prepare_tipo(self.FORMAS_PLANTIO)
+        self.microclimas = self.prepare_tipo(self.MICROCLIMAS)
 
         
     def prepare_tipo(self, values):
@@ -155,7 +168,8 @@ class Configuracoes(object):
             'fases': self.fases,
             'unidade_tempo_vida': self.unidade_tempo_vida,
             'umidade': self.umidade,
-            'formas_plantio': self.formas_plantio
+            'formas_plantio': self.formas_plantio,
+            'microclimas': self.microclimas
         }
         return result
 

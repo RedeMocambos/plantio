@@ -4,6 +4,7 @@ export const state = {
     localidades: {},
     localidade: {},
     areasLocalidade: {},
+    getLocalidadeMetadata: {},
 };
 
 export const mutations = {
@@ -13,7 +14,13 @@ export const mutations = {
     [types.SET_LOCALIDADE](state, localidade) {
         state.localidade = localidade;
     },
-    [types.SET_AREASLOCALIDADE](state, areasLocalidade) {
-        state.areasLocalidade = areasLocalidade;
+    [types.GET_LOCALIDADE_METADATA](state, data) {
+        state.getLocalidadeMetadata = data;
+    },
+    [types.SET_LOCALIDADE_METADATA](state, data) {
+        state.getLocalidadeMetadata = data;
+    },
+    [types.UPDATE_LOCALIDADE](state, data) {
+        state.localidade = data;
     },
 };

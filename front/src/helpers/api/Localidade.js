@@ -10,12 +10,17 @@ export const buscarLocalidade = (id) => {
     return api.getRequest(api.basePath, path);
 };
 
-export const buscarAreasPorLocalidade = (id) => {
-    const path = `/api/v1/area/localidade/${id}/areas`;
-    return api.getRequest(api.basePath, path);
+export const buscarLocalidadeMetadata = () => {
+    const path = '/api/v1/area/localidade/';
+    return api.optionsRequest(api.basePath + path);
+};
+
+export const updateLocalidade = (params) => {
+    const path = '/api/v1/area/localidade/';
+    return api.putRequest(api.basePath + path, params, params.id);
 };
 
 export const adicionarLocalidade = (params) => {
-    const path = '/api/v1/localidade/localidade/';
+    const path = '/api/v1/area/localidade/';
     return api.postRequest(api.basePath + path, params);
 };

@@ -16,6 +16,7 @@ class LocalidadeViewSet(ModelViewSet):
     
     queryset = Localidade.objects.all()
     serializer_class = LocalidadeSerializer
+    metadata_class = AreaMetadata
 
     @action(methods=['get'], detail=True)
     def areas(self, request, pk=True):

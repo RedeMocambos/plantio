@@ -17,11 +17,17 @@ export const buscarLocalidade = ({ commit }, id) => {
         });
 };
 
-export const buscarAreasPorLocalidade = ({ commit }, id) => {
-    localidadeHelperAPI.buscarAreasPorLocalidade(id)
+export const buscarLocalidadeMetadata = ({ commit }) => {
+    localidadeHelperAPI.buscarLocalidadeMetadata()
         .then((response) => {
-            const areasLocalidade = response.data;
-            commit(types.SET_AREASLOCALIDADE, areasLocalidade);
+            commit(types.SET_LOCALIDADE_METADATA, response.data.choices);
+        });
+};
+
+export const updateLocalidade = ({ commit }, params) => {
+    localidadeHelperAPI.updateLocalidade(params)
+        .then((response) => {
+            commit(types.UPDATE_LOCALIDADE, response.data);
         });
 };
 

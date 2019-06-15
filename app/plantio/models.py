@@ -58,7 +58,7 @@ class Plantio(models.Model):
     unidade_medida   = models.CharField('unidade_medida', choices=Tipos.UNIDADES_MEDIDA, max_length=10)
     espacamento      = models.CharField('espacamento', blank=True, max_length=50)
     densidade        = models.CharField('densidade', blank=True, max_length=50)
-    estado           = models.CharField('estado', choices=Tipos.ESTADOS, max_length=20)
+    estado           = models.CharField('estado', choices=Tipos.ESTADOS, max_length=20, default='planejado')
 
     def __str__(self):
         return self.especie.nomes_populares + ' - ' + self.area.nome
