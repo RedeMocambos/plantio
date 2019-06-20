@@ -39,3 +39,10 @@ export const adicionarArea = async ({ commit }, params) => {
         });
     return resultado;
 };
+
+export const excluirArea = ({ dispatch }, params) => {
+    areaHelperAPI.excluirArea(params)
+        .then(() => {
+            dispatch('buscarAreas');
+        });
+};

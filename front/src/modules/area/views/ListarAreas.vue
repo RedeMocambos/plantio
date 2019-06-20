@@ -134,6 +134,7 @@ export default {
         ...mapActions({
             buscarAreas: 'area/buscarAreas',
             adicionarArea: 'area/adicionarArea',
+            excluirArea: 'area/excluirArea',
         }),
         visualizar(id) {
             const path = `/area/${id}`;
@@ -157,6 +158,7 @@ export default {
             });
         },
         excluir(id) {
+            this.excluirArea({ id });
         },
     },
 };

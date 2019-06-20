@@ -24,3 +24,8 @@ export const adicionarArea = (params) => {
     const path = '/api/v1/area/areas/';
     return api.postRequest(api.basePath + path, params);
 };
+
+export const excluirArea = (params) => {
+    const path = '/api/v1/area/areas';
+    return api.deleteRequest(api.basePath + path, params.id);
+};
