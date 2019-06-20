@@ -33,4 +33,5 @@ class LocalidadeSerializer(serializers.ModelSerializer):
             'nome',
             'bioma',
             'clima',
+            'cidade',
         )
