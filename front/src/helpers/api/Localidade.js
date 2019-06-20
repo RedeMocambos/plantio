@@ -24,3 +24,8 @@ export const adicionarLocalidade = (params) => {
     const path = '/api/v1/area/localidade/';
     return api.postRequest(api.basePath + path, params);
 };
+
+export const excluirLocalidade = (params) => {
+    const path = '/api/v1/area/localidade';
+    return api.deleteRequest(api.basePath + path, params.id);
+};

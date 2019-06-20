@@ -39,3 +39,10 @@ export const adicionarLocalidade = async ({ commit }, params) => {
         });
     return resultado;
 };
+
+export const excluirLocalidade = ({ dispatch }, params) => {
+    localidadeHelperAPI.excluirLocalidade(params)
+        .then(() => {
+            dispatch('buscarLocalidades');
+        });
+};

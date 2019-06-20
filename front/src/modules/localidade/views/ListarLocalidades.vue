@@ -122,6 +122,7 @@ export default {
         ...mapActions({
             buscarLocalidades: 'localidade/buscarLocalidades',
             adicionarLocalidade: 'localidade/adicionarLocalidade',
+            excluirLocalidade: 'localidade/excluirLocalidade',
         }),
         visualizar(id) {
             const path = `/localidade/${id}`;
@@ -142,6 +143,7 @@ export default {
             });
         },
         excluir(id) {
+            this.excluirLocalidade({ id });
         },
     },
 };
