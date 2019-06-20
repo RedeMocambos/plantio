@@ -35,7 +35,7 @@
                             item-text="nome"
                             item-value="id"
                             label="Localidade"
-                            @change="atualizarCampo('localidade_id', $event)"
+                            @change="atualizarCampo('localidade_id', $event); atualizarCampoMatriz('localidade', $event, listaLocalidades)"
                         />
                         <v-text-field
                             v-model="dadosArea.dimensao"
@@ -199,8 +199,8 @@ export default {
                 comprimento: this.dadosArea.comprimento,
                 solo_predominante: this.dadosArea.solo_predominante,
                 declividade_predominante: this.dadosArea.declividade_predominante,
-                localidade: this.dadosArea.localidade,
                 localidade_id: this.dadosArea.localidade_id,
+                localidade: this.dadosArea.localidade,
                 microclima: this.dadosArea.microclima,
             };
         },
@@ -208,6 +208,10 @@ export default {
             if (Object.keys(this.dadosEditados).includes(key)) {
                 this.dadosEditados[key] = value;
             }
+        },
+        atualizarCampoMatriz(key, value, lista) {
+            const campo = lista.find(obj => obj.id === value);
+            return campo.nome;
         },
         salvar() {
             this.updateArea(this.dadosEditados);

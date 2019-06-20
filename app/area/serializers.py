@@ -2,8 +2,11 @@ from rest_framework import serializers
 from .models import Area, Localidade
 
 class AreaSerializer(serializers.ModelSerializer):
-    localidade = serializers.StringRelatedField(many=False)
-    localidade_id = serializers.PrimaryKeyRelatedField(many=False, read_only=True)
+    localidade = serializers.SlugRelatedField(
+        many=False,
+        slug_field='nome',
+        queryset=Localidade.objects.all()
+    )
     
     class Meta:
         model  = Area
