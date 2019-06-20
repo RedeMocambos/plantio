@@ -75,12 +75,14 @@
                         <v-select
                             v-model="dadosEspecie.umidade"
                             :items="getEspecieMetadata.umidade"
+                            item-text="descricao"
+                            item-value="valor"
                             label="Umidade"
                             @change="atualizarCampo('umidade', $event) "
                         />
                         <v-select
                             v-model="dadosEspecie.tolerancia_poda"
-                            :items="getEspecieMetadata.tolerancia_poda"
+                            :items="rangePoda"
                             label="Tolerância a poda"
                             @change="atualizarCampo('tolerancia_poda', $event) "
                         />
@@ -155,6 +157,9 @@ export default {
                 umidade: '',
                 tolerancia_poda: '',
             },
+            rangePoda: [
+                ...Array(10).keys(),
+            ],
         };
     },
     computed: {
@@ -196,6 +201,7 @@ export default {
                 tempo_vida: this.dadosEspecie.tempo_vida,
                 sucessao: this.dadosEspecie.sucessao,
                 porte: this.dadosEspecie.porte,
+                tolerancia_poda: this.dadosEspecie.tolerancia_poda,
             };
         },
         atualizarCampo(key, value) {
