@@ -5,12 +5,20 @@ services:
     image: postgres
     volumes:
       - /data/postgresql_data/:/var/lib/postgresql/data/
+    networks:
+      - plantio
+  
   front:
     build: ./front
     volumes:
       - ./front:/app
     ports:
       - "0.0.0.0:8080:8080"
+    depends_on:
+      - django
+    networks:
+      - plantio
+  
   django:
     build: ./app
     volumes:
@@ -19,6 +27,9 @@ services:
       - "0.0.0.0:8000:8000"
     depends_on:
       - db
-    links:
-      - db
-      - front
+    networks:
+      - plantio
+      
+networks:
+  plantio:
+    driver: bridge

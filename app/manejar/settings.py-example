@@ -26,7 +26,7 @@ DATABASES = {
         'NAME': 'plantio',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': '172.26.0.2',
+        'HOST': 'db',
         'PORT': '', # 8000 is default
     }
 }
