@@ -1,6 +1,7 @@
 const VisualizarEspecieView = () => import(/* webpackChunkName: "visualizar-especie" */ './views/VisualizarEspecie.vue');
 const ListarEspeciesView = () => import(/* webpackChunkName: "listar-especies" */ './views/ListarEspecies.vue');
 const EditarEspecieView = () => import(/* webpackChunkName: "editar-especie" */ './views/EditarEspecie.vue');
+const CriarEspecieView = () => import(/* webpackChunkName: "criar-especie" */ './views/CriarEspecie.vue');
 
 export default [
     {
@@ -9,6 +10,14 @@ export default [
         component: ListarEspeciesView,
         meta: {
             title: 'Listar especies',
+        },
+    },
+    {
+        path: '/especie/criar',
+        name: 'criarEspecie',
+        component: CriarEspecieView,
+        meta: {
+            title: 'Criar especie',
         },
     },
     {

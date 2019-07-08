@@ -132,11 +132,8 @@ export default {
             this.$router.push({ path });
         },
         adicionar() {
-            this.adicionarEspecie({
-                nomes_populares: '__',
-            }).then((response) => {
-                this.editar(response.id);
-            });
+            const path = `/especie/criar`;
+            this.$router.push({ path });
         },
         excluir(id) {
         },
