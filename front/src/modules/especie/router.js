@@ -9,7 +9,7 @@ export default [
         name: 'listarEspecies',
         component: ListarEspeciesView,
         meta: {
-            title: 'Listar especies',
+            title: 'Listar espécies',
         },
     },
     {
@@ -17,7 +17,7 @@ export default [
         name: 'criarEspecie',
         component: CriarEspecieView,
         meta: {
-            title: 'Criar especie',
+            title: 'Criar espécie',
         },
     },
     {
@@ -25,7 +25,7 @@ export default [
         name: 'visualizarEspecie',
         component: VisualizarEspecieView,
         meta: {
-            title: 'Visualizar especies',
+            title: 'Visualizar espécies',
         },
     },
     {
@@ -33,7 +33,7 @@ export default [
         name: 'editarEspecie',
         component: EditarEspecieView,
         meta: {
-            title: 'Editar especie',
+            title: 'Editar espécie',
         },
     },
 ];

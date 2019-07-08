@@ -8,6 +8,7 @@
                 offset-xs1
             >
                 <form-editar-especie
+                    :tipo="'criar'"
                     :texto-cabecalho="'Criação de espécie'"
                 />
             </v-flex>

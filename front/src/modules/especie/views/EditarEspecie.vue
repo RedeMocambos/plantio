@@ -14,6 +14,8 @@
                 offset-xs1
             >
                 <form-editar-especie
+                    :tipo="'editar'"
+                    :texto-cabecalho="'Edição de espécie'"
                 />
             </v-flex>
         </v-layout>

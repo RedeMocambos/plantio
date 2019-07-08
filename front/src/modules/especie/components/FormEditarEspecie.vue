@@ -123,6 +123,10 @@ export default {
             type: String,
             default: 'Edição de espécie',
         },
+        tipo: {
+            type: String,
+            default: 'editar',
+        },
     },
     data() {
         return {
@@ -158,26 +162,15 @@ export default {
             this.inicializarDadosEspecie();
         },
     },
+    created() {
+        this.inicializarDadosEspecie();
+    },
     methods: {
         ...mapActions({
+            adicionarEspecie: 'especie/adicionarEspecie',
             updateEspecie: 'especie/updateEspecie',
         }),
         inicializarDadosEspecie() {
-            this.dadosEditados = {
-                id: this.dadosEspecie.id,
-                nomes_populares: this.dadosEspecie.nomes_populares,
-                nome_cientifico: this.dadosEspecie.nome_cientifico,
-                familia: this.dadosEspecie.familia,
-                exigencia_solo: this.dadosEspecie.exigencia_solo,
-                temperatura_min: this.dadosEspecie.temperatura_min,
-                temperatura_max: this.dadosEspecie.temperatura_max,
-                inicio_colheita: this.dadosEspecie.inicio_colheita,
-                tempo_vida: this.dadosEspecie.tempo_vida,
-                sucessao: this.dadosEspecie.sucessao,
-                porte: this.dadosEspecie.porte,
-                tolerancia_poda: this.dadosEspecie.tolerancia_poda,
-            };
-        },        inicializarDadosEspecie() {
             this.dadosEditados = {
                 id: this.dadosEspecie.id,
                 nomes_populares: this.dadosEspecie.nomes_populares,
@@ -199,7 +192,15 @@ export default {
             }
         },
         salvar() {
-            this.updateEspecie(this.dadosEditados);
+            if (this.tipo === 'criar') {
+                this.adicionarEspecie(this.dadosEditados)
+                    .then((response) => {
+                        const path = `/especie/${response.id}/editar`;
+                        this.$router.push({ path });
+                    });
+            } else if (this.tipo === 'editar') {
+                this.updateEspecie(this.dadosEditados);
+            }
         },
     },
  };
