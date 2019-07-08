@@ -1,6 +1,7 @@
 const ListarAreasView = () => import(/* webpackChunkName: "listar-areas" */ './views/ListarAreas.vue');
 const VisualizarAreaView = () => import(/* webpackChunkName: "visualizar-area" */ './views/VisualizarArea.vue');
 const EditarAreaView = () => import(/* webpackChunkName: "editar-area" */ './views/EditarArea.vue');
+const CriarAreaView = () => import(/* webpackChunkName: "criar-especie" */ './views/CriarArea.vue');
 
 export default [
     {
@@ -9,6 +10,14 @@ export default [
         component: ListarAreasView,
         meta: {
             title: 'Listar áreas',
+        },
+    },
+    {
+        path: '/area/criar',
+        name: 'criarArea',
+        component: CriarAreaView,
+        meta: {
+            title: 'Criar área',
         },
     },
     {

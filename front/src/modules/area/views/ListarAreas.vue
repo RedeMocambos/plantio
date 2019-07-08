@@ -145,17 +145,8 @@ export default {
             this.$router.push({ path });
         },
         adicionar() {
-            this.adicionarArea({
-                nome: '',
-                dimensao: 0,
-                largura: 0,
-                comprimento: 0,
-                declividade_predominante: '',
-                localidade: '',
-                microclima: '',
-            }).then((response) => {
-                this.editar(response.id);
-            });
+            const path = `/area/criar`;
+            this.$router.push({ path });
         },
         excluir(id) {
             this.excluirArea({ id });
