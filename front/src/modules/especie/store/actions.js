@@ -1,4 +1,5 @@
 import * as especieHelperAPI from '@/helpers/api/Especie';
+import * as familiaHelperAPI from '@/helpers/api/Familia';
 import * as types from './types';
 
 export const buscarEspecies = ({ commit }) => {
@@ -38,4 +39,11 @@ export const adicionarEspecie = async ({ commit }, params) => {
             return response.data;
         });
     return resultado;
+};
+
+export const buscarFamilias = ({ commit }, params) => {
+    familiaHelperAPI.buscarFamilias(params)
+        .then((response) => {
+            commit(types.SET_FAMILIAS, response.data);
+        });
 };

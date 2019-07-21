@@ -10,8 +10,11 @@
                     {{ textoCabecalho }}
                 </div>
             </v-card-title>
-            <v-text-field
+            <v-select
                 v-model="dadosEspecie.familia"
+                :items="getFamilias"
+                item-text="nome"
+                item-value="id"
                 label="Família"
                 @change="atualizarCampo('familia', $event) "
             />
@@ -155,6 +158,7 @@ export default {
         ...mapGetters({
             dadosEspecie: 'especie/especie',
             dadosEspecieMetadata: 'especie/getEspecieMetadata',
+            getFamilias: 'especie/getFamilias',
         }),
     },
     watch: {
@@ -164,11 +168,13 @@ export default {
     },
     created() {
         this.inicializarDadosEspecie();
+        this.buscarFamilias();
     },
     methods: {
         ...mapActions({
             adicionarEspecie: 'especie/adicionarEspecie',
             updateEspecie: 'especie/updateEspecie',
+            buscarFamilias: 'especie/buscarFamilias',
         }),
         inicializarDadosEspecie() {
             this.dadosEditados = {
@@ -203,5 +209,5 @@ export default {
             }
         },
     },
- };
+};
 </script>

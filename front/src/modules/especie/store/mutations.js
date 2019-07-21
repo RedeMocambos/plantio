@@ -4,6 +4,7 @@ export const state = {
     especies: {},
     especie: {},
     getEspecieMetadata: {},
+    familias: {},
 };
 
 export const mutations = {
@@ -21,5 +22,11 @@ export const mutations = {
     },
     [types.UPDATE_ESPECIE](state, data) {
         state.especie = data;
+    },
+    [types.SET_FAMILIAS](state,data) {
+        state.familias = data;
+    },
+    [types.GET_FAMILIAS](state,data) {
+        state.familias = data;
     },
 };

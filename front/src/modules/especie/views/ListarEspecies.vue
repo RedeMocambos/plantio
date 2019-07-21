@@ -13,7 +13,7 @@
                         v-slot:items="props"
                     >
                         <td>{{ props.index + 1 }}</td>
-                        <td>
+                        <td class="text-xs-left">
                             <v-btn
                                 flat
                                 small
