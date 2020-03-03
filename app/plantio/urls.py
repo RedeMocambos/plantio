@@ -4,7 +4,7 @@ from rest_framework.routers import DefaultRouter
 from .views import PlantioViewSet
 
 router = DefaultRouter()
-router.register(u'plantios', PlantioViewSet, base_name='plantios')
+router.register(u'plantios', PlantioViewSet, basename='plantios')
 
 urlpatterns = [
     url(r'^', include(router.urls))

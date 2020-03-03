@@ -7,13 +7,13 @@ router = DefaultRouter()
 router.register(
     r'manejo',
     ManejoViewSet,
-    base_name='manejos'
+    basename='manejos'
 )
 
 router.register(
     r'padroes',
     PadroesPlantioViewSet,
-    base_name='padroes-plantios')
+    basename='padroes-plantios')
 
 urlpatterns = [
     url(r'^', include(router.urls))

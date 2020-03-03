@@ -4,9 +4,9 @@ from rest_framework.routers import DefaultRouter
 from .views import EspecieViewSet, VariedadeViewSet, InteracaoViewSet
 
 router = DefaultRouter()
-router.register(u'especie', EspecieViewSet, base_name='especies')
-router.register(u'variedade', VariedadeViewSet, base_name='variedades')
-router.register(u'interacao', InteracaoViewSet, base_name='interacoes')
+router.register(u'especie', EspecieViewSet, basename='especies')
+router.register(u'variedade', VariedadeViewSet, basename='variedades')
+router.register(u'interacao', InteracaoViewSet, basename='interacoes')
 
 urlpatterns = [
     url(r'^', include(router.urls))
