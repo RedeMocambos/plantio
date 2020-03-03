@@ -7,6 +7,9 @@ services:
       - /data/postgresql_data/:/var/lib/postgresql/data/
     networks:
       - plantio
+    environment:
+      POSTGRES_DB: "db"
+      POSTGRES_HOST_AUTH_METHOD: "trust"
   
   front:
     build: ./front
