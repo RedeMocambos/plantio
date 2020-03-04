@@ -41,7 +41,7 @@
     "@babel/preset-env": "^7.4.4",
     "@vue/cli-plugin-babel": "^3.7.0",
     "@vue/cli-plugin-eslint": "^3.7.0",
-    "@vue/cli-service": "^3.7.0",
+    "@vue/cli-service": "^4.2.0",
     "@vue/eslint-config-airbnb": "^3.0.5",
     "acorn-dynamic-import": "^4.0.0",
     "babel-core": "^7.0.0-bridge.0",

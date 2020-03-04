@@ -1,4 +1,4 @@
-FROM postgres
+FROM postgres as db
 
 WORKDIR /db
 

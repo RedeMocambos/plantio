@@ -1,8 +1,13 @@
-FROM node:latest
+FROM node:latest AS front
 
 WORKDIR /front
 
-COPY . /front/
-COPY entrypoint.sh /
+COPY package*.json ./
 
-ENTRYPOINT ["/entrypoint.sh"]
+RUN npm install
+
+COPY . .
+
+COPY entrypoint.sh ./
+
+ENTRYPOINT ["/front/entrypoint.sh"]
