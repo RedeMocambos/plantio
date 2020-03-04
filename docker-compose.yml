@@ -2,15 +2,16 @@ version: '3'
 
 services:
   db:
-    image: postgres
+    build: ./db
     volumes:
       - /data/postgresql_data/:/var/lib/postgresql/data/
     networks:
       - plantio
     environment:
-      POSTGRES_DB: "db"
-      POSTGRES_HOST_AUTH_METHOD: "trust"
-  
+      POSTGRES_DB: "manejar"
+      POSTGRES_USER: "manejar"
+      POSTGRES_PASSWORD: ""
+      
   front:
     build: ./front
     volumes:
