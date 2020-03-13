@@ -16,7 +16,6 @@
     </v-container>
 </template>
 <script>
-import { mapActions, mapGetters } from 'vuex';
 import FormEditarEspecie from '../components/FormEditarEspecie';
 
 export default {

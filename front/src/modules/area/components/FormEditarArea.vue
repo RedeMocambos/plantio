@@ -176,7 +176,7 @@ export default {
             } else if (this.tipo === 'editar') {
                 this.updateArea(this.dadosEditados);
             }
-        },        
+        },
     },
 };
 </script>

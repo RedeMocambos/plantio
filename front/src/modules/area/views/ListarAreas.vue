@@ -145,7 +145,7 @@ export default {
             this.$router.push({ path });
         },
         adicionar() {
-            const path = `/area/criar`;
+            const path = '/area/criar';
             this.$router.push({ path });
         },
         excluir(id) {

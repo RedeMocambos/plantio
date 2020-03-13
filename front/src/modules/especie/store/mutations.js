@@ -23,10 +23,10 @@ export const mutations = {
     [types.UPDATE_ESPECIE](state, data) {
         state.especie = data;
     },
-    [types.SET_FAMILIAS](state,data) {
+    [types.SET_FAMILIAS](state, data) {
         state.familias = data;
     },
-    [types.GET_FAMILIAS](state,data) {
+    [types.GET_FAMILIAS](state, data) {
         state.familias = data;
     },
 };

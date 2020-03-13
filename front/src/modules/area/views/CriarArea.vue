@@ -16,7 +16,6 @@
     </v-container>
 </template>
 <script>
-import { mapActions, mapGetters } from 'vuex';
 import FormEditarArea from '../components/FormEditarArea';
 
 export default {

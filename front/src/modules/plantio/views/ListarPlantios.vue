@@ -182,7 +182,7 @@ export default {
                 this.editar(response.id);
             });
         },
-        excluir(id) {
+        excluir() {
         },
     },
 };

@@ -11,8 +11,8 @@
                 xs12
             >
                 <v-btn
-                    @click="parseGrid()"
                     class="green lighten-1"
+                    @click="parseGrid()"
                 >
                     <v-icon
                         class="pr-2"

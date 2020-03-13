@@ -132,10 +132,10 @@ export default {
             this.$router.push({ path });
         },
         adicionar() {
-            const path = `/especie/criar`;
+            const path = '/especie/criar';
             this.$router.push({ path });
         },
-        excluir(id) {
+        excluir() {
         },
     },
 };

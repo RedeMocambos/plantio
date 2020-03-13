@@ -1,5 +1,6 @@
 import * as api from './base';
 
+/*
 const buildData = (params) => {
     const bodyFormData = new FormData();
 
@@ -9,6 +10,7 @@ const buildData = (params) => {
 
     return bodyFormData;
 };
+*/
 
 export const buscarEspecies = () => {
     const path = '/api/v1/especie/especie/';
