@@ -235,7 +235,7 @@ class Interacao(models.Model):
         ('Alelopatia alheia', 'Alelopatia alheia'),
     )
 
-    tipo_interacao  = models.CharField('tipo_interacao', max_length=10, choices=TIPOS_INTERACAO, blank=True)
+    tipo_interacao  = models.CharField('tipo_interacao', max_length=18, choices=TIPOS_INTERACAO, blank=True)
     familia_a       = models.ForeignKey(Familia, on_delete=models.CASCADE, related_name='familia_a', null=True, blank=True)
     familia_b       = models.ForeignKey(Familia, on_delete=models.CASCADE, related_name='familia_b', null=True, blank=True)
     especie_a       = models.ForeignKey(Especie, on_delete=models.CASCADE, related_name='especie_a', null=True, blank=True)
