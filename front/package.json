@@ -18,6 +18,7 @@
     "lodash": "^4.17.11",
     "material-design-icons-iconfont": "^4.0.5",
     "node-sass": "^4.12.0",
+    "npm": "^6.14.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "vue": "^2.6.10",
