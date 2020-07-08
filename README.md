@@ -149,6 +149,18 @@ A intensidade da relação também pode ser apontada, como: suave, média, agres
 
 Uma interação associa duas espécies, define um tipo de relação, a intensidade da relação e adicionalmente se vinculam mais referências. O objetivo dessa informação estar presente no banco de dados é filtrar espécies conforme o grau de simpatia ou antipatia no momento da relação.
 
+### Sugestão para banco NoSQL/Mongo:
+
+Cada interação possui uma planta A, outra planta B e/ou família B. 
+{
+  especie_a: 'tomate',            // espécie A
+  especie_b: 'feijão',            // espécie B
+  familia_b: 'leguminosas',      // toda família B
+  tipo_interacao: 'alelopatia',  // tipo de interação (alelopatia, sinergia)
+  sentido: 'mútuo'               // se é mútuo ou apenas para um dos lados (mútuo, para_a, para_b)
+  nivel: 'forte',                // nível/grau (fraco, moderado, forte)
+  fonte: 'PRIMAVESI, Ana. Pergunte ao solo e às raízes', 
+}
 
 ## Definição de áreas
 
